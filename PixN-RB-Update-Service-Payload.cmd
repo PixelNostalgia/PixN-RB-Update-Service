@@ -35,6 +35,19 @@ rmdir /S /Q ".\emulationstation"
 ping -n 2 127.0.0.1 > nul
 echo .
 
+REM This section pulls down the latest PixN Custom Collections...
+echo .
+echo Updating the PixN Custom Collections...
+echo .
+ping -n 2 127.0.0.1 > nul
+rmdir /S /Q ".\PixN-Collections"
+md "..\..\emulationstation\.emulationstation\collections" >nul 2>&1
+..\..\emulators\pixn\PortableGit\cmd\git clone https://github.com/PixelNostalgia/PixN-Collections.git
+move /Y ".\PixN-Collections\*.cfg" ..\..\emulationstation\.emulationstation\collections\
+rmdir /S /Q ".\PixN-Collections"
+ping -n 2 127.0.0.1 > nul
+echo .
+
 REM This section pulls down the latest es-checkversion script...
 echo .
 echo Updating es-checkversion script...
