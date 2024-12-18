@@ -20,7 +20,7 @@ type ASCII.txt
 
 echo .
 echo Pixel Nostalgia updater running...
-echo Version 1.19
+echo Version 1.20
 echo .
 ping -n 2 127.0.0.1 > nul
 
@@ -305,6 +305,39 @@ del /Q vpinball_dec2024.7z
 rmdir /S /Q vpinball >nul 2>&1
 
 echo VPinball-v1 > VPinball-v1
+:skip
+echo .
+ping -n 2 127.0.0.1 > nul
+
+REM This section checks for the updated Switch Emulators...
+echo Checking for the updated Switch Emulators...
+echo .
+ping -n 2 127.0.0.1 > nul
+
+IF EXIST "Switch-v1" goto SKIP
+
+del /Q sBugmhpq*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/sBugmhpq
+ren sBugmhpq switch_dec2024.7z
+ping -n 2 127.0.0.1 > nul
+echo .
+7z x switch_dec2024.7z -aoa -p22446688 -o.\
+echo .
+echo Copying files...
+xcopy ryujinx ..\..\emulators\ryujinx\ /S /E /I /Q /H /Y /R
+xcopy yuzu ..\..\emulators\yuzu\ /S /E /I /Q /H /Y /R
+xcopy suyu ..\..\emulators\suyu\ /S /E /I /Q /H /Y /R
+xcopy sudachi ..\..\emulators\sudachi\ /S /E /I /Q /H /Y /R
+xcopy swsaves ..\..\saves\switch\ /S /E /I /Q /H /Y /R
+ping -n 2 127.0.0.1 > nul
+del /Q switch_dec2024.7z
+rmdir /S /Q ryujinx >nul 2>&1
+rmdir /S /Q yuzu >nul 2>&1
+rmdir /S /Q suyu >nul 2>&1
+rmdir /S /Q sudachi >nul 2>&1
+rmdir /S /Q swsaves >nul 2>&1
+
+echo Switch-v1 > Switch-v1
 :skip
 echo .
 ping -n 2 127.0.0.1 > nul
