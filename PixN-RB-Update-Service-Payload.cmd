@@ -20,7 +20,7 @@ type ASCII.txt
 
 echo .
 echo Pixel Nostalgia updater running...
-echo Version 1.20
+echo Version 1.21
 echo .
 ping -n 2 127.0.0.1 > nul
 
@@ -185,6 +185,31 @@ move /Y "aa310.zip" ..\..\bios\
 move /Y "archimedes_keyboard.zip" ..\..\bios\
 ping -n 2 127.0.0.1 > nul
 del /Q arch-b.7z
+echo .
+ping -n 2 127.0.0.1 > nul
+
+REM This section adds the Skylanders files to the Dolphin Emulator...
+echo Adding Skylanders files to the Dolphin Emulator...
+echo .
+ping -n 2 127.0.0.1 > nul
+
+IF EXIST "Sky-v1" goto SKIP
+
+wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Sky.7z -O Sky.7z
+ping -n 2 127.0.0.1 > nul
+echo .
+7z x Sky.7z -aoa -p22446688 -o.\
+md ..\..\emulators\dolphin-emu >nul 2>&1
+md ..\..\emulators\dolphin-emu\User >nul 2>&1
+echo .
+echo Copying files...
+xcopy Skylanders ..\..\emulators\dolphin-emu\User\Skylanders\ /S /E /I /Q /H /Y /R
+ping -n 2 127.0.0.1 > nul
+del /Q Sky.7z
+rmdir /S /Q Skylanders >nul 2>&1
+
+echo Sky-v1 > Sky-v1
+:skip
 echo .
 ping -n 2 127.0.0.1 > nul
 
