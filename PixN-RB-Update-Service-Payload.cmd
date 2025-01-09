@@ -59,22 +59,14 @@ ping -n 2 127.0.0.1 > nul
 echo .
 
 REM This section restores the PixN Update Service artwork...
-REM *
-REM ***The gamelist.xml file will possibly need updating if the version of RetroBat is upgraded...**
-REM *
-REM echo Restoring PixN Update Service artwork...
-REM ping -n 2 127.0.0.1 > nul
-REM wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/RB-es_menu-gamelist.xml -O gamelist.xml
-REM ping -n 2 127.0.0.1 > nul
-REM move /Y "gamelist.xml" ..\..\system\es_menu\
-REM ping -n 2 127.0.0.1 > nul
-REM echo .
-
-REM Download and Call the PowerShell script
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Add-PixNService.ps1 -O Add-PixNService.ps1
 ping -n 2 127.0.0.1 > nul
 powershell -ExecutionPolicy Bypass -File "Add-PixNService.ps1"
 ping -n 2 127.0.0.1 > nul
+del /Q "pixn-rb-update-service-logo.png"
+wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/pixn-rb-update-service-logo.png -O pixn-rb-update-service-logo.png
+move /Y "pixn-rb-update-service-logo.png" ..\..\system\es_menu\media\
+ping -n 1 127.0.0.1 > nul
 echo .
 
 REM This section adds the PixN Update Service to the system wheel...
