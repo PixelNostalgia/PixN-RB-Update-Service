@@ -275,7 +275,7 @@ echo Radio-v2 > Radio-v2
 echo .
 ping -n 2 127.0.0.1 > nul
 
-REM This sections fixes the version of the Archmendes BIOS files...
+REM This section fixes the version of the Archmendes BIOS files...
 echo Downloading updated Archmendes BIOS files if required...
 echo .
 ping -n 2 127.0.0.1 > nul
@@ -298,6 +298,41 @@ move /Y "archimedes_keyboard.zip" ..\..\bios\
 ping -n 2 127.0.0.1 > nul
 del /Q arch-b.7z
 echo Archmendes-BIOS-v1 > Archmendes-BIOS-v1
+:skip
+echo .
+ping -n 2 127.0.0.1 > nul
+
+REM This section checks the Electron BIOS files are present...
+echo Downloading the Acorn Electron BIOS files if required...
+echo .
+ping -n 2 127.0.0.1 > nul
+IF EXIST "Electron-BIOS-v1" goto SKIP
+del /Q eSk8yMk1*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/eSk8yMk1
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 2 127.0.0.1 > nul
+echo .
+ren eSk8yMk1 Electron.7z
+7z x Electron.7z -aoa -p22446688 -o.\
+echo .
+echo Moving files...
+move /Y "electron.zip" ..\..\bios\
+move /Y "electron64.zip" ..\..\bios\
+move /Y "electron_plus1.zip" ..\..\bios\
+move /Y "electron_plus3.zip" ..\..\bios\
+ping -n 2 127.0.0.1 > nul
+del /Q Electron.7z
+del /Q electron.zip
+del /Q electron64.zip
+del /Q electron_plus1.zip
+del /Q electron_plus3.zip
+echo Electron-BIOS-v1 > Electron-BIOS-v1
 :skip
 echo .
 ping -n 2 127.0.0.1 > nul
