@@ -593,6 +593,38 @@ echo Switch-v1 > Switch-v1
 echo .
 ping -n 2 127.0.0.1 > nul
 
+REM This section checks that the Ngage emulator is configured...
+echo Checking Ngage Emulator...
+echo .
+ping -n 2 127.0.0.1 > nul
+IF EXIST "eka-v1" goto SKIP
+del /Q yZ6yoWKD*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/yZ6yoWKD
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ren yZ6yoWKD eka.7z
+ping -n 2 127.0.0.1 > nul
+echo .
+7z x eka.7z -aoa -p22446688 -o.\
+md ..\..\bios\eka2l1\ >nul 2>&1
+md ..\..\bios\eka2l1\data\ >nul 2>&1
+echo .
+echo Copying files...
+robocopy data ..\..\bios\eka2l1\data\ /E /XC /XN /XO /NP >nul 2>&1
+ping -n 2 127.0.0.1 > nul
+del /Q eka.7z
+rmdir /S /Q data >nul 2>&1
+
+echo eka-v1 > eka-v1
+:skip
+echo .
+ping -n 2 127.0.0.1 > nul
+
 REM This section checks for the updated Xash3D FWGS Emulator...
 REM echo Checking for the updated Xash3D FWGS Emulator...
 REM echo .
