@@ -327,11 +327,11 @@ move /Y "electron64.zip" ..\..\bios\
 move /Y "electron_plus1.zip" ..\..\bios\
 move /Y "electron_plus3.zip" ..\..\bios\
 ping -n 2 127.0.0.1 > nul
-del /Q Electron.7z
-del /Q electron.zip
-del /Q electron64.zip
-del /Q electron_plus1.zip
-del /Q electron_plus3.zip
+del /Q Electron.7z >nul 2>&1
+del /Q electron.zip >nul 2>&1
+del /Q electron64.zip >nul 2>&1
+del /Q electron_plus1.zip >nul 2>&1
+del /Q electron_plus3.zip >nul 2>&1
 echo Electron-BIOS-v1 > Electron-BIOS-v1
 :skip
 echo.
