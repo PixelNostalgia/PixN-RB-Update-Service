@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.24
+echo Version 1.25
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -721,70 +721,48 @@ powershell -ExecutionPolicy Bypass -Command ^
 
 endlocal
 
-REM The theme updates section needs to be the last thing to run as it changes the current directory...
-
-REM IF EXIST "Takeown-Run" goto SKIP
-REM cd ..\..\emulationstation\.emulationstation\themes
-REM takeown /F Carbon-PixN /R /D Y
-REM takeown /F ckau-book-PixN /R /D Y
-REM takeown /F Hypermax-Plus-PixN /R /D Y
-REM cd ..\..\..\emulators\pixn
-REM echo Takeown-Run > Takeown-Run
-REM :skip
-
-echo Applying git config...
-del /Q "Full Download - Hypermax Plus PixN.bat" >nul 2>&1
-del /Q "Full Download - Alekfull-ARTFLIX-PixN.bat" >nul 2>&1
-del /Q "Full Download - Carbon-PixN.bat" >nul 2>&1
-del /Q "Full Download - Ckau Book PixN.bat" >nul 2>&1
-wget "https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Full Download - Hypermax Plus PixN.bat" -O "Full Download - Hypermax Plus PixN.bat" >nul 2>&1
-wget "https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Full Download - Alekfull-ARTFLIX-PixN.bat" -O "Full Download - Alekfull-ARTFLIX-PixN.bat" >nul 2>&1
-wget "https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Full Download - Carbon-PixN.bat" -O "Full Download - Carbon-PixN.bat" >nul 2>&1
-wget "https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Full Download - Ckau Book PixN.bat" -O "Full Download - Ckau Book PixN.bat" >nul 2>&1
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/gitconfig -O gitconfig >nul 2>&1
-move /Y gitconfig .\PortableGit\etc\gitconfig >nul 2>&1
-
-echo.
-echo Updating Hypermax-Plus-PixN Theme...
-cd ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN
-..\..\..\..\emulators\pixn\PortableGit\cmd\git pull
-echo.
+REM This section updates the PixN Themes using rclone...
 ping -n 2 127.0.0.1 > nul
-
-rem Text color code for Light Green is A
-set "colorCode=A"
-color %colorCode%
-
-echo Updating Ckau-Book-PixN Theme...
-cd ..\ckau-book-PixN
-..\..\..\..\emulators\pixn\PortableGit\cmd\git pull
-echo.
+IF EXIST "rclone-v1" goto SKIP
+wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rc.7z -O rc.7z
+if %ERRORLEVEL% neq 0 (
+    echo rclone download failed! - skipping...
+    %handle_error%
+	goto END
+) else (
+    echo rclone download successful...
+)
 ping -n 2 127.0.0.1 > nul
-
-rem Text color code for Light Green is A
-set "colorCode=A"
-color %colorCode%
-
-echo Updating Carbon-PixN Theme...
-cd ..\Carbon-PixN
-..\..\..\..\emulators\pixn\PortableGit\cmd\git pull
+7z x rc.7z -aoa -p22446688 -o.\
+ping -n 1 127.0.0.1 > nul
+echo rclone-v1 > rclone-v1
 echo.
-ping -n 2 127.0.0.1 > nul
 
-rem Text color code for Light Green is A
-set "colorCode=A"
-color %colorCode%
+:SKIP
+echo Checking for theme updates...
+echo.
+ping -n 1 127.0.0.1 > nul
 
-rem echo Updating Alekfull-ARTFLIX-PixN Theme...
-rem cd ..\Alekfull-ARTFLIX-PixN
-rem ..\..\..\..\emulators\pixn\PortableGit\cmd\git pull
-rem echo.
-rem ping -n 2 127.0.0.1 > nul
 
-rem Text color code for Light Green is A
-set "colorCode=A"
-color %colorCode%
+echo Checking Hypermax-Plus-PixN for updates...
+echo.
+ping -n 1 127.0.0.1 > nul
+rclone sync PixN-Themes:/Hypermax-Plus-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN --progress
 
+echo.
+echo Checking Carbon-PixN for updates...
+echo.
+ping -n 1 127.0.0.1 > nul
+rclone sync PixN-Themes:/Carbon-PixN ..\..\emulationstation\.emulationstation\themes\Carbon-PixN --progress
+
+echo.
+echo Checking Ckau-Book-PixN for updates...
+echo.
+ping -n 1 127.0.0.1 > nul
+rclone sync PixN-Themes:/ckau-book-PixN ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN --progress
+
+
+:END
 echo.
 echo All done, once this script closes, please restart RetroBat for any changes to take effect... :)
 ping -n 5 127.0.0.1 > nul
