@@ -722,6 +722,10 @@ powershell -ExecutionPolicy Bypass -Command ^
 endlocal
 
 REM This section updates the PixN Themes using rclone...
+del /Q "Full Download - Hypermax Plus PixN.bat" >nul 2>&1
+del /Q "Full Download - Alekfull-ARTFLIX-PixN.bat" >nul 2>&1
+del /Q "Full Download - Carbon-PixN.bat" >nul 2>&1
+del /Q "Full Download - Ckau Book PixN.bat" >nul 2>&1
 ping -n 2 127.0.0.1 > nul
 IF EXIST "rclone-v1" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rc.7z -O rc.7z
