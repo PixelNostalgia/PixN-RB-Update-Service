@@ -722,6 +722,10 @@ powershell -ExecutionPolicy Bypass -Command ^
 endlocal
 
 REM This section updates the PixN Themes using rclone...
+cls
+echo Checking for theme updates...
+echo.
+ping -n 1 127.0.0.1 > nul
 del /Q "Full Download - Hypermax Plus PixN.bat" >nul 2>&1
 del /Q "Full Download - Alekfull-ARTFLIX-PixN.bat" >nul 2>&1
 del /Q "Full Download - Carbon-PixN.bat" >nul 2>&1
@@ -743,11 +747,6 @@ echo rclone-v1 > rclone-v1
 echo.
 
 :SKIP
-echo Checking for theme updates...
-echo.
-ping -n 1 127.0.0.1 > nul
-
-
 echo Checking Hypermax-Plus-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 > nul
