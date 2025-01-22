@@ -36,12 +36,15 @@ ping -n 2 127.0.0.1 > nul
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
+	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo.
+	echo Download Completed Successfully...
+	echo.
 )
 move /Y ".\emulationstation\.emulationstation\*.cfg" ..\..\emulationstation\.emulationstation\
 rmdir /S /Q ".\emulationstation"
-:skip
+:SKIP
 ping -n 2 127.0.0.1 > nul
 echo.
 
@@ -56,12 +59,15 @@ md "..\..\emulationstation\.emulationstation\collections" >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
+	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo.
+	echo Download Completed Successfully...
+	echo.
 )
 move /Y ".\PixN-Collections\*.cfg" ..\..\emulationstation\.emulationstation\collections\
 rmdir /S /Q ".\PixN-Collections"
-:skip
+:SKIP
 ping -n 2 127.0.0.1 > nul
 echo.
 
@@ -77,31 +83,39 @@ if %ERRORLEVEL% neq 0 (
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo.
+	echo Download Completed Successfully...
+	echo.
 )
 move /Y "es-checkversion.cmd" ..\..\emulationstation\
 ping -n 1 127.0.0.1 > nul
 echo es-checkversion-v1 > es-checkversion-v1
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
 REM This section restores the PixN Update Service artwork...
 echo Checking if the PixN Update Service artwork needs restoring...
 echo.
+IF EXIST "pixn-us-check-v1" goto GOTPS
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Add-PixNService.ps1 -O Add-PixNService.ps1
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo.
+	echo Download Completed Successfully...
+	echo.
 )
+echo pixn-us-check-v1 > pixn-us-check-v1
+:GOTPS
 ping -n 2 127.0.0.1 > nul
 powershell -ExecutionPolicy Bypass -File "Add-PixNService.ps1"
+echo.
 ping -n 2 127.0.0.1 > nul
-:skip
-del /Q "pixn-rb-update-service-logo.png"
+:SKIP
+del /Q "pixn-rb-update-service-logo.png" >nul 2>&1
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/pixn-rb-update-service-logo.png -O pixn-rb-update-service-logo.png
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
@@ -111,7 +125,7 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 move /Y "pixn-rb-update-service-logo.png" ..\..\system\es_menu\media\
-:skip
+:SKIP
 ping -n 1 127.0.0.1 > nul
 echo.
 
@@ -175,7 +189,7 @@ rmdir /S /Q "PinballM"
 del /Q Pin-Lic.7z
 ping -n 1 127.0.0.1 > nul
 echo pinballfx-v1 > pinballfx-v1
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -205,7 +219,7 @@ ping -n 2 127.0.0.1 > nul
 rmdir /S /Q "Zaccaria_Pinball"
 del /Q ZP.7z
 echo ZP-v1 > ZP-v1
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -230,7 +244,7 @@ copy OpenAL32.dll ..\..\roms\zaccariapinball\ZaccariaPinball.pc\
 echo.
 del /Q OpenAL32.dll
 echo OpenAL32.dll-v1 > OpenAL32.dll-v1
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -271,7 +285,7 @@ del /Q radio.7z.002
 del /Q radio.7z.003
 
 echo Radio-v2 > Radio-v2
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -298,7 +312,7 @@ move /Y "archimedes_keyboard.zip" ..\..\bios\
 ping -n 2 127.0.0.1 > nul
 del /Q arch-b.7z
 echo Archmendes-BIOS-v1 > Archmendes-BIOS-v1
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -333,7 +347,7 @@ del /Q electron64.zip >nul 2>&1
 del /Q electron_plus1.zip >nul 2>&1
 del /Q electron_plus3.zip >nul 2>&1
 echo Electron-BIOS-v1 > Electron-BIOS-v1
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -363,7 +377,7 @@ del /Q Sky.7z
 rmdir /S /Q Skylanders >nul 2>&1
 
 echo Sky-v1 > Sky-v1
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -466,7 +480,7 @@ del /Q hypseus.7z.009
 rmdir /S /Q hypseus >nul 2>&1
 
 echo Hypseus-v1 > Hypseus-v1
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -524,7 +538,7 @@ del /Q 3d-N.7z.004
 rmdir /S /Q 3dsen >nul 2>&1
 
 echo 3dSen-v1 > 3dSen-v1
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -555,7 +569,7 @@ del /Q teknoparrot_jan2025.7z
 rmdir /S /Q teknoparrot >nul 2>&1
 
 echo TeknoParrot-v3 > TeknoParrot-v3
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -586,7 +600,7 @@ del /Q vpinball_jan2025.7z
 rmdir /S /Q vpinball >nul 2>&1
 
 echo VPinball-v2 > VPinball-v2
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -624,7 +638,7 @@ rmdir /S /Q sudachi >nul 2>&1
 rmdir /S /Q swsaves >nul 2>&1
 
 echo Switch-v1 > Switch-v1
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -656,7 +670,7 @@ del /Q eka.7z
 rmdir /S /Q data >nul 2>&1
 
 echo eka-v1 > eka-v1
-:skip
+:SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -682,7 +696,7 @@ REM del /Q xash3d-fwgs_oct2024.7z
 REM rmdir /S /Q xash3d-fwgs >nul 2>&1
 
 REM echo Xash3D-FWGS-v1 > Xash3D-FWGS-v1
-REM :skip
+REM :SKIP
 REM echo.
 
 REM This section downloads a tiny file so we can see how many people are using the Update Service...
@@ -734,7 +748,7 @@ ping -n 2 127.0.0.1 > nul
 IF EXIST "rclone-v1" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rc.7z -O rc.7z
 if %ERRORLEVEL% neq 0 (
-    echo rclone download failed! - skipping...
+    echo rclone download failed! - Skipping...
     %handle_error%
 	goto END
 ) else (
@@ -766,6 +780,7 @@ rclone sync PixN-Themes:/ckau-book-PixN ..\..\emulationstation\.emulationstation
 
 
 :END
+echo.
 echo.
 echo All done, once this script closes, please restart RetroBat for any changes to take effect... :)
 ping -n 5 127.0.0.1 > nul
