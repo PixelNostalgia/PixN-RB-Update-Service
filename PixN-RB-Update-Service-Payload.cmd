@@ -761,6 +761,10 @@ echo rclone-v1 > rclone-v1
 echo.
 
 :SKIP
+cls
+echo Checking for theme updates...
+echo.
+ping -n 1 127.0.0.1 > nul
 echo Checking Hypermax-Plus-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 > nul
