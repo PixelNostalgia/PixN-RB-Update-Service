@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.25
+echo Version 1.26
 echo.
 ping -n 2 127.0.0.1 > nul
 
@@ -673,6 +673,39 @@ echo eka-v1 > eka-v1
 :SKIP
 echo.
 ping -n 2 127.0.0.1 > nul
+
+REM This section applies a one-off fix for RAW Thrills - Aliens Armageddon...
+echo Checking for the one-off fix for RAW Thrills - Aliens Armageddon...
+echo.
+ping -n 2 127.0.0.1 > nul
+IF EXIST "AA-pmuser-v1" goto SKIP
+IF NOT EXIST ..\..\roms\rawthrills\AliensArmageddon.teknoparrot\ goto SKIP
+del /Q TURSNkjd*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/TURSNkjd
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ren TURSNkjd AA-pmuser.7z
+ping -n 2 127.0.0.1 > nul
+echo.
+7z x AA-pmuser.7z -aoa -p22446688 -o.\
+echo.
+echo Copying files...
+xcopy pmuser ..\..\roms\rawthrills\AliensArmageddon.teknoparrot\g6\aa\pmuser\ /S /E /I /Q /H /Y /R
+ping -n 2 127.0.0.1 > nul
+del /Q AA-pmuser.7z >nul 2>&1
+del /Q TURSNkjd*.* >nul 2>&1
+rmdir /S /Q pmuser >nul 2>&1
+
+echo AA-pmuser-v1 > AA-pmuser-v1
+:SKIP
+echo.
+ping -n 2 127.0.0.1 > nul
+
 
 REM This section checks for the updated Xash3D FWGS Emulator...
 REM echo Checking for the updated Xash3D FWGS Emulator...
