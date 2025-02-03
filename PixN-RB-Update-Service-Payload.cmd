@@ -749,6 +749,7 @@ echo Configuring v7.x
 echo.
 
 REM This section removes old custom system config files that are no longer needed in RBv7.x...
+echo.
 echo Cleaning up old config files...
 echo.
 ping -n 2 127.0.0.1 > nul
@@ -759,6 +760,7 @@ del /Q ..\..\emulationstation\.emulationstation\es_systems_3ds.cfg >nul 2>&1
 ping -n 2 127.0.0.1 > nul
 
 REM This section renames boom3 to doom3 as required for RBv7.x...
+echo.
 echo Renaming boom3 to doom3 as required for RetroBat v7.x...
 ren ..\..\roms\doom3 doom3.old >nul 2>&1
 ren ..\..\roms\boom3 doom3 >nul 2>&1
@@ -766,6 +768,7 @@ echo.
 ping -n 2 127.0.0.1 > nul
 
 REM This section adds the new BIOS files required for RBv7.x...
+echo.
 echo Adding the new BIOS files required for RetroBat v7.x...
 echo.
 ping -n 2 127.0.0.1 > nul
@@ -805,6 +808,7 @@ echo Adding the new Emulators required for RetroBat v7.x...
 echo.
 
 REM This section checks for the updated cGenius Emulator...
+echo.
 echo Checking for the updated cGenius Emulator...
 echo.
 ping -n 2 127.0.0.1 > nul
