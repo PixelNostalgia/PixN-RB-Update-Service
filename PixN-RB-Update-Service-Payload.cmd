@@ -1368,6 +1368,12 @@ ping -n 1 127.0.0.1 > nul
 rclone sync PixN-Themes:/Hypermax-Plus-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN --progress
 
 echo.
+echo Checking Hypermax-Lite-PixN for updates...
+echo.
+ping -n 1 127.0.0.1 > nul
+rclone sync PixN-Themes:/Hypermax-Lite-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Lite-PixN --progress
+
+echo.
 echo Checking Carbon-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 > nul
@@ -1378,6 +1384,12 @@ echo Checking Ckau-Book-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 > nul
 rclone sync PixN-Themes:/ckau-book-PixN ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN --progress
+
+echo.
+echo Checking Ckau-Book for updates...
+echo.
+ping -n 1 127.0.0.1 > nul
+rclone sync PixN-Themes:/ckau-book ..\..\emulationstation\.emulationstation\themes\ckau-book --progress
 
 
 :END
