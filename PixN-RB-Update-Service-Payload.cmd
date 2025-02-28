@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.26
+echo Version 1.27
 echo.
 ping -n 1 127.0.0.1 > nul
 
