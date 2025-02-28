@@ -25,7 +25,7 @@ echo.
 echo Pixel Nostalgia updater running...
 echo Version 1.26
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM *******************************************************************
 REM *******************************************************************
@@ -38,7 +38,7 @@ REM This section pulls down the latest PixN Custom Collections...
 echo.
 echo Updating the PixN Custom Collections...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 rmdir /S /Q ".\PixN-Collections" >nul 2>&1
 md "..\..\emulationstation\.emulationstation\collections" >nul 2>&1
 ..\..\emulators\pixn\PortableGit\cmd\git clone https://github.com/PixelNostalgia/PixN-Collections.git
@@ -54,7 +54,7 @@ if %ERRORLEVEL% neq 0 (
 move /Y ".\PixN-Collections\*.cfg" ..\..\emulationstation\.emulationstation\collections\
 rmdir /S /Q ".\PixN-Collections"
 :SKIP
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 
 
@@ -74,10 +74,10 @@ if %ERRORLEVEL% neq 0 (
 )
 echo pixn-us-check-v1 > pixn-us-check-v1
 :GOTPS
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 powershell -ExecutionPolicy Bypass -File "Add-PixNService.ps1"
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 :SKIP
 del /Q "pixn-rb-update-service-logo.png" >nul 2>&1
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/pixn-rb-update-service-logo.png -O pixn-rb-update-service-logo.png
@@ -99,7 +99,7 @@ rmdir /S /Q "..\..\roms\pixn" >nul 2>&1
 REM This section applies the PinballFX and Piball M Fix...
 echo Applying PinballFX and Piball M Fix if required...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "pinballfx-v1" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Pin-Lic.7z -O Pin-Lic.7z
 if %ERRORLEVEL% neq 0 (
@@ -125,7 +125,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 7z x Pin-Lic.7z -aoa -p22446688 -o.\
 
 md "%localappdata%\PinballFX"
@@ -145,12 +145,12 @@ ping -n 1 127.0.0.1 > nul
 echo pinballfx-v1 > pinballfx-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section applies Zaccaria Pinball config...
 echo Applying Zaccaria Pinball Config if required...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "ZP-v1" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/ZP.7z -O ZP.7z
 if %ERRORLEVEL% neq 0 (
@@ -160,7 +160,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 7z x ZP.7z -aoa -p22446688 -o.\
 echo.
 ver | find "XP" > nul
@@ -169,18 +169,18 @@ ver | find "XP" > nul
 echo Copying files...
 md "%PixN-MyDocs%\Zaccaria_Pinball" >nul 2>&1
 echo n | copy /-y "Zaccaria_Pinball" "%PixN-MyDocs%\Zaccaria_Pinball"
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 rmdir /S /Q "Zaccaria_Pinball"
 del /Q ZP.7z
 echo ZP-v1 > ZP-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section adds OpenAL32.dll if required...
 echo Checking if OpenAL32.dll is required...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "OpenAL32.dll-v1" goto SKIP
 IF NOT EXIST ..\..\roms\zaccariapinball\ZaccariaPinball.pc\ goto SKIP
 IF EXIST ..\..\roms\zaccariapinball\ZaccariaPinball.pc\OpenAL32.dll goto SKIP
@@ -193,19 +193,19 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 copy OpenAL32.dll ..\..\roms\zaccariapinball\ZaccariaPinball.pc\
 echo.
 del /Q OpenAL32.dll
 echo OpenAL32.dll-v1 > OpenAL32.dll-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for updated Radio stations...
 echo Checking for updated Radio Stations...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "Radio-v2" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/radio.7z.001 -O radio.7z.001
 if %ERRORLEVEL% neq 0 (
@@ -231,7 +231,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 7z x radio.7z.001 -aoa -p22446688 -o..\..\roms\radio\
 echo.
 del /Q radio.7z.001
@@ -241,12 +241,12 @@ del /Q radio.7z.003
 echo Radio-v2 > Radio-v2
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section fixes the version of the Archmendes BIOS files...
 echo Downloading updated Archmendes BIOS files if required...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "Archmendes-BIOS-v1" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/arch-b.7z -O arch-b.7z
 if %ERRORLEVEL% neq 0 (
@@ -256,24 +256,24 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x arch-b.7z -aoa -p22446688 -o.\
 echo.
 echo Moving files...
 move /Y "aa310.zip" ..\..\bios\
 move /Y "archimedes_keyboard.zip" ..\..\bios\
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q arch-b.7z
 echo Archmendes-BIOS-v1 > Archmendes-BIOS-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks the Electron BIOS files are present...
 echo Downloading the Acorn Electron BIOS files if required...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "Electron-BIOS-v1" goto SKIP
 del /Q eSk8yMk1*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/eSk8yMk1
@@ -284,7 +284,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 ren eSk8yMk1 Electron.7z
 7z x Electron.7z -aoa -p22446688 -o.\
@@ -294,7 +294,7 @@ move /Y "electron.zip" ..\..\bios\
 move /Y "electron64.zip" ..\..\bios\
 move /Y "electron_plus1.zip" ..\..\bios\
 move /Y "electron_plus3.zip" ..\..\bios\
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q Electron.7z >nul 2>&1
 del /Q electron.zip >nul 2>&1
 del /Q electron64.zip >nul 2>&1
@@ -303,12 +303,12 @@ del /Q electron_plus3.zip >nul 2>&1
 echo Electron-BIOS-v1 > Electron-BIOS-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section adds the Skylanders files to the Dolphin Emulator...
 echo Adding Skylanders files to the Dolphin Emulator if required...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "Sky-v1" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Sky.7z -O Sky.7z
 if %ERRORLEVEL% neq 0 (
@@ -318,7 +318,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x Sky.7z -aoa -p22446688 -o.\
 md ..\..\emulators\dolphin-emu >nul 2>&1
@@ -326,19 +326,19 @@ md ..\..\emulators\dolphin-emu\User >nul 2>&1
 echo.
 echo Copying files...
 xcopy Skylanders ..\..\emulators\dolphin-emu\User\Skylanders\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q Sky.7z
 rmdir /S /Q Skylanders >nul 2>&1
 
 echo Sky-v1 > Sky-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated Hypseus Emulator...
 echo Checking for the updated Hypseus Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 IF EXIST "Hypseus-v1" goto SKIP
 
@@ -414,14 +414,14 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x hypseus.7z.001 -aoa -p22446688 -o.\
 md ..\..\emulators\hypseus >nul 2>&1
 echo.
 echo Copying files...
 xcopy hypseus ..\..\emulators\hypseus\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q hypseus.7z.001
 del /Q hypseus.7z.002
 del /Q hypseus.7z.003
@@ -436,12 +436,12 @@ rmdir /S /Q hypseus >nul 2>&1
 echo Hypseus-v1 > Hypseus-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated 3dSen Emulator...
 echo Checking for the updated 3dSen Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 IF EXIST "3dSen-v1" goto SKIP
 
@@ -477,14 +477,14 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x 3d-N.7z.001 -aoa -p22446688 -o.\
 md ..\..\emulators\3dsen >nul 2>&1
 echo.
 echo Copying files...
 xcopy 3dsen ..\..\emulators\3dsen\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q 3d-N.7z.001
 del /Q 3d-N.7z.002
 del /Q 3d-N.7z.003
@@ -494,12 +494,12 @@ rmdir /S /Q 3dsen >nul 2>&1
 echo 3dSen-v1 > 3dSen-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated TeknoParrot Emulator...
 echo Checking for the updated TeknoParrot Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "TeknoParrot-v3" goto SKIP
 del /Q xUH7WGQ4*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/xUH7WGQ4
@@ -511,26 +511,26 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren xUH7WGQ4 teknoparrot_jan2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x teknoparrot_jan2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\teknoparrot >nul 2>&1
 echo.
 echo Copying files...
 xcopy teknoparrot ..\..\emulators\teknoparrot\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q teknoparrot_jan2025.7z
 rmdir /S /Q teknoparrot >nul 2>&1
 
 echo TeknoParrot-v3 > TeknoParrot-v3
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated Virtual Pinball Emulator...
 echo Checking for the updated Virtual Pinball Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "VPinball-v2" goto SKIP
 del /Q tt4eBrw2*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/tt4eBrw2
@@ -542,26 +542,26 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren tt4eBrw2 vpinball_jan2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x vpinball_jan2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\vpinball >nul 2>&1
 echo.
 echo Copying files...
 xcopy vpinball ..\..\emulators\vpinball\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q vpinball_jan2025.7z
 rmdir /S /Q vpinball >nul 2>&1
 
 echo VPinball-v2 > VPinball-v2
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated Switch Emulators...
 echo Checking for the updated Switch Emulators...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "Switch-v1" goto SKIP
 del /Q sBugmhpq*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/sBugmhpq
@@ -573,7 +573,7 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren sBugmhpq switch_dec2024.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x switch_dec2024.7z -aoa -p22446688 -o.\
 echo.
@@ -583,7 +583,7 @@ xcopy yuzu ..\..\emulators\yuzu\ /S /E /I /Q /H /Y /R
 xcopy suyu ..\..\emulators\suyu\ /S /E /I /Q /H /Y /R
 xcopy sudachi ..\..\emulators\sudachi\ /S /E /I /Q /H /Y /R
 xcopy swsaves ..\..\saves\switch\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q switch_dec2024.7z
 rmdir /S /Q ryujinx >nul 2>&1
 rmdir /S /Q yuzu >nul 2>&1
@@ -594,12 +594,12 @@ rmdir /S /Q swsaves >nul 2>&1
 echo Switch-v1 > Switch-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks that the Ngage emulator is configured...
 echo Checking Ngage Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "eka-emu-v1" goto SKIP
 del /Q yZ6yoWKD*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/yZ6yoWKD
@@ -611,7 +611,7 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren yZ6yoWKD eka_jan2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x eka_jan2025.7z -aoa -p22446688 -o.\
 md ..\..\bios\eka2l1\ >nul 2>&1
@@ -619,34 +619,34 @@ md ..\..\bios\eka2l1\data\ >nul 2>&1
 echo.
 echo Copying files...
 robocopy data ..\..\bios\eka2l1\data\ /E /XC /XN /XO /NP >nul 2>&1
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q eka_jan2025.7z
 rmdir /S /Q data >nul 2>&1
 
 echo eka-emu-v1 > eka-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 
 REM This section checks for the updated Xash3D FWGS Emulator...
 REM echo Checking for the updated Xash3D FWGS Emulator...
 REM echo.
-REM ping -n 2 127.0.0.1 > nul
+REM ping -n 1 127.0.0.1 > nul
 
 REM IF EXIST "Xash3D-FWGS-v1" goto SKIP
 
 REM del /Q CXfrB4pN*.* >nul 2>&1
 REM wget https://pixeldrain.com/api/filesystem/CXfrB4pN
 REM ren CXfrB4pN xash3d-fwgs_oct2024.7z
-REM ping -n 2 127.0.0.1 > nul
+REM ping -n 1 127.0.0.1 > nul
 REM echo.
 REM 7z x xash3d-fwgs_oct2024.7z -aoa -p22446688 -o.\
 REM md ..\..\emulators\xash3d-fwgs >nul 2>&1
 REM echo.
 REM echo Copying files...
 REM xcopy xash3d-fwgs ..\..\emulators\xash3d-fwgs\ /S /E /I /Q /H /Y /R
-REM ping -n 2 127.0.0.1 > nul
+REM ping -n 1 127.0.0.1 > nul
 REM del /Q xash3d-fwgs_oct2024.7z
 REM rmdir /S /Q xash3d-fwgs >nul 2>&1
 
@@ -659,7 +659,7 @@ del /Q NYcXqrtb*.* >nul 2>&1
 del /Q PixN-Stats >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/NYcXqrtb >nul 2>&1
 ren NYcXqrtb PixN-Stats >nul 2>&1
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section enables HD texture packs for the NES HD system...
 setlocal
@@ -769,7 +769,7 @@ REM IF NOT EXIST "..\..\system\version.info" goto WARNING
     echo #                                             #
     echo ###############################################
     echo.
-ping -n 5 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 CLS
 goto THEMES
 
@@ -809,12 +809,12 @@ REM This section removes old custom system config files that are no longer neede
 echo.
 echo Cleaning up old config files...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q ..\..\emulationstation\.emulationstation\es_systems_cgenius.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_cdogs.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_corsixth.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_3ds.cfg >nul 2>&1
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section renames boom3 to doom3 as required for RBv7.x...
 echo.
@@ -822,13 +822,13 @@ echo Renaming boom3 to doom3 as required for RetroBat v7.x...
 ren ..\..\roms\doom3 doom3.old >nul 2>&1
 ren ..\..\roms\boom3 doom3 >nul 2>&1
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section adds the new BIOS files required for RBv7.x...
 echo.
 echo Adding the new BIOS files required for RetroBat v7.x...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "Aquarius-BIOS-v1" goto SKIP
 del /Q GNiVzdCy*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/GNiVzdCy
@@ -839,7 +839,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 ren GNiVzdCy aquarius-bios.7z
 7z x aquarius-bios.7z -aoa -p22446688 -o.\
@@ -849,7 +849,7 @@ move /Y "aquarius.zip" ..\..\bios\
 move /Y "aquarius_ar.zip" ..\..\bios\
 move /Y "aquarius2.zip" ..\..\bios\
 move /Y "aquariusp.zip" ..\..\bios\
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q aquarius-bios.7z >nul 2>&1
 del /Q aquarius.zip >nul 2>&1
 del /Q aquarius_ar.zip >nul 2>&1
@@ -858,7 +858,7 @@ del /Q aquariusp.zip >nul 2>&1
 echo Aquarius-BIOS-v1 > Aquarius-BIOS-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section adds the new Emulators required for RBv7.x...
 echo Adding the new Emulators required for RetroBat v7.x...
@@ -868,7 +868,7 @@ REM This section checks for the updated cGenius Emulator...
 echo.
 echo Checking for the updated cGenius Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "cgenius-emu-v1" goto SKIP
 del /Q NEve2dZY*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/NEve2dZY
@@ -880,25 +880,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren NEve2dZY cgenius_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x cgenius_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\cgenius >nul 2>&1
 echo.
 echo Copying files...
 xcopy cgenius ..\..\emulators\cgenius\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q cgenius_feb2025.7z
 rmdir /S /Q cgenius >nul 2>&1
 echo cgenius-emu-v1 > cgenius-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated Citron Emulator...
 echo Checking for the updated Citron Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "citron-emu-v1" goto SKIP
 del /Q 3MPcsWWU*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/3MPcsWWU
@@ -910,25 +910,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren 3MPcsWWU citron_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x citron_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\citron >nul 2>&1
 echo.
 echo Copying files...
 xcopy citron ..\..\emulators\citron\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q citron_feb2025.7z
 rmdir /S /Q citron >nul 2>&1
 echo citron-emu-v1 > citron-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated Kronos Emulator...
 echo Checking for the updated Kronos Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "kronos-emu-v1" goto SKIP
 del /Q 3jfqTnxt*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/3jfqTnxt
@@ -940,25 +940,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren 3jfqTnxt kronos_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x kronos_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\kronos >nul 2>&1
 echo.
 echo Copying files...
 xcopy kronos ..\..\emulators\kronos\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q kronos_feb2025.7z
 rmdir /S /Q kronos >nul 2>&1
 echo kronos-emu-v1 > kronos-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated Lime3DS Emulator...
 echo Checking for the updated Lime3DS Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "lime3ds-emu-v1" goto SKIP
 del /Q yuFzsWR6*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/yuFzsWR6
@@ -970,25 +970,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren yuFzsWR6 lime3ds_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x lime3ds_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\lime3ds >nul 2>&1
 echo.
 echo Copying files...
 xcopy lime3ds ..\..\emulators\lime3ds\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q lime3ds_feb2025.7z
 rmdir /S /Q lime3ds >nul 2>&1
 echo lime3ds-emu-v1 > lime3ds-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated MagicEngine Emulator...
 echo Checking for the updated MagicEngine Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "magicengine-emu-v1" goto SKIP
 del /Q CWDbevwZ*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/CWDbevwZ
@@ -1000,25 +1000,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren CWDbevwZ magicengine_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x magicengine_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\magicengine >nul 2>&1
 echo.
 echo Copying files...
 xcopy magicengine ..\..\emulators\magicengine\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q magicengine_feb2025.7z
 rmdir /S /Q magicengine >nul 2>&1
 echo magicengine-emu-v1 > magicengine-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated Mandarine Emulator...
 echo Checking for the updated Mandarine Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "mandarine-emu-v1" goto SKIP
 del /Q GbR9zkhT*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/GbR9zkhT
@@ -1030,25 +1030,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren GbR9zkhT mandarine_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x mandarine_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\mandarine >nul 2>&1
 echo.
 echo Copying files...
 xcopy mandarine ..\..\emulators\mandarine\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q mandarine_feb2025.7z
 rmdir /S /Q mandarine >nul 2>&1
 echo mandarine-emu-v1 > mandarine-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated OpenJazz Emulator...
 echo Checking for the updated OpenJazz Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "openjazz-emu-v1" goto SKIP
 del /Q 3YqLBL97*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/3YqLBL97
@@ -1060,25 +1060,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren 3YqLBL97 openjazz_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x openjazz_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\openjazz >nul 2>&1
 echo.
 echo Copying files...
 xcopy openjazz ..\..\emulators\openjazz\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q openjazz_feb2025.7z
 rmdir /S /Q openjazz >nul 2>&1
 echo openjazz-emu-v1 > openjazz-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated PDark Emulator...
 echo Checking for the updated PDark Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "pdark-emu-v1" goto SKIP
 del /Q mvDzmwAV*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/mvDzmwAV
@@ -1090,25 +1090,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren mvDzmwAV pdark_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x pdark_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\pdark >nul 2>&1
 echo.
 echo Copying files...
 xcopy pdark ..\..\emulators\pdark\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q pdark_feb2025.7z
 rmdir /S /Q pdark >nul 2>&1
 echo pdark-emu-v1 > pdark-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated Retroarch Emulator...
 echo Checking for the updated Retroarch Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "retroarch-emu-v1" goto SKIP
 del /Q 6aMAifPF*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/6aMAifPF
@@ -1120,25 +1120,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren 6aMAifPF retroarch_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x retroarch_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\retroarch >nul 2>&1
 echo.
 echo Copying files...
 xcopy retroarch ..\..\emulators\retroarch\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q retroarch_feb2025.7z
 rmdir /S /Q retroarch >nul 2>&1
 echo retroarch-emu-v1 > retroarch-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated RyuJinx Emulator...
 echo Checking for the updated RyuJinx Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "ryujinx-emu-v1" goto SKIP
 del /Q 2WQ1F2Hf*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/2WQ1F2Hf
@@ -1150,25 +1150,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren 2WQ1F2Hf ryujinx_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x ryujinx_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\ryujinx >nul 2>&1
 echo.
 echo Copying files...
 xcopy ryujinx ..\..\emulators\ryujinx\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q ryujinx_feb2025.7z
 rmdir /S /Q ryujinx >nul 2>&1
 echo ryujinx-emu-v1 > ryujinx-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated ShadPS4 Emulator...
 echo Checking for the updated ShadPS4 Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "shadps4-emu-v1" goto SKIP
 del /Q QYiwr4FR*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/QYiwr4FR
@@ -1180,25 +1180,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren QYiwr4FR shadps4_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x shadps4_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\shadps4 >nul 2>&1
 echo.
 echo Copying files...
 xcopy shadps4 ..\..\emulators\shadps4\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q shadps4_feb2025.7z
 rmdir /S /Q shadps4 >nul 2>&1
 echo shadps4-emu-v1 > shadps4-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated Xenia Emulator...
 echo Checking for the updated Xenia Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "xenia-emu-v1" goto SKIP
 del /Q bRpC8Lkd*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/bRpC8Lkd
@@ -1210,25 +1210,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren bRpC8Lkd xenia_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x xenia_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\xenia >nul 2>&1
 echo.
 echo Copying files...
 xcopy xenia ..\..\emulators\xenia\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q xenia_feb2025.7z
 rmdir /S /Q xenia >nul 2>&1
 echo xenia-emu-v1 > xenia-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated Xenia-Canary Emulator...
 echo Checking for the updated Xenia-Canary Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "xenia-canary-emu-v1" goto SKIP
 del /Q mn7ZT3Ac*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/mn7ZT3Ac
@@ -1240,25 +1240,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren mn7ZT3Ac xenia-canary_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x xenia-canary_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\xenia-canary >nul 2>&1
 echo.
 echo Copying files...
 xcopy xenia-canary ..\..\emulators\xenia-canary\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q xenia-canary_feb2025.7z
 rmdir /S /Q xenia-canary >nul 2>&1
 echo xenia-canary-emu-v1 > xenia-canary-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated Xenia-Manager Emulator...
 echo Checking for the updated Xenia-Manager Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "xenia-manager-emu-v1" goto SKIP
 del /Q JSkL572q*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/JSkL572q
@@ -1270,25 +1270,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren JSkL572q xenia-manager_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x xenia-manager_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\xenia-manager >nul 2>&1
 echo.
 echo Copying files...
 xcopy xenia-manager ..\..\emulators\xenia-manager\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q xenia-manager_feb2025.7z
 rmdir /S /Q xenia-manager >nul 2>&1
 echo xenia-manager-emu-v1 > xenia-manager-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section checks for the updated Yabasanshiro Emulator...
 echo Checking for the updated Yabasanshiro Emulator...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "yabasanshiro-emu-v1" goto SKIP
 del /Q QW1GzEVv*.* >nul 2>&1
 wget https://pixeldrain.com/api/filesystem/QW1GzEVv
@@ -1300,25 +1300,25 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ren QW1GzEVv yabasanshiro_feb2025.7z
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 7z x yabasanshiro_feb2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\yabasanshiro >nul 2>&1
 echo.
 echo Copying files...
 xcopy yabasanshiro ..\..\emulators\yabasanshiro\ /S /E /I /Q /H /Y /R
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 del /Q yabasanshiro_feb2025.7z
 rmdir /S /Q yabasanshiro >nul 2>&1
 echo yabasanshiro-emu-v1 > yabasanshiro-emu-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 
 REM This section pulls down the latest custom system config files for RBv7.x...
 echo Updating system config files...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 ..\..\emulators\pixn\PortableGit\cmd\git clone https://github.com/PixelNostalgia/PixN-RBv7.x-Custom-Systems.git
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
@@ -1332,7 +1332,7 @@ if %ERRORLEVEL% neq 0 (
 move /Y ".\PixN-RBv7.x-Custom-Systems\.emulationstation\*.cfg" ..\..\emulationstation\.emulationstation\
 rmdir /S /Q ".\PixN-RBv7.x-Custom-Systems"
 :SKIP
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 goto THEMES
 
@@ -1344,7 +1344,7 @@ echo.
 REM This section pulls down the latest custom system config files for RBv6.x...
 echo Updating system config files...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 ..\..\emulators\pixn\PortableGit\cmd\git clone https://github.com/PixelNostalgia/PixN-RBv6.x-Custom-Systems.git
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
@@ -1358,14 +1358,14 @@ if %ERRORLEVEL% neq 0 (
 move /Y ".\PixN-RBv6.x-Custom-Systems\.emulationstation\*.cfg" ..\..\emulationstation\.emulationstation\
 rmdir /S /Q ".\PixN-RBv6.x-Custom-Systems"
 :SKIP
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 echo.
 
 REM This section pulls down the latest es-checkversion script...
 echo.
 echo Updating es-checkversion script if required...
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 IF EXIST "es-checkversion-v1" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/es-checkversion-v6.4.cmd -O es-checkversion.cmd
 if %ERRORLEVEL% neq 0 (
@@ -1382,7 +1382,7 @@ ping -n 1 127.0.0.1 > nul
 echo es-checkversion-v1 > es-checkversion-v1
 :SKIP
 echo.
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 goto THEMES
 
 
@@ -1398,7 +1398,34 @@ del /Q "Full Download - Hypermax Plus PixN.bat" >nul 2>&1
 del /Q "Full Download - Alekfull-ARTFLIX-PixN.bat" >nul 2>&1
 del /Q "Full Download - Carbon-PixN.bat" >nul 2>&1
 del /Q "Full Download - Ckau Book PixN.bat" >nul 2>&1
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
+
+REM This section removes the HyperMax-Lite-PixN Theme...
+echo Const ForReading = 1 > replace.vbs
+echo Const ForWriting = 2 >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo strFileName = Wscript.Arguments(0) >> replace.vbs
+echo strOldText = Wscript.Arguments(1) >> replace.vbs
+echo strNewText = Wscript.Arguments(2) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo Set objFSO = CreateObject("Scripting.FileSystemObject") >> replace.vbs
+echo Set objFile = objFSO.OpenTextFile(strFileName, ForReading) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo strText = objFile.ReadAll >> replace.vbs
+echo objFile.Close >> replace.vbs
+echo strNewText = Replace(strText, strOldText, strNewText) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo objFile.Close >> replace.vbs
+echo Set objFile = objFSO.OpenTextFile(strFileName, ForWriting) >> replace.vbs
+echo objFile.Write strNewText >> replace.vbs
+echo objFile.Close>> replace.vbs
+
+cscript replace.vbs "..\..\emulationstation\.emulationstation\es_settings.cfg" "Hypermax-Lite-PixN" "Hypermax-Plus-PixN" > NUL
+
 IF EXIST "rclone-v1" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rc.7z -O rc.7z
 if %ERRORLEVEL% neq 0 (
@@ -1408,7 +1435,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo rclone download successful...
 )
-ping -n 2 127.0.0.1 > nul
+ping -n 1 127.0.0.1 > nul
 7z x rc.7z -aoa -p22446688 -o.\
 ping -n 1 127.0.0.1 > nul
 echo rclone-v1 > rclone-v1
@@ -1424,11 +1451,11 @@ echo.
 ping -n 1 127.0.0.1 > nul
 rclone sync PixN-Themes:/Hypermax-Plus-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN --progress
 
-echo.
-echo Checking Hypermax-Lite-PixN for updates...
-echo.
-ping -n 1 127.0.0.1 > nul
-rclone sync PixN-Themes:/Hypermax-Lite-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Lite-PixN --progress
+REM echo.
+REM echo Checking Hypermax-Lite-PixN for updates...
+REM echo.
+REM ping -n 1 127.0.0.1 > nul
+REM rclone sync PixN-Themes:/Hypermax-Lite-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Lite-PixN --progress
 
 echo.
 echo Checking Carbon-PixN for updates...
