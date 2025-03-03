@@ -140,7 +140,7 @@ robocopy "PinballM\Saved\SaveGames" "%localappdata%\PinballM\Saved\SaveGames" /m
 
 rmdir /S /Q "PinballFX"
 rmdir /S /Q "PinballM"
-del /Q Pin-Lic.7z
+del /Q Pin-Lic.7z >nul 2>&1
 ping -n 1 127.0.0.1 > nul
 echo pinballfx-v1 > pinballfx-v1
 :SKIP
@@ -197,7 +197,7 @@ if %ERRORLEVEL% neq 0 (
 ping -n 1 127.0.0.1 > nul
 copy OpenAL32.dll ..\..\roms\zaccariapinball\ZaccariaPinball.pc\
 echo.
-del /Q OpenAL32.dll
+del /Q OpenAL32.dll >nul 2>&1
 echo OpenAL32.dll-v1 > OpenAL32.dll-v1
 :SKIP
 echo.
@@ -218,7 +218,7 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ping -n 1 127.0.0.1 > nul
-7z x radio.7z.001 -aoa -p22446688 -o..\..\roms\radio\
+7z x radio.7z -aoa -p22446688 -o..\..\roms\radio\
 echo.
 del /Q radio.7z >nul 2>&1
 
@@ -311,7 +311,7 @@ echo.
 echo Copying files...
 xcopy Skylanders ..\..\emulators\dolphin-emu\User\Skylanders\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q Sky.7z
+del /Q Sky.7z >nul 2>&1
 rmdir /S /Q Skylanders >nul 2>&1
 
 echo Sky-v1 > Sky-v1
@@ -403,7 +403,7 @@ echo.
 echo Copying files...
 xcopy teknoparrot ..\..\emulators\teknoparrot\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q teknoparrot_jan2025.7z
+del /Q teknoparrot_jan2025.7z >nul 2>&1
 rmdir /S /Q teknoparrot >nul 2>&1
 
 echo TeknoParrot-v3 > TeknoParrot-v3
@@ -433,7 +433,7 @@ echo.
 echo Copying files...
 xcopy vpinball ..\..\emulators\vpinball\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q vpinball_jan2025.7z
+del /Q vpinball_jan2025.7z >nul 2>&1
 rmdir /S /Q vpinball >nul 2>&1
 
 echo VPinball-v2 > VPinball-v2
@@ -466,7 +466,7 @@ xcopy suyu ..\..\emulators\suyu\ /S /E /I /Q /H /Y /R
 xcopy sudachi ..\..\emulators\sudachi\ /S /E /I /Q /H /Y /R
 xcopy swsaves ..\..\saves\switch\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q switch_dec2024.7z
+del /Q switch_dec2024.7z >nul 2>&1
 rmdir /S /Q ryujinx >nul 2>&1
 rmdir /S /Q yuzu >nul 2>&1
 rmdir /S /Q suyu >nul 2>&1
@@ -501,7 +501,7 @@ echo.
 echo Copying files...
 robocopy data ..\..\bios\eka2l1\data\ /E /XC /XN /XO /NP >nul 2>&1
 ping -n 1 127.0.0.1 > nul
-del /Q eka_jan2025.7z
+del /Q eka_jan2025.7z >nul 2>&1
 rmdir /S /Q data >nul 2>&1
 
 echo eka-emu-v1 > eka-emu-v1
@@ -767,7 +767,7 @@ echo.
 echo Copying files...
 xcopy cgenius ..\..\emulators\cgenius\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q cgenius_feb2025.7z
+del /Q cgenius_feb2025.7z >nul 2>&1
 rmdir /S /Q cgenius >nul 2>&1
 echo cgenius-emu-v1 > cgenius-emu-v1
 :SKIP
@@ -796,7 +796,7 @@ echo.
 echo Copying files...
 xcopy citron ..\..\emulators\citron\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q citron_feb2025.7z
+del /Q citron_feb2025.7z >nul 2>&1
 rmdir /S /Q citron >nul 2>&1
 echo citron-emu-v1 > citron-emu-v1
 :SKIP
@@ -825,7 +825,7 @@ echo.
 echo Copying files...
 xcopy kronos ..\..\emulators\kronos\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q kronos_feb2025.7z
+del /Q kronos_feb2025.7z >nul 2>&1
 rmdir /S /Q kronos >nul 2>&1
 echo kronos-emu-v1 > kronos-emu-v1
 :SKIP
@@ -854,7 +854,7 @@ echo.
 echo Copying files...
 xcopy lime3ds ..\..\emulators\lime3ds\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q lime3ds_feb2025.7z
+del /Q lime3ds_feb2025.7z >nul 2>&1
 rmdir /S /Q lime3ds >nul 2>&1
 echo lime3ds-emu-v1 > lime3ds-emu-v1
 :SKIP
@@ -883,7 +883,7 @@ echo.
 echo Copying files...
 xcopy magicengine ..\..\emulators\magicengine\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q magicengine_feb2025.7z
+del /Q magicengine_feb2025.7z >nul 2>&1
 rmdir /S /Q magicengine >nul 2>&1
 echo magicengine-emu-v1 > magicengine-emu-v1
 :SKIP
@@ -912,7 +912,7 @@ echo.
 echo Copying files...
 xcopy mandarine ..\..\emulators\mandarine\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q mandarine_feb2025.7z
+del /Q mandarine_feb2025.7z >nul 2>&1
 rmdir /S /Q mandarine >nul 2>&1
 echo mandarine-emu-v1 > mandarine-emu-v1
 :SKIP
@@ -941,7 +941,7 @@ echo.
 echo Copying files...
 xcopy openjazz ..\..\emulators\openjazz\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q openjazz_feb2025.7z
+del /Q openjazz_feb2025.7z >nul 2>&1
 rmdir /S /Q openjazz >nul 2>&1
 echo openjazz-emu-v1 > openjazz-emu-v1
 :SKIP
@@ -970,7 +970,7 @@ echo.
 echo Copying files...
 xcopy pdark ..\..\emulators\pdark\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q pdark_feb2025.7z
+del /Q pdark_feb2025.7z >nul 2>&1
 rmdir /S /Q pdark >nul 2>&1
 echo pdark-emu-v1 > pdark-emu-v1
 :SKIP
@@ -999,7 +999,7 @@ echo.
 echo Copying files...
 xcopy retroarch ..\..\emulators\retroarch\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q retroarch_feb2025.7z
+del /Q retroarch_feb2025.7z >nul 2>&1
 rmdir /S /Q retroarch >nul 2>&1
 echo retroarch-emu-v1 > retroarch-emu-v1
 :SKIP
@@ -1028,7 +1028,7 @@ echo.
 echo Copying files...
 xcopy ryujinx ..\..\emulators\ryujinx\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q ryujinx_feb2025.7z
+del /Q ryujinx_feb2025.7z >nul 2>&1
 rmdir /S /Q ryujinx >nul 2>&1
 echo ryujinx-emu-v1 > ryujinx-emu-v1
 :SKIP
@@ -1057,7 +1057,7 @@ echo.
 echo Copying files...
 xcopy shadps4 ..\..\emulators\shadps4\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q shadps4_feb2025.7z
+del /Q shadps4_feb2025.7z >nul 2>&1
 rmdir /S /Q shadps4 >nul 2>&1
 echo shadps4-emu-v1 > shadps4-emu-v1
 :SKIP
@@ -1086,7 +1086,7 @@ echo.
 echo Copying files...
 xcopy xenia ..\..\emulators\xenia\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q xenia_feb2025.7z
+del /Q xenia_feb2025.7z >nul 2>&1
 rmdir /S /Q xenia >nul 2>&1
 echo xenia-emu-v1 > xenia-emu-v1
 :SKIP
@@ -1115,7 +1115,7 @@ echo.
 echo Copying files...
 xcopy xenia-canary ..\..\emulators\xenia-canary\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q xenia-canary_feb2025.7z
+del /Q xenia-canary_feb2025.7z >nul 2>&1
 rmdir /S /Q xenia-canary >nul 2>&1
 echo xenia-canary-emu-v1 > xenia-canary-emu-v1
 :SKIP
@@ -1144,7 +1144,7 @@ echo.
 echo Copying files...
 xcopy xenia-manager ..\..\emulators\xenia-manager\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q xenia-manager_feb2025.7z
+del /Q xenia-manager_feb2025.7z >nul 2>&1
 rmdir /S /Q xenia-manager >nul 2>&1
 echo xenia-manager-emu-v1 > xenia-manager-emu-v1
 :SKIP
@@ -1173,7 +1173,7 @@ echo.
 echo Copying files...
 xcopy yabasanshiro ..\..\emulators\yabasanshiro\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q yabasanshiro_feb2025.7z
+del /Q yabasanshiro_feb2025.7z >nul 2>&1
 rmdir /S /Q yabasanshiro >nul 2>&1
 echo yabasanshiro-emu-v1 > yabasanshiro-emu-v1
 :SKIP
@@ -1292,7 +1292,7 @@ echo objFile.Close>> replace.vbs
 cscript replace.vbs "..\..\emulationstation\.emulationstation\es_settings.cfg" "Hypermax-Lite-PixN" "Hypermax-Plus-PixN" > NUL
 
 IF EXIST "rclone-v2" goto SKIP
-del /Q rc.7z
+del /Q rc.7z >nul 2>&1
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rc.7z -O rc.7z
 if %ERRORLEVEL% neq 0 (
     echo rclone download failed! - Skipping...
@@ -1304,7 +1304,7 @@ if %ERRORLEVEL% neq 0 (
 ping -n 1 127.0.0.1 > nul
 7z x rc.7z -aoa -p22446688 -o.\
 ping -n 1 127.0.0.1 > nul
-del /Q rc.7z
+del /Q rc.7z >nul 2>&1
 echo rclone-v2 > rclone-v2
 echo.
 
