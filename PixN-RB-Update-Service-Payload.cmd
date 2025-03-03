@@ -152,7 +152,8 @@ echo Applying Zaccaria Pinball Config if required...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "ZP-v1" goto SKIP
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/ZP.7z -O ZP.7z
+del /Q ZP.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/ZP.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -171,7 +172,7 @@ md "%PixN-MyDocs%\Zaccaria_Pinball" >nul 2>&1
 echo n | copy /-y "Zaccaria_Pinball" "%PixN-MyDocs%\Zaccaria_Pinball"
 ping -n 1 127.0.0.1 > nul
 rmdir /S /Q "Zaccaria_Pinball"
-del /Q ZP.7z
+del /Q ZP.7z >nul 2>&1
 echo ZP-v1 > ZP-v1
 :SKIP
 echo.
@@ -248,7 +249,8 @@ echo Downloading updated Archmendes BIOS files if required...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "Archmendes-BIOS-v1" goto SKIP
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/arch-b.7z -O arch-b.7z
+del /Q arch-b.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/arch-b.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -264,7 +266,7 @@ echo Moving files...
 move /Y "aa310.zip" ..\..\bios\
 move /Y "archimedes_keyboard.zip" ..\..\bios\
 ping -n 1 127.0.0.1 > nul
-del /Q arch-b.7z
+del /Q arch-b.7z >nul 2>&1
 echo Archmendes-BIOS-v1 > Archmendes-BIOS-v1
 :SKIP
 echo.
@@ -340,72 +342,8 @@ echo.
 ping -n 1 127.0.0.1 > nul
 
 IF EXIST "Hypseus-v1" goto SKIP
-
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/hypseus.7z.001 -O hypseus.7z.001
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/hypseus.7z.002 -O hypseus.7z.002
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/hypseus.7z.003 -O hypseus.7z.003
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/hypseus.7z.004 -O hypseus.7z.004
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/hypseus.7z.005 -O hypseus.7z.005
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/hypseus.7z.006 -O hypseus.7z.006
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/hypseus.7z.007 -O hypseus.7z.007
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/hypseus.7z.008 -O hypseus.7z.008
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/hypseus.7z.009 -O hypseus.7z.009
+del /Q hypseus.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/hypseus.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -415,21 +353,13 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 > nul
 echo.
-7z x hypseus.7z.001 -aoa -p22446688 -o.\
+7z x hypseus.7z -aoa -p22446688 -o.\
 md ..\..\emulators\hypseus >nul 2>&1
 echo.
 echo Copying files...
 xcopy hypseus ..\..\emulators\hypseus\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q hypseus.7z.001
-del /Q hypseus.7z.002
-del /Q hypseus.7z.003
-del /Q hypseus.7z.004
-del /Q hypseus.7z.005
-del /Q hypseus.7z.006
-del /Q hypseus.7z.007
-del /Q hypseus.7z.008
-del /Q hypseus.7z.009
+del /Q hypseus.7z >nul 2>&1
 rmdir /S /Q hypseus >nul 2>&1
 
 echo Hypseus-v1 > Hypseus-v1
@@ -443,32 +373,8 @@ echo.
 ping -n 1 127.0.0.1 > nul
 
 IF EXIST "3dSen-v1" goto SKIP
-
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/3d-N.7z.001 -O 3d-N.7z.001
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/3d-N.7z.002 -O 3d-N.7z.002
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/3d-N.7z.003 -O 3d-N.7z.003
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/3d-N.7z.004 -O 3d-N.7z.004
+del /Q 3d-N.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/3d-N.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -478,16 +384,13 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 > nul
 echo.
-7z x 3d-N.7z.001 -aoa -p22446688 -o.\
+7z x 3d-N.7z -aoa -p22446688 -o.\
 md ..\..\emulators\3dsen >nul 2>&1
 echo.
 echo Copying files...
 xcopy 3dsen ..\..\emulators\3dsen\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q 3d-N.7z.001
-del /Q 3d-N.7z.002
-del /Q 3d-N.7z.003
-del /Q 3d-N.7z.004
+del /Q 3d-N.7z >nul 2>&1
 rmdir /S /Q 3dsen >nul 2>&1
 
 echo 3dSen-v1 > 3dSen-v1
