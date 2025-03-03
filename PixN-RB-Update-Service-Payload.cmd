@@ -208,23 +208,8 @@ echo Checking for updated Radio Stations...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "Radio-v2" goto SKIP
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/radio.7z.001 -O radio.7z.001
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/radio.7z.002 -O radio.7z.002
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/radio.7z.003 -O radio.7z.003
+del /Q radio.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/radio.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -235,9 +220,7 @@ if %ERRORLEVEL% neq 0 (
 ping -n 1 127.0.0.1 > nul
 7z x radio.7z.001 -aoa -p22446688 -o..\..\roms\radio\
 echo.
-del /Q radio.7z.001
-del /Q radio.7z.002
-del /Q radio.7z.003
+del /Q radio.7z >nul 2>&1
 
 echo Radio-v2 > Radio-v2
 :SKIP
