@@ -275,8 +275,8 @@ echo Downloading the Acorn Electron BIOS files if required...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "Electron-BIOS-v1" goto SKIP
-del /Q electron.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/electron.7z
+del /Q eSk8yMk1*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/eSk8yMk1
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -286,7 +286,8 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 > nul
 echo.
-7z x electron.7z -aoa -p22446688 -o.\
+ren eSk8yMk1 Electron.7z
+7z x Electron.7z -aoa -p22446688 -o.\
 echo.
 echo Moving files...
 move /Y "electron.zip" ..\..\bios\
@@ -500,8 +501,8 @@ echo Checking for the updated TeknoParrot Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "TeknoParrot-v3" goto SKIP
-del /Q teknoparrot_jan2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/teknoparrot_jan2025.7z
+del /Q xUH7WGQ4*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/xUH7WGQ4
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -509,6 +510,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren xUH7WGQ4 teknoparrot_jan2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x teknoparrot_jan2025.7z -aoa -p22446688 -o.\
@@ -530,8 +532,8 @@ echo Checking for the updated Virtual Pinball Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "VPinball-v2" goto SKIP
-del /Q vpinball_jan2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/vpinball_jan2025.7z
+del /Q tt4eBrw2*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/tt4eBrw2
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -539,6 +541,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren tt4eBrw2 vpinball_jan2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x vpinball_jan2025.7z -aoa -p22446688 -o.\
@@ -560,8 +563,8 @@ echo Checking for the updated Switch Emulators...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "Switch-v1" goto SKIP
-del /Q switch_dec2024.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/switch_dec2024.7z
+del /Q sBugmhpq*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/sBugmhpq
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -569,6 +572,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren sBugmhpq switch_dec2024.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x switch_dec2024.7z -aoa -p22446688 -o.\
@@ -597,8 +601,8 @@ echo Checking Ngage Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "eka-emu-v1" goto SKIP
-del /Q eka_jan2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/eka_jan2025.7z
+del /Q yZ6yoWKD*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/yZ6yoWKD
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -606,6 +610,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren yZ6yoWKD eka_jan2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x eka_jan2025.7z -aoa -p22446688 -o.\
@@ -825,8 +830,8 @@ echo Adding the new BIOS files required for RetroBat v7.x...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "Aquarius-BIOS-v1" goto SKIP
-del /Q aquarius-bios.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/aquarius-bios.7z
+del /Q GNiVzdCy*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/GNiVzdCy
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -836,6 +841,7 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 > nul
 echo.
+ren GNiVzdCy aquarius-bios.7z
 7z x aquarius-bios.7z -aoa -p22446688 -o.\
 echo.
 echo Moving files...
@@ -864,8 +870,8 @@ echo Checking for the updated cGenius Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "cgenius-emu-v1" goto SKIP
-del /Q cgenius_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/cgenius_feb2025.7z
+del /Q NEve2dZY*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/NEve2dZY
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -873,6 +879,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren NEve2dZY cgenius_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x cgenius_feb2025.7z -aoa -p22446688 -o.\
@@ -893,8 +900,8 @@ echo Checking for the updated Citron Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "citron-emu-v1" goto SKIP
-del /Q citron_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/citron_feb2025.7z
+del /Q 3MPcsWWU*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/3MPcsWWU
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -902,6 +909,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren 3MPcsWWU citron_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x citron_feb2025.7z -aoa -p22446688 -o.\
@@ -922,8 +930,8 @@ echo Checking for the updated Kronos Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "kronos-emu-v1" goto SKIP
-del /Q kronos_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/kronos_feb2025.7z
+del /Q 3jfqTnxt*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/3jfqTnxt
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -931,6 +939,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren 3jfqTnxt kronos_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x kronos_feb2025.7z -aoa -p22446688 -o.\
@@ -951,8 +960,8 @@ echo Checking for the updated Lime3DS Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "lime3ds-emu-v1" goto SKIP
-del /Q lime3ds_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/lime3ds_feb2025.7z
+del /Q yuFzsWR6*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/yuFzsWR6
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -960,6 +969,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren yuFzsWR6 lime3ds_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x lime3ds_feb2025.7z -aoa -p22446688 -o.\
@@ -980,8 +990,8 @@ echo Checking for the updated MagicEngine Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "magicengine-emu-v1" goto SKIP
-del /Q magicengine_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/magicengine_feb2025.7z
+del /Q CWDbevwZ*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/CWDbevwZ
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -989,6 +999,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren CWDbevwZ magicengine_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x magicengine_feb2025.7z -aoa -p22446688 -o.\
@@ -1009,8 +1020,8 @@ echo Checking for the updated Mandarine Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "mandarine-emu-v1" goto SKIP
-del /Q mandarine_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/mandarine_feb2025.7z
+del /Q GbR9zkhT*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/GbR9zkhT
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1018,6 +1029,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren GbR9zkhT mandarine_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x mandarine_feb2025.7z -aoa -p22446688 -o.\
@@ -1038,8 +1050,8 @@ echo Checking for the updated OpenJazz Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "openjazz-emu-v1" goto SKIP
-del /Q openjazz_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/openjazz_feb2025.7z
+del /Q 3YqLBL97*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/3YqLBL97
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1047,6 +1059,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren 3YqLBL97 openjazz_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x openjazz_feb2025.7z -aoa -p22446688 -o.\
@@ -1067,8 +1080,8 @@ echo Checking for the updated PDark Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "pdark-emu-v1" goto SKIP
-del /Q pdark_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/pdark_feb2025.7z
+del /Q mvDzmwAV*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/mvDzmwAV
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1076,6 +1089,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren mvDzmwAV pdark_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x pdark_feb2025.7z -aoa -p22446688 -o.\
@@ -1096,8 +1110,8 @@ echo Checking for the updated Retroarch Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "retroarch-emu-v1" goto SKIP
-del /Q retroarch_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/retroarch_feb2025.7z
+del /Q 6aMAifPF*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/6aMAifPF
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1105,6 +1119,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren 6aMAifPF retroarch_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x retroarch_feb2025.7z -aoa -p22446688 -o.\
@@ -1125,8 +1140,8 @@ echo Checking for the updated RyuJinx Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "ryujinx-emu-v1" goto SKIP
-del /Q ryujinx_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/ryujinx_feb2025.7z
+del /Q 2WQ1F2Hf*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/2WQ1F2Hf
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1134,6 +1149,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren 2WQ1F2Hf ryujinx_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x ryujinx_feb2025.7z -aoa -p22446688 -o.\
@@ -1154,8 +1170,8 @@ echo Checking for the updated ShadPS4 Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "shadps4-emu-v1" goto SKIP
-del /Q shadps4_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/shadps4_feb2025.7z
+del /Q QYiwr4FR*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/QYiwr4FR
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1163,6 +1179,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren QYiwr4FR shadps4_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x shadps4_feb2025.7z -aoa -p22446688 -o.\
@@ -1183,8 +1200,8 @@ echo Checking for the updated Xenia Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "xenia-emu-v1" goto SKIP
-del /Q xenia_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia_feb2025.7z
+del /Q bRpC8Lkd*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/bRpC8Lkd
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1192,6 +1209,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren bRpC8Lkd xenia_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x xenia_feb2025.7z -aoa -p22446688 -o.\
@@ -1212,8 +1230,8 @@ echo Checking for the updated Xenia-Canary Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "xenia-canary-emu-v1" goto SKIP
-del /Q xenia-canary_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia-canary_feb2025.7z
+del /Q mn7ZT3Ac*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/mn7ZT3Ac
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1221,6 +1239,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren mn7ZT3Ac xenia-canary_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x xenia-canary_feb2025.7z -aoa -p22446688 -o.\
@@ -1241,8 +1260,8 @@ echo Checking for the updated Xenia-Manager Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "xenia-manager-emu-v1" goto SKIP
-del /Q xenia-manager_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia-manager_feb2025.7z
+del /Q JSkL572q*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/JSkL572q
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1250,6 +1269,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren JSkL572q xenia-manager_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x xenia-manager_feb2025.7z -aoa -p22446688 -o.\
@@ -1270,8 +1290,8 @@ echo Checking for the updated Yabasanshiro Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "yabasanshiro-emu-v1" goto SKIP
-del /Q yabasanshiro_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/yabasanshiro_feb2025.7z
+del /Q QW1GzEVv*.* >nul 2>&1
+wget https://pixeldrain.com/api/filesystem/QW1GzEVv
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1279,6 +1299,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo Download Completed Successfully...
 )
+ren QW1GzEVv yabasanshiro_feb2025.7z
 ping -n 1 127.0.0.1 > nul
 echo.
 7z x yabasanshiro_feb2025.7z -aoa -p22446688 -o.\
@@ -1405,8 +1426,7 @@ echo objFile.Close>> replace.vbs
 
 cscript replace.vbs "..\..\emulationstation\.emulationstation\es_settings.cfg" "Hypermax-Lite-PixN" "Hypermax-Plus-PixN" > NUL
 
-IF EXIST "rclone-v2" goto SKIP
-del /Q rc.7z
+IF EXIST "rclone-v1" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rc.7z -O rc.7z
 if %ERRORLEVEL% neq 0 (
     echo rclone download failed! - Skipping...
@@ -1418,8 +1438,7 @@ if %ERRORLEVEL% neq 0 (
 ping -n 1 127.0.0.1 > nul
 7z x rc.7z -aoa -p22446688 -o.\
 ping -n 1 127.0.0.1 > nul
-del /Q rc.7z
-echo rclone-v2 > rclone-v2
+echo rclone-v1 > rclone-v1
 echo.
 
 :SKIP
@@ -1430,7 +1449,7 @@ ping -n 1 127.0.0.1 > nul
 echo Checking Hypermax-Plus-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 > nul
-rclone sync PixN-Themes-SH:/update/Themes/Hypermax-Plus-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN --progress
+rclone sync PixN-Themes:/Hypermax-Plus-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN --progress
 
 REM echo.
 REM echo Checking Hypermax-Lite-PixN for updates...
@@ -1442,19 +1461,19 @@ echo.
 echo Checking Carbon-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 > nul
-rclone sync PixN-Themes-SH:/update/Themes/Carbon-PixN ..\..\emulationstation\.emulationstation\themes\Carbon-PixN --progress
+rclone sync PixN-Themes:/Carbon-PixN ..\..\emulationstation\.emulationstation\themes\Carbon-PixN --progress
 
 echo.
 echo Checking Ckau-Book-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 > nul
-rclone sync PixN-Themes-SH:/update/Themes/ckau-book-PixN ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN --progress
+rclone sync PixN-Themes:/ckau-book-PixN ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN --progress
 
 echo.
 echo Checking Ckau-Book for updates...
 echo.
 ping -n 1 127.0.0.1 > nul
-rclone sync PixN-Themes-SH:/update/Themes/ckau-book ..\..\emulationstation\.emulationstation\themes\ckau-book --progress
+rclone sync PixN-Themes:/ckau-book ..\..\emulationstation\.emulationstation\themes\ckau-book --progress
 
 
 :END
