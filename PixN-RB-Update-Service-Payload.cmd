@@ -219,7 +219,6 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 > nul
 del /Q /S ..\..\roms\radio\*.* >nul 2>&1
-pause
 ping -n 1 127.0.0.1 > nul
 7z x radio.7z -aoa -p22446688 -o..\..\roms\radio\
 echo.
