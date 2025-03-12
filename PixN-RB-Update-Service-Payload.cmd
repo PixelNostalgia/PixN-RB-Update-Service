@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.27
+echo Version 1.28
 echo.
 ping -n 1 127.0.0.1 > nul
 
@@ -207,7 +207,7 @@ REM This section checks for updated Radio stations...
 echo Checking for updated Radio Stations...
 echo.
 ping -n 1 127.0.0.1 > nul
-IF EXIST "Radio-v2" goto SKIP
+IF EXIST "Radio-v3" goto SKIP
 del /Q radio.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/radio.7z
 if %ERRORLEVEL% neq 0 (
@@ -218,20 +218,23 @@ if %ERRORLEVEL% neq 0 (
     echo Download Completed Successfully...
 )
 ping -n 1 127.0.0.1 > nul
+del /Q /S ..\..\roms\radio\*.* >nul 2>&1
+pause
+ping -n 1 127.0.0.1 > nul
 7z x radio.7z -aoa -p22446688 -o..\..\roms\radio\
 echo.
 del /Q radio.7z >nul 2>&1
 
-echo Radio-v2 > Radio-v2
+echo Radio-v3 > Radio-v3
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
 
-REM This section fixes the version of the Archmendes BIOS files...
-echo Downloading updated Archmendes BIOS files if required...
+REM This section fixes the version of the Archimedes BIOS files...
+echo Downloading updated Archimedes BIOS files if required...
 echo.
 ping -n 1 127.0.0.1 > nul
-IF EXIST "Archmendes-BIOS-v1" goto SKIP
+IF EXIST "Archimedes-BIOS-v1" goto SKIP
 del /Q arch-b.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/arch-b.7z
 if %ERRORLEVEL% neq 0 (
@@ -250,7 +253,7 @@ move /Y "aa310.zip" ..\..\bios\
 move /Y "archimedes_keyboard.zip" ..\..\bios\
 ping -n 1 127.0.0.1 > nul
 del /Q arch-b.7z >nul 2>&1
-echo Archmendes-BIOS-v1 > Archmendes-BIOS-v1
+echo Archimedes-BIOS-v1 > Archimedes-BIOS-v1
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
