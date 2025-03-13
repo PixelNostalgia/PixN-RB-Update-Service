@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.28
+echo Version 1.29
 echo.
 ping -n 1 127.0.0.1 > nul
 
@@ -630,6 +630,37 @@ powershell -ExecutionPolicy Bypass -Command ^
     "}"
 
 endlocal
+
+REM This section checks for the Clone Hero Emulator...
+echo.
+echo Checking the Clone Hero Emulator...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "clonehero-emu-v1" goto SKIP
+del /Q clonehero_mar2025.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/clonehero_mar2025.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x clonehero_mar2025.7z -aoa -p22446688 -o.\
+md ..\..\emulators\clonehero >nul 2>&1
+echo.
+echo Copying files...
+xcopy clonehero ..\..\emulators\clonehero\ /S /E /I /Q /H /Y /R
+ping -n 1 127.0.0.1 > nul
+del /Q clonehero_mar2025.7z >nul 2>&1
+rmdir /S /Q clonehero >nul 2>&1
+echo clonehero-emu-v1 > clonehero-emu-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
 
 REM ******************************************************************
 REM ******************************************************************
