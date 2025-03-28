@@ -233,7 +233,7 @@ REM This section checks for updates to the PixN Radio station...
 echo Checking for updates to the PixN Radio Station...
 echo.
 ping -n 1 127.0.0.1 > nul
-IF EXIST "PixN-Radio-v2" goto SKIP
+IF EXIST "PixN-Radio-v3" goto SKIP
 del /Q PixN-Radio.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/PixN-Radio.7z
 if %ERRORLEVEL% neq 0 (
@@ -252,35 +252,11 @@ ping -n 1 127.0.0.1 > nul
 echo.
 del /Q PixN-Radio.7z >nul 2>&1
 
-echo PixN-Radio-v2 > PixN-Radio-v2
+wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/PixN-Radio.bat -O PixN-Radio.bat
+copy PixN-Radio.bat ..\..\roms\radio\PixN-Radio.bat /y
+
+echo PixN-Radio-v3 > PixN-Radio-v3
 :SKIP
-
-echo Const ForReading = 1 > replace.vbs
-echo Const ForWriting = 2 >> replace.vbs
-echo. >> replace.vbs
-echo. >> replace.vbs
-echo strFileName = Wscript.Arguments(0) >> replace.vbs
-echo strOldText = Wscript.Arguments(1) >> replace.vbs
-echo strNewText = Wscript.Arguments(2) >> replace.vbs
-echo. >> replace.vbs
-echo. >> replace.vbs
-echo Set objFSO = CreateObject("Scripting.FileSystemObject") >> replace.vbs
-echo Set objFile = objFSO.OpenTextFile(strFileName, ForReading) >> replace.vbs
-echo. >> replace.vbs
-echo. >> replace.vbs
-echo strText = objFile.ReadAll >> replace.vbs
-echo objFile.Close >> replace.vbs
-echo strNewText = Replace(strText, strOldText, strNewText) >> replace.vbs
-echo. >> replace.vbs
-echo. >> replace.vbs
-echo objFile.Close >> replace.vbs
-echo Set objFile = objFSO.OpenTextFile(strFileName, ForWriting) >> replace.vbs
-echo objFile.Write strNewText >> replace.vbs
-echo objFile.Close>> replace.vbs
-
-cscript replace.vbs "..\..\roms\radio\PixN-Radio.bat" "https://raw.githubusercontent.com/RGS-MBU/PixN-Tools/main/PixN-Radio.m3u" "PixN-Radio.m3u8" > NUL
-cscript replace.vbs "..\..\roms\radio\PixN-Radio.bat" "Radio.m3u8" "PixN-Radio.m3u8" > NUL
-
 echo.
 ping -n 1 127.0.0.1 > nul
 
