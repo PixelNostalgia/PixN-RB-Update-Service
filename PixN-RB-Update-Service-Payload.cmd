@@ -229,6 +229,58 @@ echo Radio-v3 > Radio-v3
 echo.
 ping -n 1 127.0.0.1 > nul
 
+REM This section checks for updates to the PixN Radio station...
+REM This section checks for updates to the PixN Radio station...
+echo Checking for updates to the PixN Radio Station...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "PixN-Radio-v1" goto SKIP
+del /Q PixN-Radio.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/PixN-Radio.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+del /Q /S ..\..\roms\radio\content\vlc\PixN-Radio\*.* >nul 2>&1
+ping -n 1 127.0.0.1 > nul
+7z x PixN-Radio.7z -aoa -p22446688 -o..\..\roms\radio\content\vlc\
+echo.
+del /Q PixN-Radio.7z >nul 2>&1
+
+echo Const ForReading = 1 > replace.vbs
+echo Const ForWriting = 2 >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo strFileName = Wscript.Arguments(0) >> replace.vbs
+echo strOldText = Wscript.Arguments(1) >> replace.vbs
+echo strNewText = Wscript.Arguments(2) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo Set objFSO = CreateObject("Scripting.FileSystemObject") >> replace.vbs
+echo Set objFile = objFSO.OpenTextFile(strFileName, ForReading) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo strText = objFile.ReadAll >> replace.vbs
+echo objFile.Close >> replace.vbs
+echo strNewText = Replace(strText, strOldText, strNewText) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo objFile.Close >> replace.vbs
+echo Set objFile = objFSO.OpenTextFile(strFileName, ForWriting) >> replace.vbs
+echo objFile.Write strNewText >> replace.vbs
+echo objFile.Close>> replace.vbs
+
+cscript replace.vbs "..\..\roms\radio\PixN-Radio.bat" "https://raw.githubusercontent.com/RGS-MBU/PixN-Tools/main/PixN-Radio.m3u" "PixN Radio.m3u8" > NUL
+
+echo PixN-Radio-v1 > PixN-Radio-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
 REM This section fixes the version of the Archimedes BIOS files...
 echo Downloading updated Archimedes BIOS files if required...
 echo.
