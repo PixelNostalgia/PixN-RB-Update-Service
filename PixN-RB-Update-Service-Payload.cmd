@@ -254,6 +254,8 @@ del /Q PixN-Radio.7z >nul 2>&1
 
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/PixN-Radio.bat -O PixN-Radio.bat
 copy PixN-Radio.bat ..\..\roms\radio\PixN-Radio.bat /y
+ping -n 2 127.0.0.1 > nul
+del /Q /S ..\..\roms\radio\PixN-Radio.bat >nul 2>&1
 
 echo PixN-Radio-v3 > PixN-Radio-v3
 :SKIP
