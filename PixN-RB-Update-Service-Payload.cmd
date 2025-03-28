@@ -245,6 +245,8 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 > nul
 del /Q /S ..\..\roms\radio\content\vlc\PixN-Radio\*.* >nul 2>&1
+del /Q /S "..\..\roms\radio\content\vlc\PixN Radio.m3u8" >nul 2>&1
+del /Q /S "..\..\roms\radio\content\vlc\PixN-Radio.m3u8" >nul 2>&1
 ping -n 1 127.0.0.1 > nul
 7z x PixN-Radio.7z -aoa -p22446688 -o..\..\roms\radio\content\vlc\
 echo.
