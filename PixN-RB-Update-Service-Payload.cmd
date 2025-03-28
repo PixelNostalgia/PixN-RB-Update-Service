@@ -250,6 +250,9 @@ ping -n 1 127.0.0.1 > nul
 echo.
 del /Q PixN-Radio.7z >nul 2>&1
 
+echo PixN-Radio-v1 > PixN-Radio-v1
+:SKIP
+
 echo Const ForReading = 1 > replace.vbs
 echo Const ForWriting = 2 >> replace.vbs
 echo. >> replace.vbs
@@ -273,10 +276,9 @@ echo Set objFile = objFSO.OpenTextFile(strFileName, ForWriting) >> replace.vbs
 echo objFile.Write strNewText >> replace.vbs
 echo objFile.Close>> replace.vbs
 
-cscript replace.vbs "..\..\roms\radio\PixN-Radio.bat" "https://raw.githubusercontent.com/RGS-MBU/PixN-Tools/main/PixN-Radio.m3u" "PixN Radio.m3u8" > NUL
+cscript replace.vbs "..\..\roms\radio\PixN-Radio.bat" "https://raw.githubusercontent.com/RGS-MBU/PixN-Tools/main/PixN-Radio.m3u" "PixN-Radio.m3u8" > NUL
+cscript replace.vbs "..\..\roms\radio\PixN-Radio.bat" "Radio.m3u8" "PixN-Radio.m3u8" > NUL
 
-echo PixN-Radio-v1 > PixN-Radio-v1
-:SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
 
