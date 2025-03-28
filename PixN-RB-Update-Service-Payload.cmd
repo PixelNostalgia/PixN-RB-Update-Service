@@ -233,7 +233,7 @@ REM This section checks for updates to the PixN Radio station...
 echo Checking for updates to the PixN Radio Station...
 echo.
 ping -n 1 127.0.0.1 > nul
-IF EXIST "PixN-Radio-v1" goto SKIP
+IF EXIST "PixN-Radio-v2" goto SKIP
 del /Q PixN-Radio.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/PixN-Radio.7z
 if %ERRORLEVEL% neq 0 (
@@ -252,7 +252,7 @@ ping -n 1 127.0.0.1 > nul
 echo.
 del /Q PixN-Radio.7z >nul 2>&1
 
-echo PixN-Radio-v1 > PixN-Radio-v1
+echo PixN-Radio-v2 > PixN-Radio-v2
 :SKIP
 
 echo Const ForReading = 1 > replace.vbs
