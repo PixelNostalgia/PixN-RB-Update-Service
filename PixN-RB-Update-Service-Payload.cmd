@@ -1357,7 +1357,7 @@ echo objFile.Close>> replace.vbs
 
 cscript replace.vbs "..\..\emulationstation\.emulationstation\es_settings.cfg" "Hypermax-Lite-PixN" "Hypermax-Plus-PixN" > NUL
 
-IF EXIST "rclone-v2" goto SKIP
+IF EXIST "rclone-v3" goto RC-END
 del /Q rc.7z >nul 2>&1
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rc.7z -O rc.7z
 if %ERRORLEVEL% neq 0 (
@@ -1371,7 +1371,7 @@ ping -n 1 127.0.0.1 > nul
 7z x rc.7z -aoa -p22446688 -o.\
 ping -n 1 127.0.0.1 > nul
 del /Q rc.7z >nul 2>&1
-echo rclone-v2 > rclone-v2
+echo rclone-v3 > rclone-v3
 echo.
 :RC-END
 ping -n 2 127.0.0.1 > nul
