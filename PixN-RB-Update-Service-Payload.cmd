@@ -1363,7 +1363,7 @@ wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/mai
 if %ERRORLEVEL% neq 0 (
     echo rclone download failed! - Skipping...
     %handle_error%
-	goto END
+	goto RC-END
 ) else (
     echo rclone download successful...
 )
@@ -1373,6 +1373,7 @@ ping -n 1 127.0.0.1 > nul
 del /Q rc.7z >nul 2>&1
 echo rclone-v2 > rclone-v2
 echo.
+:RC-END
 ping -n 2 127.0.0.1 > nul
 del /Q rclone.conf >nul 2>&1
 ping -n 2 127.0.0.1 > nul
