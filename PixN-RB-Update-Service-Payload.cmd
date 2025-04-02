@@ -1373,6 +1373,12 @@ ping -n 1 127.0.0.1 > nul
 del /Q rc.7z >nul 2>&1
 echo rclone-v2 > rclone-v2
 echo.
+ping -n 2 127.0.0.1 > nul
+del /Q rclone.conf >nul 2>&1
+ping -n 2 127.0.0.1 > nul
+wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rclone.conf -O rclone.conf
+ping -n 1 127.0.0.1 > nul
+echo.
 
 :SKIP
 cls
@@ -1383,12 +1389,6 @@ echo Checking Hypermax-Plus-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 > nul
 rclone sync PixN-Themes-SH:/update/Themes/Hypermax-Plus-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN --progress
-
-REM echo.
-REM echo Checking Hypermax-Lite-PixN for updates...
-REM echo.
-REM ping -n 1 127.0.0.1 > nul
-REM rclone sync PixN-Themes:/Hypermax-Lite-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Lite-PixN --progress
 
 echo.
 echo Checking Carbon-PixN for updates...
