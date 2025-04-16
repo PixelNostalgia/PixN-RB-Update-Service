@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.31
+echo Version 1.32
 echo.
 ping -n 1 127.0.0.1 > nul
 
@@ -694,6 +694,35 @@ echo clonehero-emu-v1 > clonehero-emu-v1
 echo.
 ping -n 1 127.0.0.1 > nul
 
+REM This section checks for Solarus emulator updates...
+echo.
+echo Checking for Solarus emulator updates...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "solarus-emu-v1" goto SKIP
+del /Q solarus-v2.0.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/solarus-v2.0.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x solarus-v2.0.7z -aoa -p22446688 -o.\
+md ..\..\emulators\solarus >nul 2>&1
+echo.
+echo Copying files...
+xcopy solarus ..\..\emulators\solarus\ /S /E /I /Q /H /Y /R
+ping -n 1 127.0.0.1 > nul
+del /Q solarus-v2.0.7z >nul 2>&1
+rmdir /S /Q solarus >nul 2>&1
+echo solarus-emu-v1 > solarus-emu-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
 
 REM ******************************************************************
 REM ******************************************************************
