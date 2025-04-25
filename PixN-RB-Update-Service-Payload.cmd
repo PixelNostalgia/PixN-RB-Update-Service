@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.32
+echo Version 1.33
 echo.
 ping -n 1 127.0.0.1 > nul
 
@@ -571,11 +571,11 @@ REM :SKIP
 REM echo.
 
 REM This section downloads a tiny file so we can see how many people are using the Update Service...
-del /Q NYcXqrtb*.* >nul 2>&1
-del /Q PixN-Stats >nul 2>&1
-wget https://pixeldrain.com/api/filesystem/NYcXqrtb >nul 2>&1
-ren NYcXqrtb PixN-Stats >nul 2>&1
-ping -n 1 127.0.0.1 > nul
+REM del /Q NYcXqrtb*.* >nul 2>&1
+REM del /Q PixN-Stats >nul 2>&1
+REM wget https://pixeldrain.com/api/filesystem/NYcXqrtb >nul 2>&1
+REM ren NYcXqrtb PixN-Stats >nul 2>&1
+REM ping -n 1 127.0.0.1 > nul
 
 REM This section enables HD texture packs for the NES HD system...
 setlocal
@@ -724,6 +724,65 @@ echo solarus-emu-v1 > solarus-emu-v1
 echo.
 ping -n 1 127.0.0.1 > nul
 
+REM This section checks for the updated RyuJinx Emulator...
+echo Checking for the updated RyuJinx Emulator...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "ryujinx-emu-v2" goto SKIP
+del /Q ryujinx_apr2025.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/ryujinx_apr2025.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x ryujinx_apr2025.7z -aoa -p22446688 -o.\
+md ..\..\emulators\ryujinx >nul 2>&1
+echo.
+echo Copying files...
+xcopy ryujinx ..\..\emulators\ryujinx\ /S /E /I /Q /H /Y /R
+ping -n 1 127.0.0.1 > nul
+del /Q ryujinx_apr2025.7z >nul 2>&1
+rmdir /S /Q ryujinx >nul 2>&1
+echo ryujinx-emu-v2 > ryujinx-emu-v2
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
+REM This section checks for the updated Citron Emulator...
+echo Checking for the updated Citron Emulator...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "citron-emu-v1" goto SKIP
+del /Q citron_feb2025.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/citron_feb2025.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x citron_feb2025.7z -aoa -p22446688 -o.\
+md ..\..\emulators\citron >nul 2>&1
+echo.
+echo Copying files...
+xcopy citron ..\..\emulators\citron\ /S /E /I /Q /H /Y /R
+ping -n 1 127.0.0.1 > nul
+del /Q citron_feb2025.7z >nul 2>&1
+rmdir /S /Q citron >nul 2>&1
+echo citron-emu-v1 > citron-emu-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
+
 REM ******************************************************************
 REM ******************************************************************
 REM ***This section applies config based on the version of RetroBat***
@@ -865,35 +924,6 @@ ping -n 1 127.0.0.1 > nul
 del /Q cgenius_feb2025.7z >nul 2>&1
 rmdir /S /Q cgenius >nul 2>&1
 echo cgenius-emu-v1 > cgenius-emu-v1
-:SKIP
-echo.
-ping -n 1 127.0.0.1 > nul
-
-REM This section checks for the updated Citron Emulator...
-echo Checking for the updated Citron Emulator...
-echo.
-ping -n 1 127.0.0.1 > nul
-IF EXIST "citron-emu-v1" goto SKIP
-del /Q citron_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/citron_feb2025.7z
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-ping -n 1 127.0.0.1 > nul
-echo.
-7z x citron_feb2025.7z -aoa -p22446688 -o.\
-md ..\..\emulators\citron >nul 2>&1
-echo.
-echo Copying files...
-xcopy citron ..\..\emulators\citron\ /S /E /I /Q /H /Y /R
-ping -n 1 127.0.0.1 > nul
-del /Q citron_feb2025.7z >nul 2>&1
-rmdir /S /Q citron >nul 2>&1
-echo citron-emu-v1 > citron-emu-v1
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
@@ -1097,35 +1127,6 @@ ping -n 1 127.0.0.1 > nul
 del /Q retroarch_feb2025.7z >nul 2>&1
 rmdir /S /Q retroarch >nul 2>&1
 echo retroarch-emu-v1 > retroarch-emu-v1
-:SKIP
-echo.
-ping -n 1 127.0.0.1 > nul
-
-REM This section checks for the updated RyuJinx Emulator...
-echo Checking for the updated RyuJinx Emulator...
-echo.
-ping -n 1 127.0.0.1 > nul
-IF EXIST "ryujinx-emu-v1" goto SKIP
-del /Q ryujinx_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/ryujinx_feb2025.7z
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-ping -n 1 127.0.0.1 > nul
-echo.
-7z x ryujinx_feb2025.7z -aoa -p22446688 -o.\
-md ..\..\emulators\ryujinx >nul 2>&1
-echo.
-echo Copying files...
-xcopy ryujinx ..\..\emulators\ryujinx\ /S /E /I /Q /H /Y /R
-ping -n 1 127.0.0.1 > nul
-del /Q ryujinx_feb2025.7z >nul 2>&1
-rmdir /S /Q ryujinx >nul 2>&1
-echo ryujinx-emu-v1 > ryujinx-emu-v1
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
