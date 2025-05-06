@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.33
+echo Version 1.34
 echo.
 ping -n 1 127.0.0.1 > nul
 
@@ -778,6 +778,90 @@ ping -n 1 127.0.0.1 > nul
 del /Q citron_feb2025.7z >nul 2>&1
 rmdir /S /Q citron >nul 2>&1
 echo citron-emu-v1 > citron-emu-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
+REM This section adds the Windows 98 support files...
+echo Checking for the Windows 98 support files...
+echo.
+
+REM -------------------BIOS--------------------
+ping -n 1 127.0.0.1 > nul
+IF EXIST "win98-bios-v1" goto SKIP
+del /Q Win98.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/Win98.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x Win98.7z -aoa -p22446688 -o.\
+echo.
+echo Moving files...
+move /Y "cm32l_control.rom" ..\..\bios\
+move /Y "cm32l_pcm.rom" ..\..\bios\
+move /Y "Roland SC-55.sf2" ..\..\bios\
+move /Y "Roland SC-88.sf2" ..\..\bios\
+move /Y "Windows 98 SE.7z" ..\..\bios\
+move /Y "Windows 98 SE.img" ..\..\bios\
+ping -n 2 127.0.0.1 > nul
+del /Q "cm32l_control.rom" >nul 2>&1
+del /Q "cm32l_pcm.rom" >nul 2>&1
+del /Q "Roland SC-55.sf2" >nul 2>&1
+del /Q "Roland SC-88.sf2" >nul 2>&1
+del /Q "Windows 98 SE.7z" >nul 2>&1
+del /Q "Windows 98 SE.img" >nul 2>&1
+del /Q Win98.7z >nul 2>&1
+
+REM ----------------RetroArch-------------------
+echo.
+ping -n 1 127.0.0.1 > nul
+del /Q Win98-Retroarch.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/Win98-Retroarch.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x Win98-Retroarch.7z -aoa -p22446688 -o.\
+echo.
+echo Copying files...
+xcopy retroarch ..\..\emulators\retroarch\ /S /E /I /Q /H /Y /R
+del /Q Win98-Retroarch.7z >nul 2>&1
+rmdir /S /Q retroarch >nul 2>&1
+
+REM ----------------Decorations--------------------
+echo.
+ping -n 1 127.0.0.1 > nul
+del /Q Win98-Decorations.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Other_Updates/Win98-Decorations.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x Win98-Decorations.7z -aoa -p22446688 -o.\
+echo.
+echo Copying files...
+xcopy decorations ..\..\system\decorations\ /S /E /I /Q /H /Y /R
+del /Q Win98-Decorations.7z >nul 2>&1
+rmdir /S /Q decorations >nul 2>&1
+
+REM ----------------Win98-End---------------------
+echo win98-bios-v1 > win98-bios-v1
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
