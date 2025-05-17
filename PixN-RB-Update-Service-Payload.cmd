@@ -933,6 +933,7 @@ del /Q ..\..\emulationstation\.emulationstation\es_systems_cgenius.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_cdogs.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_corsixth.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_3ds.cfg >nul 2>&1
+del /Q ..\..\emulationstation\.emulationstation\es_systems_tg-16.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_examu.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_segalindbergh.cfg >nul 2>&1
 ping -n 1 127.0.0.1 > nul
@@ -1393,6 +1394,7 @@ echo.
 echo Cleaning up old config files...
 echo.
 ping -n 1 127.0.0.1 > nul
+del /Q ..\..\emulationstation\.emulationstation\es_systems_tg-16.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_examu.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_segalindbergh.cfg >nul 2>&1
 ping -n 1 127.0.0.1 > nul
