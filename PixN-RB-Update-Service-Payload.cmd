@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.34
+echo Version 1.35
 echo.
 ping -n 1 127.0.0.1 > nul
 
@@ -933,6 +933,8 @@ del /Q ..\..\emulationstation\.emulationstation\es_systems_cgenius.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_cdogs.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_corsixth.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_3ds.cfg >nul 2>&1
+del /Q ..\..\emulationstation\.emulationstation\es_systems_examu.cfg >nul 2>&1
+del /Q ..\..\emulationstation\.emulationstation\es_systems_segalindbergh.cfg >nul 2>&1
 ping -n 1 127.0.0.1 > nul
 
 REM This section renames boom3 to doom3 as required for RBv7.x...
@@ -1385,6 +1387,15 @@ goto THEMES
 echo.
 echo Configuring v6.x
 echo.
+
+REM This section removes old custom system config files that are no longer needed...
+echo.
+echo Cleaning up old config files...
+echo.
+ping -n 1 127.0.0.1 > nul
+del /Q ..\..\emulationstation\.emulationstation\es_systems_examu.cfg >nul 2>&1
+del /Q ..\..\emulationstation\.emulationstation\es_systems_segalindbergh.cfg >nul 2>&1
+ping -n 1 127.0.0.1 > nul
 
 REM This section pulls down the latest custom system config files for RBv6.x...
 echo Updating system config files...
