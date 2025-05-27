@@ -1,5 +1,5 @@
 @echo off
-
+cd /d "%~dp0"
 rem Text color code for Light Green is A
 set "colorCode=A"
 color %colorCode%
@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.35
+echo Version 1.36
 echo.
 ping -n 1 127.0.0.1 > nul
 
