@@ -1483,6 +1483,34 @@ echo objFile.Write strNewText >> replace.vbs
 echo objFile.Close>> replace.vbs
 
 cscript replace.vbs "..\..\emulationstation\.emulationstation\es_settings.cfg" "Hypermax-Lite-PixN" "Hypermax-Plus-PixN" > NUL
+ping -n 2 127.0.0.1 > nul
+
+REM This section removes the old ckau-book-rgs Theme...
+echo Const ForReading = 1 > replace.vbs
+echo Const ForWriting = 2 >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo strFileName = Wscript.Arguments(0) >> replace.vbs
+echo strOldText = Wscript.Arguments(1) >> replace.vbs
+echo strNewText = Wscript.Arguments(2) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo Set objFSO = CreateObject("Scripting.FileSystemObject") >> replace.vbs
+echo Set objFile = objFSO.OpenTextFile(strFileName, ForReading) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo strText = objFile.ReadAll >> replace.vbs
+echo objFile.Close >> replace.vbs
+echo strNewText = Replace(strText, strOldText, strNewText) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo objFile.Close >> replace.vbs
+echo Set objFile = objFSO.OpenTextFile(strFileName, ForWriting) >> replace.vbs
+echo objFile.Write strNewText >> replace.vbs
+echo objFile.Close>> replace.vbs
+
+cscript replace.vbs "..\..\emulationstation\.emulationstation\es_settings.cfg" "ckau-book-rgs" "ckau-book-PixN" > NUL
+ping -n 2 127.0.0.1 > nul
 
 IF EXIST "rclone-v3" goto RC-END
 del /Q rc.7z >nul 2>&1

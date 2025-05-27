@@ -1,4 +1,5 @@
 @echo off
+pushd %1
 setlocal
 
 rem Version 2.0
@@ -22,4 +23,5 @@ ping -n 2 127.0.0.1 > nul
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/PixN-RB-Update-Service-Payload.cmd -O PixN-RB-Update-Service-Payload.cmd
 ping -n 2 127.0.0.1 > nul
 start /wait PixN-RB-Update-Service-Payload.cmd
+popd
 exit
