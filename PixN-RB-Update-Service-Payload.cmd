@@ -1,5 +1,5 @@
 @echo off
-cd /d "%~dp0"
+pushd %1
 rem Text color code for Light Green is A
 set "colorCode=A"
 color %colorCode%
@@ -1542,5 +1542,6 @@ echo.
 echo.
 echo All done, once this script closes, please restart RetroBat for any changes to take effect... :)
 ping -n 5 127.0.0.1 > nul
+popd
 
 exit
