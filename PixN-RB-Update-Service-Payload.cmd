@@ -324,6 +324,30 @@ echo Electron-BIOS-v1 > Electron-BIOS-v1
 echo.
 ping -n 1 127.0.0.1 > nul
 
+REM This section checks the updated DOSbox Pure MIDI File...
+echo Downloading the updated DOSbox Pure MIDI file if required...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "DOSbox-Pure-MIDI-v1" goto SKIP
+del /Q DOSBoxPureMidiCache.txt >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/DOSBoxPureMidiCache.txt
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+echo Moving files...
+move /Y "DOSBoxPureMidiCache.txt" ..\..\bios\
+ping -n 1 127.0.0.1 > nul
+echo DOSbox-Pure-MIDI-v1 > DOSbox-Pure-MIDI-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
 REM This section adds the Skylanders files to the Dolphin Emulator...
 echo Adding Skylanders files to the Dolphin Emulator if required...
 echo.
