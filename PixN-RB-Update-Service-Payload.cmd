@@ -23,16 +23,49 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.36
+echo Version 1.37
 echo.
-ping -n 1 127.0.0.1 > nul
+ping -n 2 127.0.0.1 > nul
+cls
+
+
+REM *******************************************************************
+REM *******************************************************************
+REM **************************Warning Message**************************
+REM *******************************************************************
+REM *******************************************************************
+
+rem Text color code for Yellow is E
+set "colorCode=E"
+color %colorCode%
+
+echo.
+echo #########################################################
+echo #                                                       #
+echo #                   IMPORTANT NOTICE:                   #
+echo #      IF YOU HAVE PAID ANY FORM OF MONEY FOR THIS      #
+echo #     OR ANY OTHER TEAM PIXEL NOSTALGIA / RGS BUILD     #
+echo #                DEMAND YOUR MONEY BACK!                #
+echo #                                                       #
+echo #         THIS BUILD IS FREELEY AVAILABLE TO ALL        #
+echo #                VIA OUR DISCORD SERVER:                #
+echo #                                                       #
+echo #             https://discord.gg/xNxrAr6sGv             #
+echo #                                                       #
+echo #########################################################
+echo.
+
+ping -n 10 127.0.0.1 > nul
+rem Text color code for Light Green is A
+set "colorCode=A"
+color %colorCode%
+cls
 
 REM *******************************************************************
 REM *******************************************************************
 REM **This first section applies config that is NOT version dependent**
 REM *******************************************************************
 REM *******************************************************************
-
 
 REM This section pulls down the latest PixN Custom Collections...
 echo.
@@ -1563,7 +1596,29 @@ echo.
 :SKIP
 cls
 echo Checking for theme updates...
+
+REM *******************************************************************
+REM *******************************************************************
+REM **************************Warning Message**************************
+REM *******************************************************************
+REM *******************************************************************
+
 echo.
+echo #########################################################
+echo #                                                       #
+echo #                   REMEMBER.........                   #
+echo #      IF YOU HAVE PAID ANY FORM OF MONEY FOR THIS      #
+echo #     OR ANY OTHER TEAM PIXEL NOSTALGIA / RGS BUILD     #
+echo #                DEMAND YOUR MONEY BACK!                #
+echo #                                                       #
+echo #         THIS BUILD IS FREELEY AVAILABLE TO ALL        #
+echo #                VIA OUR DISCORD SERVER:                #
+echo #                                                       #
+echo #             https://discord.gg/xNxrAr6sGv             #
+echo #                                                       #
+echo #########################################################
+echo.
+
 ping -n 1 127.0.0.1 > nul
 echo Checking Hypermax-Plus-PixN for updates...
 echo.
