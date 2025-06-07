@@ -930,8 +930,9 @@ REM ******************************************************************
 REM ******************************************************************
 
 ping -n 1 127.0.0.1 > nul
-del /Q 3do-thumbnails-fix.7z >nul 2>&1
 IF NOT EXIST ..\..\roms\3do\media\ goto SKIP
+IF EXIST "3do-thumbnails-fix-v1" goto SKIP
+del /Q 3do-thumbnails-fix.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Game-Fixes/3do/3do-thumbnails-fix.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
@@ -945,6 +946,7 @@ echo.
 7z x 3do-thumbnails-fix.7z -aoa -p22446688 -o..\..\roms\3do\media\thumbnails\
 echo.
 del /Q 3do-thumbnails-fix.7z >nul 2>&1
+echo 3do-thumbnails-fix-v1 > 3do-thumbnails-fix-v1
 :SKIP
 
 
