@@ -1669,6 +1669,43 @@ echo.
 ping -n 1 127.0.0.1 > nul
 rclone sync PixN-Themes-SH:/update/Themes/ckau-book ..\..\emulationstation\.emulationstation\themes\ckau-book --progress
 
+REM *******************************************************************
+REM *******************************************************************
+REM **************************RetroDeck Config*************************
+REM *******************************************************************
+REM *******************************************************************
+
+IF NOT EXIST "pixnretrodeck-v7.1.txt" goto SKIP
+echo.
+echo Applying final updates...
+echo.
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck.svg
+if %ERRORLEVEL% neq 0 (
+    echo Download failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download successful...
+)
+echo .
+copy /Y pixnretrodeck.svg ..\..\emulationstation\.emulationstation\themes\Carbon-PixN\art\logos\retrobat.svg
+echo .
+copy /Y pixnretrodeck.svg ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN\_inc\logos\retrobat.svg
+echo .
+copy /Y pixnretrodeck.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\logos\retrobat.svg
+copy /Y pixnretrodeck.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\menu\logos\retrobat.svg
+copy /Y pixnretrodeck-hyper-silver.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\menu\silver\retrobat.png
+copy /Y pixnretrodeck-hyper-system.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system.png
+copy /Y pixnretrodeck-hyper-system1.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system1.png
+copy /Y pixnretrodeck-hyper-system2.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system2.png
+ping -n 1 127.0.0.1 > nul
+del /Q pixnretrodeck.svg >nul 2>&1
+del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
+del /Q pixnretrodeck-hyper-system.png >nul 2>&1
+del /Q pixnretrodeck-hyper-system1.png >nul 2>&1
+del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
+:SKIP
+
 
 :END
 echo.
