@@ -1675,18 +1675,21 @@ REM **************************RetroDeck Config*************************
 REM *******************************************************************
 REM *******************************************************************
 
-IF NOT EXIST "pixnretrodeck-v7.1.txt" goto SKIP
+IF NOT EXIST "pixnretrodeck-v7.1" goto SKIP
 echo.
 echo Applying final updates...
 echo.
+del /Q pixnretrodeck.svg >nul 2>&1
+del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
+del /Q pixnretrodeck-hyper-system.png >nul 2>&1
+del /Q pixnretrodeck-hyper-system1.png >nul 2>&1
+del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
+ping -n 1 127.0.0.1 > nul
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck.svg
-if %ERRORLEVEL% neq 0 (
-    echo Download failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download successful...
-)
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-silver.png
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system.png
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system1.png
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system2.png
 echo .
 copy /Y pixnretrodeck.svg ..\..\emulationstation\.emulationstation\themes\Carbon-PixN\art\logos\retrobat.svg
 echo .
