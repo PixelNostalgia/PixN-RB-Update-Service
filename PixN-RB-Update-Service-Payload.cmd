@@ -1675,7 +1675,7 @@ REM **************************RetroDeck Config*************************
 REM *******************************************************************
 REM *******************************************************************
 
-IF NOT EXIST "pixnretrodeck-ally-v1.0" goto SKIP
+IF NOT EXIST "pixnretrodeck-ally-v1" goto SKIP
 echo.
 echo Applying final updates...
 echo.
