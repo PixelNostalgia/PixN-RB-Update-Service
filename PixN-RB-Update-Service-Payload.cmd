@@ -1650,6 +1650,7 @@ echo Checking Hypermax-Plus-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 > nul
 rclone sync PixN-Themes-SH:/update/Themes/Hypermax-Plus-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN --exclude=/_inc/videos/** --progress
+md "..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\videos" >nul 2>&1
 
 echo.
 echo Checking Carbon-PixN for updates...
