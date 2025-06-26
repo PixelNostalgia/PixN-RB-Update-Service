@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.38
+echo Version 1.39
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1465,6 +1465,78 @@ rmdir /S /Q ".\PixN-RBv7.x-Custom-Systems"
 :SKIP
 ping -n 1 127.0.0.1 > nul
 echo.
+
+:CHECKv7.2
+>nul find "7.2." ..\..\system\version.info && (
+  echo You are running RetroBat v7.2.x
+  echo.
+  goto CONFIGUREv7.2
+) || (
+  goto THEMES
+)
+
+:CONFIGUREv7.2
+echo.
+REM Renaming game folders...
+echo Renaming Hypseus related game folders...
+echo.
+cd ..\..
+set "HypROMsPath1=%cd%\roms\daphne"
+set "HypROMsPath2=%cd%\roms\singe"
+set "HypROMsPath3=%cd%\roms\captpower"
+set "HypROMsPath4=%cd%\roms\videodriver"
+echo Searching in: %HypROMsPath1%
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Get-ChildItem -Path '%HypROMsPath1%' -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -like '*.daphne' } | ForEach-Object { $oldName = $_.Name; $newName = $oldName -replace '\.daphne$', '.hypseus'; Write-Host \"Renaming: $oldName to $newName\"; Rename-Item -Path $_.FullName -NewName $newName -Force -ErrorAction SilentlyContinue }"
+echo.
+echo Searching in: %HypROMsPath2%
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Get-ChildItem -Path '%HypROMsPath2%' -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -like '*.daphne' } | ForEach-Object { $oldName = $_.Name; $newName = $oldName -replace '\.daphne$', '.hypseus'; Write-Host \"Renaming: $oldName to $newName\"; Rename-Item -Path $_.FullName -NewName $newName -Force -ErrorAction SilentlyContinue }"
+echo.
+echo Searching in: %HypROMsPath3%
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Get-ChildItem -Path '%HypROMsPath3%' -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -like '*.daphne' } | ForEach-Object { $oldName = $_.Name; $newName = $oldName -replace '\.daphne$', '.hypseus'; Write-Host \"Renaming: $oldName to $newName\"; Rename-Item -Path $_.FullName -NewName $newName -Force -ErrorAction SilentlyContinue }"
+echo.
+echo Searching in: %HypROMsPath4%
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Get-ChildItem -Path '%HypROMsPath4%' -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -like '*.daphne' } | ForEach-Object { $oldName = $_.Name; $newName = $oldName -replace '\.daphne$', '.hypseus'; Write-Host \"Renaming: $oldName to $newName\"; Rename-Item -Path $_.FullName -NewName $newName -Force -ErrorAction SilentlyContinue }"
+echo.
+
+cd emulators\pixn
+
+REM Replacing .daphne with .hypseus in the gamelist.xml...
+echo Replacing .daphne with .hypseus in the gamelist.xml...
+echo.
+echo Const ForReading = 1 > replace.vbs
+echo Const ForWriting = 2 >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo strFileName = Wscript.Arguments(0) >> replace.vbs
+echo strOldText = Wscript.Arguments(1) >> replace.vbs
+echo strNewText = Wscript.Arguments(2) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo Set objFSO = CreateObject("Scripting.FileSystemObject") >> replace.vbs
+echo Set objFile = objFSO.OpenTextFile(strFileName, ForReading) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo strText = objFile.ReadAll >> replace.vbs
+echo objFile.Close >> replace.vbs
+echo strNewText = Replace(strText, strOldText, strNewText) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo objFile.Close >> replace.vbs
+echo Set objFile = objFSO.OpenTextFile(strFileName, ForWriting) >> replace.vbs
+echo objFile.Write strNewText >> replace.vbs
+echo objFile.Close>> replace.vbs
+
+cscript replace.vbs "..\..\roms\daphne\gamelist.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
+cscript replace.vbs "..\..\roms\daphne\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
+cscript replace.vbs "..\..\roms\singe\gamelist.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
+cscript replace.vbs "..\..\roms\singe\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
+cscript replace.vbs "..\..\roms\captpower\gamelist.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
+cscript replace.vbs "..\..\roms\captpower\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
+cscript replace.vbs "..\..\roms\videodriver\gamelist.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
+cscript replace.vbs "..\..\roms\videodriver\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
+ping -n 2 127.0.0.1 > nul
+del /Q replace.vbs >nul 2>&1
+
 goto THEMES
 
 :CONFIGUREv6
