@@ -1498,6 +1498,8 @@ echo Searching in: %HypROMsPath4%
 powershell -NoProfile -ExecutionPolicy Bypass -Command "Get-ChildItem -Path '%HypROMsPath4%' -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -like '*.daphne' } | ForEach-Object { $oldName = $_.Name; $newName = $oldName -replace '\.daphne$', '.hypseus'; Write-Host \"Renaming: $oldName to $newName\"; Rename-Item -Path $_.FullName -NewName $newName -Force -ErrorAction SilentlyContinue }"
 echo.
 
+move %cd%\roms\actionmax\actionmax %cd%\roms\actionmax\actionmax.hypseus > nul 2>&1
+
 cd emulators\pixn
 
 REM Replacing .daphne with .hypseus in the gamelist.xml...
@@ -1536,6 +1538,58 @@ cscript replace.vbs "..\..\roms\videodriver\gamelist.xml" ".daphne</path>" ".hyp
 cscript replace.vbs "..\..\roms\videodriver\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
 ping -n 2 127.0.0.1 > nul
 del /Q replace.vbs >nul 2>&1
+
+REM This section adds the new BIOS files required for RetroBat v7.2...
+echo.
+echo Adding the new BIOS files required for RetroBat v7.2
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "Dragon-BIOS-v1" goto SKIP
+del /Q dragon.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/dragon.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x dragon.7z -aoa -p22446688 -o..\..\bios\dragon\
+echo.
+ping -n 1 127.0.0.1 > nul
+del /Q dragon.7z >nul 2>&1
+echo Dragon-BIOS-v1 > Dragon-BIOS-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
+REM This section fixes TriForce Games...
+echo.
+echo Updating config for TriForce Games...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "TriForce-Config-v1" goto SKIP
+del /Q TriForce-Game-Settings.zip >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/TriForce-Game-Settings.zip
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x TriForce-Game-Settings.zip -aoa -o..\..\emulators\dolphin-triforce\User\GameSettings\
+echo.
+ping -n 1 127.0.0.1 > nul
+del /Q TriForce-Game-Settings.zip >nul 2>&1
+echo TriForce-Config-v1 > TriForce-Config-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
 
 goto THEMES
 
