@@ -47,7 +47,7 @@ echo #      IF YOU HAVE PAID ANY FORM OF MONEY FOR THIS      #
 echo #     OR ANY OTHER TEAM PIXEL NOSTALGIA / RGS BUILD     #
 echo #                DEMAND YOUR MONEY BACK!                #
 echo #                                                       #
-echo #         THIS BUILD IS FREELEY AVAILABLE TO ALL        #
+echo #         THIS BUILD IS FREELY AVAILABLE TO ALL         #
 echo #                VIA OUR DISCORD SERVER:                #
 echo #                                                       #
 echo #             https://discord.gg/xNxrAr6sGv             #
@@ -1763,7 +1763,7 @@ echo #      IF YOU HAVE PAID ANY FORM OF MONEY FOR THIS      #
 echo #     OR ANY OTHER TEAM PIXEL NOSTALGIA / RGS BUILD     #
 echo #                DEMAND YOUR MONEY BACK!                #
 echo #                                                       #
-echo #         THIS BUILD IS FREELEY AVAILABLE TO ALL        #
+echo #         THIS BUILD IS FREELY AVAILABLE TO ALL         #
 echo #                VIA OUR DISCORD SERVER:                #
 echo #                                                       #
 echo #             https://discord.gg/xNxrAr6sGv             #
