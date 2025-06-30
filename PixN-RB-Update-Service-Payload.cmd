@@ -1847,39 +1847,92 @@ REM **************************RetroDeck Config*************************
 REM *******************************************************************
 REM *******************************************************************
 
-IF NOT EXIST "pixnretrodeck-ally-v1" goto SKIP
+IF NOT EXIST "pixnretrodeck-ally-v1" goto SKIP-ALLY
 echo.
-echo Applying final updates...
+echo Applying RetroDeck Ally updates...
 echo.
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Other_Updates/Block-StartAllBack.cmd
 del /Q pixnretrodeck.svg >nul 2>&1
+del /Q pixnretrodeck-ally.svg >nul 2>&1
 del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system1.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
 ping -n 1 127.0.0.1 > nul
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck.svg
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-ally.svg
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-silver.png
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system.png
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system1.png
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system2.png
 echo .
-copy /Y pixnretrodeck.svg ..\..\emulationstation\.emulationstation\themes\Carbon-PixN\art\logos\retrobat.svg
+copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\Carbon-PixN\art\logos\retrobat.svg
+copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\Carbon-PixN\art\logos\retrobat-w.svg
 echo .
-copy /Y pixnretrodeck.svg ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN\_inc\logos\retrobat.svg
+copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN\_inc\logos\retrobat.svg
+copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN\_inc\logos\retrobat-w.svg
 echo .
-copy /Y pixnretrodeck.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\logos\retrobat.svg
-copy /Y pixnretrodeck.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\menu\logos\retrobat.svg
+copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\logos\retrobat.svg
+copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\logos\retrobat-w.svg
+copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\menu\logos\retrobat.svg
+copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\menu\logos\retrobat-w.svg
 copy /Y pixnretrodeck-hyper-silver.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\menu\silver\retrobat.png
 copy /Y pixnretrodeck-hyper-system.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system.png
 copy /Y pixnretrodeck-hyper-system1.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system1.png
 copy /Y pixnretrodeck-hyper-system2.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system2.png
 ping -n 1 127.0.0.1 > nul
 del /Q pixnretrodeck.svg >nul 2>&1
+del /Q pixnretrodeck-ally.svg >nul 2>&1
 del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system1.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
-:SKIP
+
+
+
+:SKIP-ALLY
+IF NOT EXIST "pixnretrodeck-steamdeck-v1" goto SKIP-SDLCD
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck_steamdecklcd.svg
+
+echo.
+echo Applying RetroDeck SteamDeck LCD updates...
+echo.
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Other_Updates/Block-StartAllBack.cmd
+del /Q pixnretrodeck.svg >nul 2>&1
+del /Q pixnretrodeck-steamdecklcd.svg >nul 2>&1
+del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
+del /Q pixnretrodeck-hyper-system.png >nul 2>&1
+del /Q pixnretrodeck-hyper-system1.png >nul 2>&1
+del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
+ping -n 1 127.0.0.1 > nul
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-steamdecklcd.svg
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-silver.png
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system.png
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system1.png
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system2.png
+echo .
+copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\Carbon-PixN\art\logos\retrobat.svg
+copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\Carbon-PixN\art\logos\retrobat-w.svg
+echo .
+copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN\_inc\logos\retrobat.svg
+copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN\_inc\logos\retrobat-w.svg
+echo .
+copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\logos\retrobat.svg
+copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\logos\retrobat-w.svg
+copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\menu\logos\retrobat.svg
+copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\menu\logos\retrobat-w.svg
+copy /Y pixnretrodeck-hyper-silver.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\menu\silver\retrobat.png
+copy /Y pixnretrodeck-hyper-system.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system.png
+copy /Y pixnretrodeck-hyper-system1.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system1.png
+copy /Y pixnretrodeck-hyper-system2.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system2.png
+ping -n 1 127.0.0.1 > nul
+del /Q pixnretrodeck.svg >nul 2>&1
+del /Q pixnretrodeck-steamdecklcd.svg >nul 2>&1
+del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
+del /Q pixnretrodeck-hyper-system.png >nul 2>&1
+del /Q pixnretrodeck-hyper-system1.png >nul 2>&1
+del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
+
+:SKIP-SDLCD
 
 
 :END
