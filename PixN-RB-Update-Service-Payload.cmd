@@ -1891,8 +1891,6 @@ del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
 
 :SKIP-ALLY
 IF NOT EXIST "pixnretrodeck-steamdeck-v1" goto SKIP-SDLCD
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck_steamdecklcd.svg
-
 echo.
 echo Applying RetroDeck SteamDeck LCD updates...
 echo.
