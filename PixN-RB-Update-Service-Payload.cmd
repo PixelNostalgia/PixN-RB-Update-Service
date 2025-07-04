@@ -1656,50 +1656,6 @@ goto THEMES
 :THEMES
 REM This section updates the PixN Themes...
 
-echo.
-ping -n 1 127.0.0.1 > nul
-IF EXIST "Set-PixN-Splash-v1" goto SKIP
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/PixN-Splash-1.mp4
-if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
-    %handle_error%
-	goto SKIP
-) else (
-    echo Download Completed Successfully...
-)
-ping -n 1 127.0.0.1 > nul
-echo.
-move /Y "PixN-Splash-1.mp4" ..\..\emulationstation\.emulationstation\video\
-ping -n 1 127.0.0.1 > nul
-echo Set-PixN-Splash-v1 > Set-PixN-Splash-v1
-echo.
-ping -n 1 127.0.0.1 > nul
-
-setlocal
-EM Set variable for the file path (relative to the script's location)
-set "filePath=..\..\retrobat.ini"
-REM Backup the original file
-copy "%filePath%" "%filePath%.bak" >nul 2>&1
-REM Replace or insert INI settings
-powershell -ExecutionPolicy Bypass -Command ^
-    "$path = '%filePath%';" ^
-    "$settings = @{ 'EnableIntro' = 'EnableIntro=1';" ^
-    "              'FileName' = 'FileName=\"PixN-Splash-1.mp4\"';" ^
-    "              'FilePath' = 'FilePath=\"default\"';" ^
-    "              'RandomVideo' = 'RandomVideo=0';" ^
-    "              'VideoDuration' = 'VideoDuration=7000' };" ^
-    "$lines = Get-Content $path;" ^
-    "foreach ($key in $settings.Keys) {" ^
-    "  if ($lines -match \"^$key=\") {" ^
-    "    $lines = $lines -replace \"^$key=.*\", $settings[$key]" ^
-    "  } else {" ^
-    "    $lines += $settings[$key]" ^
-    "  }" ^
-    "};" ^
-    "$lines | Set-Content $path"
-endlocal
-:SKIP
-
 set "colorCode=A"
 color %colorCode%
 cls
@@ -1841,6 +1797,53 @@ echo.
 ping -n 1 127.0.0.1 > nul
 rclone sync PixN-Themes-SH:/update/Themes/ckau-book ..\..\emulationstation\.emulationstation\themes\ckau-book --progress
 
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "Set-PixN-Splash-v1" goto SKIP
+IF EXIST "pixnretrodeck-ally-v1" goto SKIP
+IF EXIST "pixnretrodeck-steamdeck-v1" goto SKIP
+
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/PixN-Splash-1.mp4
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+move /Y "PixN-Splash-1.mp4" ..\..\emulationstation\.emulationstation\video\
+ping -n 1 127.0.0.1 > nul
+echo Set-PixN-Splash-v1 > Set-PixN-Splash-v1
+echo.
+ping -n 1 127.0.0.1 > nul
+
+setlocal
+EM Set variable for the file path (relative to the script's location)
+set "filePath=..\..\retrobat.ini"
+REM Backup the original file
+copy "%filePath%" "%filePath%.bak" >nul 2>&1
+REM Replace or insert INI settings
+powershell -ExecutionPolicy Bypass -Command ^
+    "$path = '%filePath%';" ^
+    "$settings = @{ 'EnableIntro' = 'EnableIntro=1';" ^
+    "              'FileName' = 'FileName=\"PixN-Splash-1.mp4\"';" ^
+    "              'FilePath' = 'FilePath=\"default\"';" ^
+    "              'RandomVideo' = 'RandomVideo=0';" ^
+    "              'VideoDuration' = 'VideoDuration=7000' };" ^
+    "$lines = Get-Content $path;" ^
+    "foreach ($key in $settings.Keys) {" ^
+    "  if ($lines -match \"^$key=\") {" ^
+    "    $lines = $lines -replace \"^$key=.*\", $settings[$key]" ^
+    "  } else {" ^
+    "    $lines += $settings[$key]" ^
+    "  }" ^
+    "};" ^
+    "$lines | Set-Content $path"
+endlocal
+:SKIP
+
 REM *******************************************************************
 REM *******************************************************************
 REM **************************RetroDeck Config*************************
@@ -1887,9 +1890,15 @@ del /Q pixnretrodeck-hyper-system.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system1.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
 
+echo.
+echo Updating Music...
+echo.
+ping -n 1 127.0.0.1 > nul
+rclone sync PixN-Themes-SH:/update/Music/RetroDeck ..\..\emulationstation\.emulationstation\music --progress
 
 
 :SKIP-ALLY
+
 IF NOT EXIST "pixnretrodeck-steamdeck-v1" goto SKIP-SDLCD
 echo.
 echo Applying RetroDeck SteamDeck LCD updates...
@@ -1929,6 +1938,12 @@ del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system1.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
+
+echo.
+echo Updating Music...
+echo.
+ping -n 1 127.0.0.1 > nul
+rclone sync PixN-Themes-SH:/update/Music/RetroDeck ..\..\emulationstation\.emulationstation\music --progress
 
 :SKIP-SDLCD
 
