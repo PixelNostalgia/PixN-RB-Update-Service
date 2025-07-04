@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.39
+echo Version 1.40
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1855,6 +1855,7 @@ echo.
 echo Applying RetroDeck Ally updates...
 echo.
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Other_Updates/Block-StartAllBack.cmd
+echo.
 del /Q pixnretrodeck.svg >nul 2>&1
 del /Q pixnretrodeck-ally.svg >nul 2>&1
 del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
@@ -1867,13 +1868,13 @@ wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http:/
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system.png
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system1.png
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system2.png
-echo .
+
 copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\Carbon-PixN\art\logos\retrobat.svg
 copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\Carbon-PixN\art\logos\retrobat-w.svg
-echo .
+
 copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN\_inc\logos\retrobat.svg
 copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN\_inc\logos\retrobat-w.svg
-echo .
+
 copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\logos\retrobat.svg
 copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\logos\retrobat-w.svg
 copy /Y pixnretrodeck-ally.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\menu\logos\retrobat.svg
@@ -1904,6 +1905,7 @@ echo.
 echo Applying RetroDeck SteamDeck LCD updates...
 echo.
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Other_Updates/Block-StartAllBack.cmd
+echo.
 del /Q pixnretrodeck.svg >nul 2>&1
 del /Q pixnretrodeck-steamdecklcd.svg >nul 2>&1
 del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
@@ -1916,13 +1918,13 @@ wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http:/
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system.png
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system1.png
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system2.png
-echo .
+
 copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\Carbon-PixN\art\logos\retrobat.svg
 copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\Carbon-PixN\art\logos\retrobat-w.svg
-echo .
+
 copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN\_inc\logos\retrobat.svg
 copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN\_inc\logos\retrobat-w.svg
-echo .
+
 copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\logos\retrobat.svg
 copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\logos\retrobat-w.svg
 copy /Y pixnretrodeck-steamdecklcd.svg ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\menu\logos\retrobat.svg
