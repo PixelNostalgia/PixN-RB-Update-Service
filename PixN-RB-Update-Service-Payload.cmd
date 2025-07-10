@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.40
+echo Version 1.41
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -469,6 +469,31 @@ del /Q 3d-N.7z >nul 2>&1
 rmdir /S /Q 3dsen >nul 2>&1
 
 echo 3dSen-v1 > 3dSen-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
+REM This section checks for the updated genesis_plus_gx_libretro core...
+echo Checking for the updated genesis_plus_gx_libretro.dll core...
+echo.
+ping -n 1 127.0.0.1 > nul
+
+IF EXIST "paprium-core-v1" goto SKIP
+del /Q genesis_plus_gx_libretro.dll >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/genesis_plus_gx_libretro.dll
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+echo Copying files...
+move /Y "genesis_plus_gx_libretro.dll" ..\..\emulators\retroarch\cores\
+ping -n 1 127.0.0.1 > nul
+echo paprium-core-v1 > paprium-core-v1
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
