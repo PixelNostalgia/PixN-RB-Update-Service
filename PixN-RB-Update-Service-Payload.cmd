@@ -1047,12 +1047,12 @@ del /Q ..\..\emulationstation\.emulationstation\es_systems_segalindbergh.cfg >nu
 ping -n 1 127.0.0.1 > nul
 
 REM This section renames boom3 to doom3 as required for RBv7.x...
-echo.
-echo Renaming boom3 to doom3 as required for RetroBat v7.x...
-ren ..\..\roms\doom3 doom3.old >nul 2>&1
-ren ..\..\roms\boom3 doom3 >nul 2>&1
-echo.
-ping -n 1 127.0.0.1 > nul
+REM echo.
+REM echo Renaming boom3 to doom3 as required for RetroBat v7.x...
+REM ren ..\..\roms\doom3 doom3.old >nul 2>&1
+REM ren ..\..\roms\boom3 doom3 >nul 2>&1
+REM echo.
+REM ping -n 1 127.0.0.1 > nul
 
 REM This section adds the new BIOS files required for RBv7.x...
 echo.
@@ -1824,7 +1824,7 @@ rclone sync PixN-Themes-SH:/update/Themes/ckau-book ..\..\emulationstation\.emul
 
 echo.
 ping -n 1 127.0.0.1 > nul
-IF EXIST "Set-PixN-Splash-v1" goto SKIP
+REM IF EXIST "Set-PixN-Splash-v2" goto SKIP
 IF EXIST "pixnretrodeck-ally-v1" goto SKIP
 IF EXIST "pixnretrodeck-steamdeck-v1" goto SKIP
 
@@ -1840,7 +1840,7 @@ ping -n 1 127.0.0.1 > nul
 echo.
 move /Y "PixN-Splash-1.mp4" ..\..\emulationstation\.emulationstation\video\
 ping -n 1 127.0.0.1 > nul
-echo Set-PixN-Splash-v1 > Set-PixN-Splash-v1
+echo Set-PixN-Splash-v2 > Set-PixN-Splash-v2
 echo.
 ping -n 1 127.0.0.1 > nul
 
