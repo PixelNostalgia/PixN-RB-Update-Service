@@ -1845,7 +1845,7 @@ echo.
 ping -n 1 127.0.0.1 > nul
 
 setlocal
-EM Set variable for the file path (relative to the script's location)
+REM Set variable for the file path (relative to the script's location)
 set "filePath=..\..\retrobat.ini"
 REM Backup the original file
 copy "%filePath%" "%filePath%.bak" >nul 2>&1
