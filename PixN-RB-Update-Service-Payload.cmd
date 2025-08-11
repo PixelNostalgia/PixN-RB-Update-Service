@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.41
+echo Version 1.42
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1491,16 +1491,16 @@ rmdir /S /Q ".\PixN-RBv7.x-Custom-Systems"
 ping -n 1 127.0.0.1 > nul
 echo.
 
-:CHECKv7.2
->nul find "7.2." ..\..\system\version.info && (
-  echo You are running RetroBat v7.2.x
+:CHECKv7.2+
+>nul findstr /l /c:"7.2" /c:"7.3" /c:"7.4" /c:"7.5" /c:"7.6" /c:"7.7" /c:"7.8" /c:"7.9" ..\..\system\version.info && (
+  echo You are running RetroBat v7.2 or higher...
   echo.
-  goto CONFIGUREv7.2
+  goto CONFIGUREv7.2+
 ) || (
   goto THEMES
 )
 
-:CONFIGUREv7.2
+:CONFIGUREv7.2+
 echo.
 REM Renaming game folders...
 echo Renaming Hypseus related game folders...
@@ -1564,9 +1564,9 @@ cscript replace.vbs "..\..\roms\videodriver\gamelist_ARRM.xml" ".daphne</path>" 
 ping -n 2 127.0.0.1 > nul
 del /Q replace.vbs >nul 2>&1
 
-REM This section adds the new BIOS files required for RetroBat v7.2...
+REM This section adds the new BIOS files required for RetroBat v7.2 and higher
 echo.
-echo Adding the new BIOS files required for RetroBat v7.2
+echo Adding the new BIOS files required for RetroBat v7.2 and higher...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "Dragon-BIOS-v1" goto SKIP
