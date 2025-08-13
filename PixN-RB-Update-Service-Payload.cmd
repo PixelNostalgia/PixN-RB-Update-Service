@@ -27,6 +27,9 @@ echo Version 1.43
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
+REM This section pulls down the latest PixN Clean Script...
+wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/PixN-Reset.cmd -O PixN-Reset.cmd
+cls
 
 rem Text color code for Yellow is E
 set "colorCode=E"
