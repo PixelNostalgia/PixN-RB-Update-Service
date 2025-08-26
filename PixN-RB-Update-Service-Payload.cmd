@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.44
+echo Version 1.45
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -340,6 +340,31 @@ echo.
 ping -n 1 127.0.0.1 > nul
 del /Q hotd2-bios-files.7z >nul 2>&1
 echo hotd2-bios-files-v1 > hotd2-bios-files-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
+REM This section adds the Konami LCD Artwork files...
+echo Downloading the Konami LCD Artwork files if required...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "konami-LCD-artwork-v1" goto SKIP
+del /Q Konami-LCD-Artwork.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Game_Updates/Konami-LCD-Artwork/Konami-LCD-Artwork.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x Konami-LCD-Artwork.7z -aoa -p22446688 -o..\..\saves\mame\artwork\
+echo.
+ping -n 1 127.0.0.1 > nul
+del /Q Konami-LCD-Artwork.7z >nul 2>&1
+echo konami-LCD-artwork-v1 > konami-LCD-artwork-v1
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
