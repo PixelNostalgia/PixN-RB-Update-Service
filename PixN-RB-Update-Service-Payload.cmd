@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.45
+echo Version 1.46
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1646,6 +1646,47 @@ echo Dragon-BIOS-v1 > Dragon-BIOS-v1
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
+
+ping -n 1 127.0.0.1 > nul
+IF EXIST "Astrocade-BIOS-v1" goto SKIP
+del /Q astrocde.zip >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/astrocde.zip
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+move /Y "astrocde.zip" ..\..\bios\
+ping -n 1 127.0.0.1 > nul
+echo Astrocade-BIOS-v1 > Astrocade-BIOS-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
+ping -n 1 127.0.0.1 > nul
+IF EXIST "Supracan-BIOS-v1" goto SKIP
+del /Q supracan.zip >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/supracan.zip
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+move /Y "supracan.zip" ..\..\bios\
+ping -n 1 127.0.0.1 > nul
+echo Supracan-BIOS-v1 > Supracan-BIOS-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
 
 REM This section fixes TriForce Games...
 echo.
