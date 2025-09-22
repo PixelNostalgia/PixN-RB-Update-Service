@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.46
+echo Version 1.47
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1999,6 +1999,25 @@ echo Checking Ckau-Book for updates...
 echo.
 ping -n 1 127.0.0.1 > nul
 rclone sync PixN-Themes-SH:/update/Themes/ckau-book ..\..\emulationstation\.emulationstation\themes\ckau-book --progress
+
+REM Sync latest Decorations/Bezels...
+echo.
+echo Checking for updated/missing Decorations/Bezels...
+echo.
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/decorations/mybezels16-9/default.info >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/decorations/mybezels16-9/default.png >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/decorations/mybezels16-9/neogeo.png >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/decorations/mybezels16-9/mame.png >nul 2>&1
+move /Y default.info ..\..\decorations\thebezelproject\ >nul 2>&1
+move /Y default.png ..\..\decorations\thebezelproject\ >nul 2>&1
+move /Y neogeo.png ..\..\decorations\thebezelproject\systems\ >nul 2>&1
+move /Y mame.png ..\..\decorations\thebezelproject\systems\ >nul 2>&1
+echo.
+ping -n 1 127.0.0.1 > nul
+rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/games ..\..\decorations\thebezelproject\games --progress --ignore-existing
+rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/systems ..\..\decorations\thebezelproject\systems --progress --ignore-existing
+echo.
+ping -n 1 127.0.0.1 > nul
 
 echo.
 ping -n 1 127.0.0.1 > nul
