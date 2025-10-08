@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.47
+echo Version 1.48
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1410,9 +1410,9 @@ REM This section checks for the updated Xenia Emulator...
 echo Checking for the updated Xenia Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
-IF EXIST "xenia-emu-v1" goto SKIP
-del /Q xenia_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia_feb2025.7z
+IF EXIST "xenia-emu-v2" goto SKIP
+del /Q xenia_Aug20-2025.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia_Aug20-2025.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1422,15 +1422,15 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 > nul
 echo.
-7z x xenia_feb2025.7z -aoa -p22446688 -o.\
+7z x xenia_Aug20-2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\xenia >nul 2>&1
 echo.
 echo Copying files...
 xcopy xenia ..\..\emulators\xenia\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q xenia_feb2025.7z >nul 2>&1
+del /Q xenia_Aug20-2025.7z >nul 2>&1
 rmdir /S /Q xenia >nul 2>&1
-echo xenia-emu-v1 > xenia-emu-v1
+echo xenia-emu-v2 > xenia-emu-v2
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
@@ -1439,9 +1439,9 @@ REM This section checks for the updated Xenia-Canary Emulator...
 echo Checking for the updated Xenia-Canary Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
-IF EXIST "xenia-canary-emu-v1" goto SKIP
-del /Q xenia-canary_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia-canary_feb2025.7z
+IF EXIST "xenia-canary-emu-v2" goto SKIP
+del /Q xenia-canary_Oct06-2025.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia-canary_Oct06-2025.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1451,15 +1451,15 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 > nul
 echo.
-7z x xenia-canary_feb2025.7z -aoa -p22446688 -o.\
+7z x xenia-canary_Oct06-2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\xenia-canary >nul 2>&1
 echo.
 echo Copying files...
 xcopy xenia-canary ..\..\emulators\xenia-canary\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q xenia-canary_feb2025.7z >nul 2>&1
+del /Q xenia-canary_Oct06-2025.7z >nul 2>&1
 rmdir /S /Q xenia-canary >nul 2>&1
-echo xenia-canary-emu-v1 > xenia-canary-emu-v1
+echo xenia-canary-emu-v2 > xenia-canary-emu-v2
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
