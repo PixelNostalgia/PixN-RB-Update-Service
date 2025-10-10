@@ -1626,7 +1626,7 @@ echo.
 echo Adding the new BIOS files required for RetroBat v7.2 and higher...
 echo.
 ping -n 1 127.0.0.1 > nul
-IF EXIST "Dragon-BIOS-v1" goto SKIP
+IF EXIST "Dragon-BIOS-v2" goto SKIP
 del /Q dragon.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/dragon.7z
 if %ERRORLEVEL% neq 0 (
@@ -1642,7 +1642,7 @@ echo.
 echo.
 ping -n 1 127.0.0.1 > nul
 del /Q dragon.7z >nul 2>&1
-echo Dragon-BIOS-v1 > Dragon-BIOS-v1
+echo Dragon-BIOS-v2 > Dragon-BIOS-v2
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
