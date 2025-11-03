@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.48
+echo Version 1.49
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1730,7 +1730,7 @@ REM ****************************************************************************
 REM *******************************************************************************************************************************************************************************************
 REM *******************************************************************************************************************************************************************************************
 
-REM This section adds the new BIOS files required for RetroBat v7.3 and higher
+REM This section adds the new files/config required for RetroBat v7.3 and higher
 echo.
 echo Adding the new BIOS files required for RetroBat v7.3 and higher...
 echo.
@@ -1787,6 +1787,50 @@ echo rb-7.3+emulators_11-08-2025 > rb-7.3+emulators_11-08-2025
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
+
+:CHECKv7.5+
+>nul findstr /l /c:"7.5" /c:"7.6" /c:"7.7" /c:"7.8" /c:"7.9" ..\..\system\version.info && (
+  echo You are running RetroBat v7.5 or higher...
+  echo.
+  goto CONFIGUREv7.5+
+) || (
+  goto THEMES
+)
+
+:CONFIGUREv7.5+
+REM *******************************************************************************************************************************************************************************************
+REM *******************************************************************************************************************************************************************************************
+REM *********************************************************************************** Configure RB v7.5+ ************************************************************************************
+REM *******************************************************************************************************************************************************************************************
+REM *******************************************************************************************************************************************************************************************
+
+REM This section adds the new files/config required for RetroBat v7.5 and higher
+
+echo.
+echo Adding the new BIOS files required for RetroBat v7.5 and higher...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "supracan-umc6650-v1" goto SKIP
+del /Q supracan-umc6650-v1.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/supracan-umc6650-v1.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x supracan-umc6650-v1.7z -aoa -p22446688 -o..\..\bios\
+echo.
+ping -n 1 127.0.0.1 > nul
+del /Q supracan-umc6650-v1.7z >nul 2>&1
+echo supracan-umc6650-v1 > supracan-umc6650-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
 
 goto THEMES
 
