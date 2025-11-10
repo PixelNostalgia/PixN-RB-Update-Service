@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.49
+echo Version 1.50
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -743,9 +743,6 @@ REM cd /d "%~dp0"
 REM Set variable for the file path (relative to the script's location)
 set "filePath=..\..\emulationstation\.emulationstation\es_settings.cfg"
 
-REM Backup the original file
-copy "%filePath%" "%filePath%.bak" >nul 2>&1
-
 REM Execute PowerShell command in Bypass mode
 powershell -ExecutionPolicy Bypass -Command ^
     "if (!(Select-String -Path '%filePath%' -Pattern '<string name=\"dos.core\"')) { " ^
@@ -772,9 +769,6 @@ REM cd /d "%~dp0"
 REM Set variable for the file path (relative to the script's location)
 set "filePath=..\..\emulationstation\.emulationstation\es_settings.cfg"
 
-REM Backup the original file
-copy "%filePath%" "%filePath%.bak" >nul 2>&1
-
 REM Execute PowerShell command in Bypass mode
 powershell -ExecutionPolicy Bypass -Command ^
     "if (!(Select-String -Path '%filePath%' -Pattern '<string name=\"dos.dosbox_pure_conf\"')) { " ^
@@ -783,6 +777,59 @@ powershell -ExecutionPolicy Bypass -Command ^
     "$insertIndex = [Array]::IndexOf($content, '</config>'); " ^
     "if ($insertIndex -eq -1) { throw 'Closing </config> tag not found' } " ^
     "$content = $content[0..($insertIndex-1)] + '    <string name=\"dos.dosbox_pure_conf\" value=\"inside\" />' + $content[$insertIndex..($content.Length-1)]; " ^
+    "$content | Set-Content '%filePath%'; " ^
+    "} catch { " ^
+    "Write-Host 'Error occurred: ' $_.Exception.Message; " ^
+    "exit 1; " ^
+    "}; " ^
+    "}"
+
+endlocal
+
+REM This section sets the correct Vectrex Bezels...
+setlocal
+
+REM Set the working directory to the script's location
+REM cd /d "%~dp0"
+
+REM Set variable for the file path (relative to the script's location)
+set "filePath=..\..\emulationstation\.emulationstation\es_settings.cfg"
+
+REM Execute PowerShell command in Bypass mode
+powershell -ExecutionPolicy Bypass -Command ^
+    "if (!(Select-String -Path '%filePath%' -Pattern '<string name=\"vectrex.bezel\"')) { " ^
+    "try { " ^
+    "$content = Get-Content '%filePath%'; " ^
+    "$insertIndex = [Array]::IndexOf($content, '</config>'); " ^
+    "if ($insertIndex -eq -1) { throw 'Closing </config> tag not found' } " ^
+    "$content = $content[0..($insertIndex-1)] + '    <string name=\"vectrex.bezel\" value=\"thebezelproject\" />' + $content[$insertIndex..($content.Length-1)]; " ^
+    "$content | Set-Content '%filePath%'; " ^
+    "} catch { " ^
+    "Write-Host 'Error occurred: ' $_.Exception.Message; " ^
+    "exit 1; " ^
+    "}; " ^
+    "}"
+
+endlocal
+echo.
+
+REM This section sets the correct Vectrex Shader...
+setlocal
+
+REM Set the working directory to the script's location
+REM cd /d "%~dp0"
+
+REM Set variable for the file path (relative to the script's location)
+set "filePath=..\..\emulationstation\.emulationstation\es_settings.cfg"
+
+REM Execute PowerShell command in Bypass mode
+powershell -ExecutionPolicy Bypass -Command ^
+    "if (!(Select-String -Path '%filePath%' -Pattern '<string name=\"vectrex.shaderset\"')) { " ^
+    "try { " ^
+    "$content = Get-Content '%filePath%'; " ^
+    "$insertIndex = [Array]::IndexOf($content, '</config>'); " ^
+    "if ($insertIndex -eq -1) { throw 'Closing </config> tag not found' } " ^
+    "$content = $content[0..($insertIndex-1)] + '    <string name=\"vectrex.shaderset\" value=\"flatten-glow\" />' + $content[$insertIndex..($content.Length-1)]; " ^
     "$content | Set-Content '%filePath%'; " ^
     "} catch { " ^
     "Write-Host 'Error occurred: ' $_.Exception.Message; " ^
