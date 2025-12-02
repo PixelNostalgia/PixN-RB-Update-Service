@@ -1663,10 +1663,10 @@ echo Set objFile = objFSO.OpenTextFile(strFileName, ForWriting) >> replace.vbs
 echo objFile.Write strNewText >> replace.vbs
 echo objFile.Close>> replace.vbs
 
+REM cscript replace.vbs "..\..\roms\singe\gamelist.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
+REM cscript replace.vbs "..\..\roms\singe\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
 cscript replace.vbs "..\..\roms\daphne\gamelist.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
 cscript replace.vbs "..\..\roms\daphne\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
-cscript replace.vbs "..\..\roms\singe\gamelist.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
-cscript replace.vbs "..\..\roms\singe\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
 cscript replace.vbs "..\..\roms\captpower\gamelist.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
 cscript replace.vbs "..\..\roms\captpower\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
 cscript replace.vbs "..\..\roms\videodriver\gamelist.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
