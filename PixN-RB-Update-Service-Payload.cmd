@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.50
+echo Version 1.51
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1884,6 +1884,31 @@ echo supracan-umc6650-v1 > supracan-umc6650-v1
 echo.
 ping -n 1 127.0.0.1 > nul
 
+REM This section checks for the updated Switch Emulators...
+echo Checking for the updated Switch Emulators: Eden - Citron - Ryujinx
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "Switch-v2" goto SKIP
+del /Q switch_dec2025.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/switch_dec2025.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x switch_dec2025.7z -aoa -p22446688 -o..\..\
+echo.
+ping -n 1 127.0.0.1 > nul
+del /Q switch_dec2025.7z >nul 2>&1
+
+echo Switch-v2 > Switch-v2
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
 
 goto THEMES
 
