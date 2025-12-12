@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.51
+echo Version 1.52
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1806,7 +1806,6 @@ ping -n 1 127.0.0.1 > nul
 del /Q rb-7.3+bios_11-08-2025.7z >nul 2>&1
 echo rb-7.3+bios_11-08-2025 > rb-7.3+bios_11-08-2025
 :SKIP
-echo.
 ping -n 1 127.0.0.1 > nul
 
 REM This section adds the new Emulators required for RetroBat v7.3 and higher
@@ -1888,7 +1887,7 @@ REM This section checks for the updated Switch Emulators...
 echo Checking for the updated Switch Emulators: Eden - Citron - Ryujinx
 echo.
 ping -n 1 127.0.0.1 > nul
-IF EXIST "Switch-v2" goto SKIP
+IF EXIST "Switch-v2" goto SW-FW
 del /Q switch_dec2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/switch_dec2025.7z
 if %ERRORLEVEL% neq 0 (
@@ -1904,8 +1903,21 @@ echo.
 echo.
 ping -n 1 127.0.0.1 > nul
 del /Q switch_dec2025.7z >nul 2>&1
-
 echo Switch-v2 > Switch-v2
+echo.
+
+:SW-FW
+REM This section checks for the updated Switch Firmware...
+echo Checking for updated Switch Firmware
+echo.
+ping -n 2 127.0.0.1 > nul
+rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/citron/Firmware ..\..\emulators\citron\user\nand\system\Contents\registered --progress
+echo.
+rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/eden/Firmware ..\..\emulators\eden\user\nand\system\Contents\registered --progress
+echo.
+rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/ryujinx/Firmware ..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered --progress
+ping -n 1 127.0.0.1 > nul
+
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
