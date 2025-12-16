@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.52
+echo Version 1.53
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1915,7 +1915,23 @@ rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/citron/Firm
 echo.
 rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/eden/Firmware ..\..\emulators\eden\user\nand\system\Contents\registered --progress
 echo.
-rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/ryujinx/Firmware ..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered --progress
+REM rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/ryujinx/Firmware ..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered --progress
+ping -n 1 127.0.0.1 > nul
+del /Q switch_ryujinx_v21.0.0.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/switch_ryujinx_v21.0.0.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x switch_ryujinx_v21.0.0.7z -aoa -p22446688 -o..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered\
+echo.
+ping -n 1 127.0.0.1 > nul
+del /Q switch_ryujinx_v21.0.0.7z >nul 2>&1
 ping -n 1 127.0.0.1 > nul
 
 :SKIP
