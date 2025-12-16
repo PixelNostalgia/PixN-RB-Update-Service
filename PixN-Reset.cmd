@@ -8,7 +8,9 @@ echo This will make the PixN Update Service apply ALL updates on the next run...
 echo.
 echo Are you sure.....?
 echo.
-pause
+pause >nul 2>&1
+echo Press 'Y' to continue or ctrl-c to exit.....
+echo.
 echo.
 echo Clearing status files...
 echo.
