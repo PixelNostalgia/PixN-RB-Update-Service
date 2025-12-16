@@ -1933,6 +1933,8 @@ echo.
 ping -n 1 127.0.0.1 > nul
 del /Q switch_ryujinx_v21.0.0.7z >nul 2>&1
 ping -n 1 127.0.0.1 > nul
+rmdir /Q ..\..\saves\switch\ryujinx\portable\Firmware.19.0.1 >nul 2>&1
+ping -n 1 127.0.0.1 > nul
 
 :SKIP
 echo.
