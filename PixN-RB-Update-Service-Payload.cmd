@@ -1905,6 +1905,7 @@ ping -n 1 127.0.0.1 > nul
 del /Q switch_dec2025.7z >nul 2>&1
 echo Switch-v2 > Switch-v2
 echo.
+echo.
 
 :SW-FW
 REM This section checks for the updated Switch Firmware...
