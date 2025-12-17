@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.53
+echo Version 1.54
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1911,14 +1911,21 @@ REM This section checks for the updated Switch Firmware...
 echo Checking for updated Switch Firmware
 echo.
 ping -n 2 127.0.0.1 > nul
-rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/citron/Firmware ..\..\emulators\citron\user\nand\system\Contents\registered --progress
+rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\citron\user\nand\system\Contents\registered --progress
 echo.
-rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/eden/Firmware ..\..\emulators\eden\user\nand\system\Contents\registered --progress
+rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\eden\user\nand\system\Contents\registered --progress
 echo.
-REM rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/ryujinx/Firmware ..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered --progress
+rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\sudachi\user\nand\system\Contents\registered --progress
+echo.
+rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\suyu\user\nand\system\Contents\registered --progress
+echo.
+rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\yuzu\user\nand\system\Contents\registered --progress
+echo.
 ping -n 1 127.0.0.1 > nul
-del /Q switch_ryujinx_v21.0.0.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/switch_ryujinx_v21.0.0.7z
+
+REM This section checks for the updated Switch Keys...
+del /Q switch_keys_v21.0.0.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/switch_keys_v21.0.0.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1928,10 +1935,39 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 > nul
 echo.
-7z x switch_ryujinx_v21.0.0.7z -aoa -p22446688 -o..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered\
+7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\citron\user\keys\
+7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\eden\user\keys\
+7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\sudachi\user\keys\
+7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\suyu\user\keys\
+7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\yuzu\user\keys\
+7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\saves\switch\ryujinx\portable\system\
 echo.
 ping -n 1 127.0.0.1 > nul
-del /Q switch_ryujinx_v21.0.0.7z >nul 2>&1
+del /Q switch_keys_v21.0.0.7z >nul 2>&1
+ping -n 1 127.0.0.1 > nul
+
+:SKIP
+REM This section updates Firmware for Ryujinx...
+del /Q switch_fw_v21.0.0.7z >nul 2>&1
+ping -n 1 127.0.0.1 > nul
+rmdir /S /Q ..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered >nul 2>&1
+ping -n 1 127.0.0.1 > nul
+mkdir ..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered >nul 2>&1
+ping -n 1 127.0.0.1 > nul
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/switch_fw_v21.0.0.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x switch_fw_v21.0.0.7z -aoa -p22446688 -o..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered\
+echo.
+ping -n 1 127.0.0.1 > nul
+del /Q switch_fw_v21.0.0.7z >nul 2>&1
 ping -n 1 127.0.0.1 > nul
 rmdir /S /Q ..\..\saves\switch\ryujinx\portable\Firmware.19.0.1 >nul 2>&1
 ping -n 1 127.0.0.1 > nul
