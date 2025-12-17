@@ -1914,13 +1914,13 @@ echo.
 ping -n 2 127.0.0.1 > nul
 rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\citron\user\nand\system\Contents\registered --progress
 echo.
-rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\eden\user\nand\system\Contents\registered --progress
+rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\eden\user\nand\system\Contents\registered --progress
 echo.
-rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\sudachi\user\nand\system\Contents\registered --progress
+rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\sudachi\user\nand\system\Contents\registered --progress
 echo.
-rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\suyu\user\nand\system\Contents\registered --progress
+rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\suyu\user\nand\system\Contents\registered --progress
 echo.
-rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\yuzu\user\nand\system\Contents\registered --progress
+rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\yuzu\user\nand\system\Contents\registered --progress
 echo.
 ping -n 1 127.0.0.1 > nul
 
