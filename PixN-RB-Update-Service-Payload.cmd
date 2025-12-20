@@ -1949,6 +1949,7 @@ ping -n 1 127.0.0.1 > nul
 
 :SKIP
 REM This section updates Firmware for Ryujinx...
+IF EXIST "Ryujinx-FW-v21.0.0" goto SKIP
 del /Q switch_fw_v21.0.0.7z >nul 2>&1
 ping -n 1 127.0.0.1 > nul
 rmdir /S /Q ..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered >nul 2>&1
@@ -1969,15 +1970,15 @@ echo.
 echo.
 ping -n 1 127.0.0.1 > nul
 del /Q switch_fw_v21.0.0.7z >nul 2>&1
+echo Ryujinx-FW-v21.0.0 > Ryujinx-FW-v21.0.0
 ping -n 1 127.0.0.1 > nul
 
+:SKIP
 REM This section cleans up old folders and firmware etc...
 rmdir /S /Q ..\..\emulators\citron\fw_prodkey >nul 2>&1
 rmdir /S /Q ..\..\emulators\suyu\user\Firmware.19.0.1 >nul 2>&1
 rmdir /S /Q ..\..\saves\switch\ryujinx\portable\Firmware.19.0.1 >nul 2>&1
 ping -n 1 127.0.0.1 > nul
-
-:SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
 
