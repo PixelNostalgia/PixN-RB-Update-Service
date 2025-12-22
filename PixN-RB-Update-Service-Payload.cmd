@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.54
+echo Version 1.55
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1434,9 +1434,9 @@ REM This section checks for the updated ShadPS4 Emulator...
 echo Checking for the updated ShadPS4 Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
-IF EXIST "shadps4-emu-v1" goto SKIP
-del /Q shadps4_feb2025.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/shadps4_feb2025.7z
+IF EXIST "shadps4-emu-v2" goto SKIP
+del /Q shadps4_dec2025.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/shadps4_dec2025.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1446,15 +1446,15 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 > nul
 echo.
-7z x shadps4_feb2025.7z -aoa -p22446688 -o.\
+7z x shadps4_dec2025.7z -aoa -p22446688 -o.\
 md ..\..\emulators\shadps4 >nul 2>&1
 echo.
 echo Copying files...
 xcopy shadps4 ..\..\emulators\shadps4\ /S /E /I /Q /H /Y /R
 ping -n 1 127.0.0.1 > nul
-del /Q shadps4_feb2025.7z >nul 2>&1
+del /Q shadps4_dec2025.7z >nul 2>&1
 rmdir /S /Q shadps4 >nul 2>&1
-echo shadps4-emu-v1 > shadps4-emu-v1
+echo shadps4-emu-v2 > shadps4-emu-v2
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
