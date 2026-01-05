@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.55
+echo Version 1.56
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -549,6 +549,10 @@ echo Checking for the updated TeknoParrot Emulator...
 echo.
 ping -n 1 127.0.0.1 > nul
 IF EXIST "TeknoParrot-v3" goto SKIP
+REM Backup TecknoParrot data...
+7z a "..\..\emulators\teknoparrot\UserProfiles-PixN-Backup.zip" "..\..\emulators\teknoparrot\UserProfiles\"
+7z a "..\..\emulators\teknoparrot\GameProfiles-PixN-Backup.zip" "..\..\emulators\teknoparrot\GameProfiles\"
+ping -n 1 127.0.0.1 > nul
 del /Q teknoparrot_jan2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/teknoparrot_jan2025.7z
 if %ERRORLEVEL% neq 0 (
@@ -1836,6 +1840,40 @@ echo.
 ping -n 1 127.0.0.1 > nul
 del /Q rb-7.3+emulators_11-08-2025.7z >nul 2>&1
 echo rb-7.3+emulators_11-08-2025 > rb-7.3+emulators_11-08-2025
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
+REM This section checks for the updated TeknoParrot Emulator...
+echo Checking for the updated TeknoParrot Emulator...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "TeknoParrot-v4" goto SKIP
+REM Backup TecknoParrot data...
+7z a "..\..\emulators\teknoparrot\UserProfiles-PixN-Backup.zip" "..\..\emulators\teknoparrot\UserProfiles\"
+7z a "..\..\emulators\teknoparrot\GameProfiles-PixN-Backup.zip" "..\..\emulators\teknoparrot\GameProfiles\"
+ping -n 1 127.0.0.1 > nul
+del /Q teknoparrot_jan2026.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/teknoparrot_jan2026.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x teknoparrot_jan2026.7z -aoa -p22446688 -o.\
+md ..\..\emulators\teknoparrot >nul 2>&1
+echo.
+echo Copying files...
+xcopy teknoparrot ..\..\emulators\teknoparrot\ /S /E /I /Q /H /Y /R
+ping -n 1 127.0.0.1 > nul
+del /Q teknoparrot_jan2026.7z >nul 2>&1
+rmdir /S /Q teknoparrot >nul 2>&1
+
+echo TeknoParrot-v4 > TeknoParrot-v4
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
