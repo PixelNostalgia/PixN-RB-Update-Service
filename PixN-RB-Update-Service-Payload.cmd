@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.56
+echo Version 1.57
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1051,31 +1051,37 @@ REM ************************************************************************* Th
 REM *******************************************************************************************************************************************************************************************
 REM *******************************************************************************************************************************************************************************************
 
+CLS
+REM This section removes old files that are not needed for the IGT Slots ROMpack...
 ping -n 1 127.0.0.1 > nul
 ren ..\..\roms\igtslots\fruitmach.pc\_Emu_Clean_\autorun.cmd autorun.old >nul 2>&1
 ren ..\..\roms\igtslots\fruitmach.pc\autorun.cmd autorun.old >nul 2>&1
 ping -n 1 127.0.0.1 > nul
 echo .
 
-REM ping -n 1 127.0.0.1 > nul
-REM IF NOT EXIST ..\..\roms\3do\media\ goto SKIP
-REM IF EXIST "3do-thumbnails-fix-v1" goto SKIP
-REM del /Q 3do-thumbnails-fix.7z >nul 2>&1
-REM wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Game-Fixes/3do/3do-thumbnails-fix.7z
-REM if %ERRORLEVEL% neq 0 (
-REM     echo Download Failed! - Skipping...
-REM     %handle_error%
-REM 	goto SKIP
-REM ) else (
-REM     echo Download Completed Successfully...
-REM )
-REM ping -n 1 127.0.0.1 > nul
-REM echo.
-REM 7z x 3do-thumbnails-fix.7z -aoa -p22446688 -o..\..\roms\3do\media\thumbnails\
-REM echo.
-REM del /Q 3do-thumbnails-fix.7z >nul 2>&1
-REM echo 3do-thumbnails-fix-v1 > 3do-thumbnails-fix-v1
-REM :SKIP
+REM This section removes old EPIC and Steam shortcuts...
+echo Removing old EPIC and Steam shortcuts...
+echo.
+ping -n 2 127.0.0.1 > nul
+REM IF EXIST "epic-steam-check-v1" goto GOTPS
+wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Remove-Epic-Steam-Shortcuts.ps1 -O Remove-Epic-Steam-Shortcuts.ps1
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo.
+	echo Download Completed Successfully...
+	echo.
+)
+REM echo epic-steam-check-v1 > epic-steam-check-v1
+:GOTPS
+ping -n 1 127.0.0.1 > nul
+powershell -ExecutionPolicy Bypass -File "Remove-Epic-Steam-Shortcuts.ps1"
+echo.
+ping -n 1 127.0.0.1 > nul
+:SKIP
+echo.
 
 REM *******************************************************************************************************************************************************************************************
 REM *******************************************************************************************************************************************************************************************
