@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.57
+echo Version 1.58
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -399,6 +399,30 @@ del /Q electron64.zip >nul 2>&1
 del /Q electron_plus1.zip >nul 2>&1
 del /Q electron_plus3.zip >nul 2>&1
 echo Electron-BIOS-v1 > Electron-BIOS-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
+REM This section checks the updated ECWolf File...
+echo Downloading the updated ECWolf file if required...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "ECWolf-BIOS-v1" goto SKIP
+del /Q ecwolf.pk3 >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/ecwolf.pk3
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+echo Moving files...
+move /Y "ecwolf.pk3" ..\..\bios\
+ping -n 1 127.0.0.1 > nul
+echo ECWolf-BIOS-v1 > ECWolf-BIOS-v1
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
