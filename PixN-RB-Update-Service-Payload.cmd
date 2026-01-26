@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.58
+echo Version 1.59
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -2276,6 +2276,8 @@ move /Y neogeo.png ..\..\decorations\thebezelproject\systems\ >nul 2>&1
 move /Y mame.png ..\..\decorations\thebezelproject\systems\ >nul 2>&1
 echo.
 ping -n 1 127.0.0.1 > nul
+ren ..\..\decorations\thebezelproject\default.info PixN-Bezel.info >nul 2>&1
+ren ..\..\decorations\thebezelproject\default.png PixN-Bezel.png >nul 2>&1
 rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/games ..\..\decorations\thebezelproject\games --progress --ignore-existing
 rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/systems ..\..\decorations\thebezelproject\systems --progress --ignore-existing
 echo.
