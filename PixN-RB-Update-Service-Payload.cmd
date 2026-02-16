@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.60
+echo Version 1.61
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -2287,6 +2287,15 @@ rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/systems ..\..\decora
 echo.
 ping -n 1 127.0.0.1 > nul
 
+REM Sync MAME Artwork...
+echo.
+echo Checking for updated/missing MAME Artwork...
+echo.
+rclone sync PixN-Themes-SH:/update/Batocera/bios/mame/artwork ..\..\saves\mame\artwork --progress
+echo.
+ping -n 1 127.0.0.1 > nul
+
+REM Apply the PixB Spash video...
 echo.
 ping -n 1 127.0.0.1 > nul
 REM IF EXIST "Set-PixN-Splash-v2" goto SKIP
