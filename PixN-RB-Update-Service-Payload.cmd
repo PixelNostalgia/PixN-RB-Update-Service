@@ -2261,6 +2261,7 @@ echo Checking Ckau-Book for updates...
 echo.
 ping -n 1 127.0.0.1 > nul
 rclone sync PixN-Themes-SH:/update/Themes/ckau-book ..\..\emulationstation\.emulationstation\themes\ckau-book --progress
+echo.
 
 REM Sync latest Decorations/Bezels...
 echo.
@@ -2284,7 +2285,6 @@ del /Q ..\..\decorations\thebezelproject\PixN-Bezel.info >nul 2>&1
 del /Q ..\..\decorations\thebezelproject\PixN-Bezel.png >nul 2>&1
 rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/games ..\..\decorations\thebezelproject\games --progress --ignore-existing
 rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/systems ..\..\decorations\thebezelproject\systems --progress --ignore-existing
-echo.
 ping -n 1 127.0.0.1 > nul
 
 REM Sync MAME Artwork...
