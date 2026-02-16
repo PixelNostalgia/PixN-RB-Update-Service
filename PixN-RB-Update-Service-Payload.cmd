@@ -2275,7 +2275,6 @@ REM move /Y default.info ..\..\decorations\thebezelproject\ >nul 2>&1
 REM move /Y default.png ..\..\decorations\thebezelproject\ >nul 2>&1
 move /Y neogeo.png ..\..\decorations\thebezelproject\systems\ >nul 2>&1
 move /Y mame.png ..\..\decorations\thebezelproject\systems\ >nul 2>&1
-echo.
 ping -n 1 127.0.0.1 > nul
 REM ren ..\..\decorations\thebezelproject\default.info PixN-Bezel.info >nul 2>&1
 REM ren ..\..\decorations\thebezelproject\default.png PixN-Bezel.png >nul 2>&1
@@ -2285,6 +2284,7 @@ del /Q ..\..\decorations\thebezelproject\PixN-Bezel.info >nul 2>&1
 del /Q ..\..\decorations\thebezelproject\PixN-Bezel.png >nul 2>&1
 rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/games ..\..\decorations\thebezelproject\games --progress --ignore-existing
 rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/systems ..\..\decorations\thebezelproject\systems --progress --ignore-existing
+echo.
 ping -n 1 127.0.0.1 > nul
 
 REM Sync MAME Artwork...
