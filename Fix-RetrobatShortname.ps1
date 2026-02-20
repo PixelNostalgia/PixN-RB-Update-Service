@@ -1,5 +1,5 @@
 ﻿<#
-Fix-RetrobatShortname.ps1
+Fix-RetroBat-Gamelists.ps1
 - Default target: ..\..\roms\*\gamelist.xml (relative to this script folder)
 - Removes: <sortname>...</sortname> (and <sortname />)
 - Adds flag comment: <!-- Shortname Fixed --> (safely after XML declaration)
@@ -100,20 +100,28 @@ foreach ($f in $files) {
 
         $nl = if ($text -match "`r`n") { "`r`n" } else { "`n" }
 
-        # Count sortname occurrences in original
-        $sortMatches = [regex]::Matches($text, '(?s)<sortname\b[^>]*?(?:/>|>.*?</sortname>)')
-        $sortCount   = $sortMatches.Count
+        # Count sortname occurrences in original (for logging)
+        $sortMatches = [regex]::Matches(
+            $text,
+            '<sortname\b[^>]*?(?:/>|>.*?</sortname>)',
+            [System.Text.RegularExpressions.RegexOptions]::Singleline
+        )
+        $sortCount = $sortMatches.Count
 
         $new = $text
 
-        # 1) Remove whole <sortname> lines (most common formatting)
+        # 1) Remove whole <sortname> lines (FIXED to not eat next line indentation)
+        #    Important: DO NOT use \s* here, because it can consume indentation on the next line.
+        $patLine = '^[ \t]*<sortname\b[^>]*?(?:/>|>.*?</sortname>)[ \t]*(?:\r?\n)?'
         $new = [regex]::Replace(
             $new,
-            '(?ms)^[ \t]*<sortname\b[^>]*?(?:/>|>.*?</sortname>)\s*\r?\n?',
-            ''
+            $patLine,
+            '',
+            ([System.Text.RegularExpressions.RegexOptions]::Multiline -bor
+             [System.Text.RegularExpressions.RegexOptions]::Singleline)
         )
 
-        # 2) Remove any remaining inline <sortname> blocks
+        # 2) Remove any remaining inline <sortname> blocks (rare, but safe)
         $new = [regex]::Replace(
             $new,
             '(?s)<sortname\b[^>]*?(?:/>|>.*?</sortname>)',
@@ -147,7 +155,7 @@ foreach ($f in $files) {
         }
 
         if ($new -eq $text) {
-            # This would be unusual (since we add a flag), but handle it anyway
+            # Unusual (since we add a flag), but handle it anyway
             Write-Log ("NOCHANGE        {0}" -f $f.FullName)
             continue
         }
