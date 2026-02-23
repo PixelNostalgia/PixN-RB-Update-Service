@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.61
+echo Version 1.62
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -319,13 +319,13 @@ echo Archimedes-BIOS-v1 > Archimedes-BIOS-v1
 echo.
 ping -n 1 127.0.0.1 > nul
 
-REM This section adds the HOTD2 Bios Files for Naomi...
-echo Downloading the HOTD2 BIOS files if required...
+REM This section adds BIOS Files for Naomi...
+echo Downloading Naomi BIOS files if required...
 echo.
 ping -n 1 127.0.0.1 > nul
-IF EXIST "hotd2-bios-files-v1" goto SKIP
-del /Q hotd2-bios-files.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/hotd2-bios-files.7z
+IF EXIST "naomi-bios-files-v1" goto SKIP
+del /Q naomi-bios-files.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/naomi-bios-files.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -335,11 +335,11 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 > nul
 echo.
-7z x hotd2-bios-files.7z -aoa -p22446688 -o..\..\bios\
+7z x naomi-bios-files.7z -aoa -p22446688 -o..\..\bios\
 echo.
 ping -n 1 127.0.0.1 > nul
-del /Q hotd2-bios-files.7z >nul 2>&1
-echo hotd2-bios-files-v1 > hotd2-bios-files-v1
+del /Q naomi-bios-files.7z >nul 2>&1
+echo naomi-bios-files-v1 > naomi-bios-files-v1
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
