@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 1.62
+echo Version 1.63
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -991,9 +991,10 @@ echo.
 
 REM -------------------BIOS--------------------
 ping -n 1 127.0.0.1 > nul
-IF EXIST "win98-bios-v1" goto SKIP
+IF EXIST "win98-bios-v2" goto SKIP
 del /Q Win98.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/Win98.7z
+del /Q Win98v2.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/Win98v2.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
@@ -1003,7 +1004,7 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 > nul
 echo.
-7z x Win98.7z -aoa -p22446688 -o.\
+7z x Win98v2.7z -aoa -p22446688 -o.\
 echo.
 echo Moving files...
 move /Y "cm32l_control.rom" ..\..\bios\
@@ -1019,7 +1020,7 @@ del /Q "Roland SC-55.sf2" >nul 2>&1
 del /Q "Roland SC-88.sf2" >nul 2>&1
 del /Q "Windows 98 SE.7z" >nul 2>&1
 del /Q "Windows 98 SE.img" >nul 2>&1
-del /Q Win98.7z >nul 2>&1
+del /Q Win98v2.7z >nul 2>&1
 
 REM ----------------RetroArch-------------------
 echo.
@@ -1064,7 +1065,7 @@ del /Q Win98-Decorations.7z >nul 2>&1
 rmdir /S /Q decorations >nul 2>&1
 
 REM ----------------Win98-End---------------------
-echo win98-bios-v1 > win98-bios-v1
+echo win98-bios-v2 > win98-bios-v2
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
@@ -2047,6 +2048,14 @@ rmdir /S /Q ..\..\emulators\citron\fw_prodkey >nul 2>&1
 rmdir /S /Q ..\..\emulators\suyu\user\Firmware.19.0.1 >nul 2>&1
 rmdir /S /Q ..\..\saves\switch\ryujinx\portable\Firmware.19.0.1 >nul 2>&1
 ping -n 1 127.0.0.1 > nul
+echo.
+ping -n 1 127.0.0.1 > nul
+
+REM Download MAME Samples...
+echo.
+echo Checking for missing MAME Samples...
+echo.
+rclone copy PixN-Themes-SH:/update/Batocera/bios/mame/samples ..\..\saves\mame\samples --progress --ignore-existing
 echo.
 ping -n 1 127.0.0.1 > nul
 
