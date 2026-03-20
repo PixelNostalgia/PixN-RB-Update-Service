@@ -569,7 +569,6 @@ powershell -ExecutionPolicy Bypass -Command ^
     "}"
 
 endlocal
-echo.
 
 REM This section sets the correct Vectrex Shader...
 setlocal
@@ -602,6 +601,7 @@ echo Checking Emulators as required...
 echo.
 
 REM This section adds the ffmpeg core to Retroarch...
+echo.
 echo Checking Retroarch for the ffmpeg core...
 echo.
 ping -n 1 127.0.0.1 > nul
