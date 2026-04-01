@@ -926,9 +926,12 @@ if %ERRORLEVEL% neq 0 (
 	echo.
 )
 ping -n 1 127.0.0.1 > nul
+echo Checking for incorrect shortnames, please wait...
 powershell -ExecutionPolicy Bypass -File "Fix-RetrobatShortname.ps1"
 echo.
-ping -n 1 127.0.0.1 > nul
+ping -n 2 127.0.0.1 > nul
+echo Check complete...
+
 :SKIP
 echo.
 
