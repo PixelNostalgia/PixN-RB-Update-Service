@@ -1080,6 +1080,17 @@ echo.
 
 move %cd%\roms\actionmax\actionmax %cd%\roms\actionmax\actionmax.hypseus > nul 2>&1
 
+echo.
+echo Updating ROM folder names as needed...
+echo.
+
+REM move %cd%\roms\sonicmania %cd%\roms\sonic-mania
+REM move %cd%\roms\sonic3air %cd%\roms\sonic3-air
+REM move %cd%\roms\snes-msu %cd%\roms\snes-msu1
+REM move %cd%\roms\gb-msu %cd%\roms\sgb-msu1
+REM move %cd%\roms\o2em %cd%\roms\odyssey2
+REM move %cd%\roms\casloopy %cd%\roms\loopy
+
 cd emulators\pixn
 
 REM Replacing .daphne with .hypseus in the gamelist.xml...
