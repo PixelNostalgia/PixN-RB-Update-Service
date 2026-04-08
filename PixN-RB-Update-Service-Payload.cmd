@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 8.00
+echo Version 8.01
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -697,13 +697,13 @@ REM This section checks the Switch Emulators...
 echo Checking the Switch Emulators: Eden - Citron - Ryujinx
 echo.
 ping -n 1 127.0.0.1 > nul
-IF EXIST "Switch-v2" goto SW-FW
+IF EXIST "Switch-v2" goto Switch-Eden
 del /Q switch_dec2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/switch_dec2025.7z
 if %ERRORLEVEL% neq 0 (
     echo Download Failed! - Skipping...
     %handle_error%
-	goto SKIP
+	goto Switch-Eden
 ) else (
     echo Download Completed Successfully...
 )
@@ -714,6 +714,27 @@ echo.
 ping -n 1 127.0.0.1 > nul
 del /Q switch_dec2025.7z >nul 2>&1
 echo Switch-v2 > Switch-v2
+echo.
+
+:Switch-Eden
+ping -n 1 127.0.0.1 > nul
+IF EXIST "Switch-Eden-v1" goto SW-FW
+del /Q Eden-v0.2.0-rc2-amd64-msvc-standard.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/Eden-v0.2.0-rc2-amd64-msvc-standard.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SW-FW
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x Eden-v0.2.0-rc2-amd64-msvc-standard.7z -aoa -p22446688 -o..\..\emulators\eden\
+echo.
+ping -n 1 127.0.0.1 > nul
+del /Q Eden-v0.2.0-rc2-amd64-msvc-standard.7z >nul 2>&1
+echo Switch-Eden-v1 > Switch-Eden-v1
 echo.
 
 :SW-FW
@@ -1128,7 +1149,18 @@ cscript replace.vbs "..\..\roms\captpower\gamelist_ARRM.xml" ".daphne</path>" ".
 cscript replace.vbs "..\..\roms\videodriver\gamelist.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
 cscript replace.vbs "..\..\roms\videodriver\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
 ping -n 2 127.0.0.1 > nul
+
+REM This section updates the PS3 m3u files as required...
+echo.
+echo Updating PS3 m3u files as required...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "PS3-m3u-update-v1" goto SKIP
+for %%i in (..\..\roms\ps3\*.m3u) do cscript replace.vbs "%%i" "\dev_hdd0\" "SAVESPATH\dev_hdd0\" > nul
+echo PS3-m3u-update-v1 > PS3-m3u-update-v1
+echo.
 del /Q replace.vbs >nul 2>&1
+:SKIP
 
 REM This section adds BIOS files as required...
 echo.
