@@ -23,7 +23,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 8.01
+echo Version 8.02
 echo.
 ping -n 2 127.0.0.1 > nul
 cls
@@ -1172,6 +1172,37 @@ ping -n 1 127.0.0.1 > nul
 rclone copy PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/bios ..\..\bios --progress --ignore-existing
 echo.
 ping -n 1 127.0.0.1 > nul
+
+REM This section downloads addidtional BIOS files for the Dolphin Emulator...
+echo Checking addidtional BIOS files for the Dolphin Emulator...
+echo.
+ping -n 1 127.0.0.1 > nul
+IF EXIST "dolphin-bios-v1" goto SKIP
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/Dolphin-Extra-Bios.7z
+if %ERRORLEVEL% neq 0 (
+    echo Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 > nul
+echo.
+7z x Dolphin-Extra-Bios.7z -aoa -p22446688 -o.\
+echo Copying files...
+echo.
+xcopy Dolphin-Extra-Bios\emulators\dolphin-emu\User ..\..\emulators\dolphin-emu\User\ /s /y /d
+xcopy Dolphin-Extra-Bios\saves\dolphin ..\..\saves\dolphin\ /s /y /d
+echo.
+ping -n 2 127.0.0.1 > nul
+rmdir /S /Q "Dolphin-Extra-Bios"
+del /Q Dolphin-Extra-Bios.7z >nul 2>&1
+ping -n 1 127.0.0.1 > nul
+echo dolphin-bios-v1 > dolphin-bios-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 > nul
+
 
 :CHECKv8.1+
 >nul findstr /l /c:"8.1" /c:"8.2" /c:"8.3" /c:"8.4" /c:"8.5" /c:"8.6" /c:"8.7" /c:"8.8" /c:"8.9" ..\..\system\version.info && (
