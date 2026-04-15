@@ -1159,6 +1159,9 @@ IF EXIST "PS3-m3u-update-v1" goto SKIP
 REM Backup files...
 7z a "..\..\emulators\pixn\PS3-M3U-PixN-Backup.zip" "..\..\roms\ps3\*.m3u"
 for %%i in (..\..\roms\ps3\*.m3u) do cscript replace.vbs "%%i" "\dev_hdd0\" "SAVESPATH\dev_hdd0\" > nul
+for %%i in (..\..\roms\ps3\*.m3u) do cscript replace.vbs "%%i" "SAVESPATHSAVESPATH\" "SAVESPATH\" > nul
+for %%i in (..\..\roms\ps3\*.m3u) do cscript replace.vbs "%%i" "SAVESPATHSAVESPATHSAVESPATH\" "SAVESPATH\" > nul
+SAVESPATHSAVESPATH\
 echo PS3-m3u-update-v1 > PS3-m3u-update-v1
 echo.
 del /Q replace.vbs >nul 2>&1
