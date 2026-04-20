@@ -492,6 +492,32 @@ powershell -ExecutionPolicy Bypass -Command ^
 
 endlocal
 
+REM This section set list transition to instant...
+setlocal
+
+REM Set the working directory to the script's location
+REM cd /d "%~dp0"
+
+REM Set variable for the file path (relative to the script's location)
+set "filePath=..\..\emulationstation\.emulationstation\es_settings.cfg"
+
+REM Execute PowerShell command in Bypass mode
+powershell -ExecutionPolicy Bypass -Command ^
+    "if (!(Select-String -Path '%filePath%' -Pattern '<string name=\"TransitionStyle\"')) { " ^
+    "try { " ^
+    "$content = Get-Content '%filePath%'; " ^
+    "$insertIndex = [Array]::IndexOf($content, '</config>'); " ^
+    "if ($insertIndex -eq -1) { throw 'Closing </config> tag not found' } " ^
+    "$content = $content[0..($insertIndex-1)] + '    <string name=\"TransitionStyle\" value=\"instant\" />' + $content[$insertIndex..($content.Length-1)]; " ^
+    "$content | Set-Content '%filePath%'; " ^
+    "} catch { " ^
+    "Write-Host 'Error occurred: ' $_.Exception.Message; " ^
+    "exit 1; " ^
+    "}; " ^
+    "}"
+
+endlocal
+
 REM This section sets DOSBox Pure settings (1of2)...
 setlocal
 
