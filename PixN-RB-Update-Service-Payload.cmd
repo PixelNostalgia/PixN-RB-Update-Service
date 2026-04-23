@@ -492,28 +492,27 @@ powershell -ExecutionPolicy Bypass -Command ^
 
 endlocal
 
-REM This section set list transition to instant...
+REM This section forces TransitionStyle to instant to improve the visuals for the HyperMax Theme...
 setlocal
-
-REM Set the working directory to the script's location
-REM cd /d "%~dp0"
 
 REM Set variable for the file path (relative to the script's location)
 set "filePath=..\..\emulationstation\.emulationstation\es_settings.cfg"
 
-REM Execute PowerShell command in Bypass mode
-powershell -ExecutionPolicy Bypass -Command ^
-    "if (!(Select-String -Path '%filePath%' -Pattern '<string name=\"TransitionStyle\"')) { " ^
+REM Execute Windows PowerShell in Bypass mode
+powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command ^
+    "$path = '%filePath%'; " ^
     "try { " ^
-    "$content = Get-Content '%filePath%'; " ^
-    "$insertIndex = [Array]::IndexOf($content, '</config>'); " ^
-    "if ($insertIndex -eq -1) { throw 'Closing </config> tag not found' } " ^
-    "$content = $content[0..($insertIndex-1)] + '    <string name=\"TransitionStyle\" value=\"instant\" />' + $content[$insertIndex..($content.Length-1)]; " ^
-    "$content | Set-Content '%filePath%'; " ^
+    "    [xml]$xml = Get-Content -LiteralPath $path; " ^
+    "    if ($xml.config -eq $null) { throw 'Root <config> node not found' } " ^
+    "    @($xml.config.string | Where-Object { $_.name -eq 'TransitionStyle' }) | ForEach-Object { [void]$xml.config.RemoveChild($_) }; " ^
+    "    $newNode = $xml.CreateElement('string'); " ^
+    "    [void]$newNode.SetAttribute('name','TransitionStyle'); " ^
+    "    [void]$newNode.SetAttribute('value','instant'); " ^
+    "    [void]$xml.config.AppendChild($newNode); " ^
+    "    $xml.Save($path); " ^
     "} catch { " ^
-    "Write-Host 'Error occurred: ' $_.Exception.Message; " ^
-    "exit 1; " ^
-    "}; " ^
+    "    Write-Host 'Error occurred:' $_.Exception.Message; " ^
+    "    exit 1; " ^
     "}"
 
 endlocal
