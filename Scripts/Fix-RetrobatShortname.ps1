@@ -5,7 +5,7 @@ Fix-RetroBat-Gamelists.ps1
 - Adds flag comment: <!-- Shortname Fixed --> (safely after XML declaration)
 - Skips files already flagged
 - ALWAYS makes a timestamped backup if changes are made
-- Logs actions to: .\logs\Fix-Gamelists_yyyyMMdd_HHmmss.log
+- Logs actions to: .\Logs\Fix-Gamelists_yyyyMMdd_HHmmss.log
 - Supports: -WhatIf
 #>
 
@@ -40,17 +40,17 @@ $baseDir = if ($PSScriptRoot -and (Test-Path $PSScriptRoot)) { $PSScriptRoot } e
 
 # --- Determine RetroBat roms root ---
 if (-not $RomsRoot -or [string]::IsNullOrWhiteSpace($RomsRoot)) {
-    # Running from ...\RetroBat\emulators\pixn  =>  roms is ..\..\roms
-    $RomsRoot = Join-Path $baseDir "..\..\roms"
+    # Running from ...\RetroBat\emulators\pixn\Scripts  =>  roms is ..\..\..\roms
+    $RomsRoot = Join-Path $baseDir "..\..\..\roms"
 }
 try {
     $RomsRoot = (Resolve-Path -LiteralPath $RomsRoot).Path
 } catch {
-    throw "RomsRoot not found: $RomsRoot  (baseDir=$baseDir). Are you running from ...\RetroBat\emulators\pixn ?"
+    throw "RomsRoot not found: $RomsRoot  (baseDir=$baseDir). Are you running from ...\RetroBat\emulators\pixn\Scripts ?"
 }
 
 # --- Logging setup ---
-$logsDir  = Join-Path $baseDir "logs"
+$logsDir  = Join-Path $baseDir "Logs"
 if (-not (Test-Path $logsDir)) { New-Item -Path $logsDir -ItemType Directory -Force | Out-Null }
 
 $runStamp = Get-Date -Format "yyyyMMdd_HHmmss"
