@@ -92,11 +92,11 @@ IF EXIST "rclone-v3" goto RC-END
 del /Q rc.7z >nul 2>&1
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rc.7z -O rc.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo rClone download failed! - Skipping...
+    echo ...rClone download failed! - Skipping...
     %handle_error%
 	goto RC-END
 ) else (
-    echo rClone download successful...
+    echo ...rClone download successful...
 )
 timeout /t 1 >nul
 7z x rc.7z -aoa -p22446688 -o.\ >nul 2>&1
@@ -121,12 +121,12 @@ rmdir /S /Q ".\PixN-Collections" >nul 2>&1
 md "..\..\emulationstation\.emulationstation\collections" >nul 2>&1
 ..\..\emulators\pixn\PortableGit\cmd\git clone https://github.com/PixelNostalgia/PixN-Collections.git
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
     echo.
-	echo Download Completed Successfully...
+	echo ...Download Completed Successfully...
 )
 move /Y ".\PixN-Collections\*.cfg" ..\..\emulationstation\.emulationstation\collections\ >nul 2>&1
 rmdir /S /Q ".\PixN-Collections" >nul 2>&1
@@ -145,11 +145,11 @@ timeout /t 1 >nul
 del /Q "pixn-rb-update-service-logo.png" >nul 2>&1
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/pixn-rb-update-service-logo.png -O pixn-rb-update-service-logo.png >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	got SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 move /Y "pixn-rb-update-service-logo.png" ..\..\system\es_menu\media\ >nul 2>&1
 :SKIP
@@ -168,27 +168,27 @@ timeout /t 1 >nul
 IF EXIST "pinballfx-v1" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Pin-Lic.7z -O Pin-Lic.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/7z.exe -O 7z.exe >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/7z.dll -O 7z.dll >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 7z x Pin-Lic.7z -aoa -p22446688 -o.\ >nul 2>&1
@@ -197,7 +197,7 @@ md "%localappdata%\PinballFX" >nul 2>&1
 md "%localappdata%\PinballM" >nul 2>&1
 
 xcopy PinballFX "%localappdata%\PinballFX" /S /E /D /I /Y >nul 2>&1
-echo Copying files...
+echo ...Copying files...
 xcopy PinballM "%localappdata%\PinballM" /S /E /D /I /Y >nul 2>&1
 
 robocopy "PinballFX\Saved\SaveGames" "%localappdata%\PinballFX\Saved\SaveGames" /mir /xd 76561197981264163 /w:0 /r:0 >nul 2>&1
@@ -221,11 +221,11 @@ IF EXIST "ZP-v1" goto SKIP
 del /Q ZP.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/ZP.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 7z x ZP.7z -aoa -p22446688 -o.\ >nul 2>&1
@@ -233,7 +233,7 @@ echo.
 ver | find "XP" > nul
     if %ERRORLEVEL% == 0 SET PixN-MyDocs=%USERPROFILE%\My Documents
     if %ERRORLEVEL% == 1 FOR /f "tokens=3" %%x IN ('REG QUERY "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do (set PixN-MyDocs=%%x)
-echo Copying files...
+echo ...Copying files...
 md "%PixN-MyDocs%\Zaccaria_Pinball" >nul 2>&1
 echo n | copy /-y "Zaccaria_Pinball" "%PixN-MyDocs%\Zaccaria_Pinball" >nul 2>&1
 timeout /t 1 >nul
@@ -255,11 +255,11 @@ IF EXIST ..\..\roms\zaccariapinball\ZaccariaPinball.pc\OpenAL32.dll goto SKIP
 
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/OpenAL32.dll -O OpenAL32.dll >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 copy OpenAL32.dll ..\..\roms\zaccariapinball\ZaccariaPinball.pc\ >nul 2>&1
@@ -280,11 +280,11 @@ IF EXIST "Radio-v4" goto SKIP
 del /Q radio.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/radio.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 del /Q /S ..\..\roms\radio\*.* >nul 2>&1
@@ -307,11 +307,11 @@ IF EXIST "PixN-Radio-v5" goto SKIP
 del /Q PixN-Radio.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/PixN-Radio.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 del /Q /S ..\..\roms\radio\content\vlc\PixN-Radio\*.* >nul 2>&1
@@ -341,11 +341,11 @@ IF EXIST "konami-LCD-artwork-v1" goto SKIP
 del /Q Konami-LCD-Artwork.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Game_Updates/Konami-LCD-Artwork/Konami-LCD-Artwork.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
@@ -366,11 +366,11 @@ timeout /t 1 >nul
 IF EXIST "Sky-v1" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Sky.7z -O Sky.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
@@ -378,7 +378,7 @@ echo.
 md ..\..\emulators\dolphin-emu >nul 2>&1
 md ..\..\emulators\dolphin-emu\User >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy Skylanders ..\..\emulators\dolphin-emu\User\Skylanders\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q Sky.7z >nul 2>&1
@@ -399,18 +399,18 @@ IF EXIST "3dSen-v1" goto SKIP
 del /Q 3d-N.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/3d-N.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x 3d-N.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\3dsen >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy 3dsen ..\..\emulators\3dsen\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q 3d-N.7z >nul 2>&1
@@ -431,15 +431,15 @@ IF EXIST "paprium-core-v1" goto SKIP
 del /Q genesis_plus_gx_libretro.dll >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/genesis_plus_gx_libretro.dll >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
-echo Copying files...
+echo ...Copying files...
 move /Y "genesis_plus_gx_libretro.dll" ..\..\emulators\retroarch\cores\ >nul 2>&1
 timeout /t 1 >nul
 echo paprium-core-v1 > paprium-core-v1
@@ -456,18 +456,18 @@ IF EXIST "VPinball-v2" goto SKIP
 del /Q vpinball_jan2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/vpinball_jan2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x vpinball_jan2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\vpinball >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy vpinball ..\..\emulators\vpinball\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q vpinball_jan2025.7z >nul 2>&1
@@ -487,11 +487,11 @@ IF EXIST "eka-emu-v1" goto SKIP
 del /Q eka_jan2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/eka_jan2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
@@ -499,7 +499,7 @@ echo.
 md ..\..\bios\eka2l1\ >nul 2>&1
 md ..\..\bios\eka2l1\data\ >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 robocopy data ..\..\bios\eka2l1\data\ /E /XC /XN /XO /NP >nul 2>&1
 timeout /t 1 >nul
 del /Q eka_jan2025.7z >nul 2>&1
@@ -686,18 +686,18 @@ IF EXIST "retroarch-emu-v1" goto SKIP
 del /Q retroarch_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/retroarch_feb2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x retroarch_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\retroarch >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy retroarch ..\..\emulators\retroarch\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q retroarch_feb2025.7z >nul 2>&1
@@ -716,18 +716,18 @@ IF EXIST "shadps4-emu-v2" goto SKIP
 del /Q shadps4_dec2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/shadps4_dec2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x shadps4_dec2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\shadps4 >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy shadps4 ..\..\emulators\shadps4\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q shadps4_dec2025.7z >nul 2>&1
@@ -750,18 +750,18 @@ timeout /t 1 >nul
 del /Q teknoparrot_jan2026.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/teknoparrot_jan2026.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x teknoparrot_jan2026.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\teknoparrot >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy teknoparrot ..\..\emulators\teknoparrot\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q teknoparrot_jan2026.7z >nul 2>&1
@@ -781,20 +781,19 @@ IF EXIST "Switch-v2" goto Switch-Eden
 del /Q switch_dec2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/switch_dec2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
+	echo.
     %handle_error%
 	goto Switch-Eden
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
+	echo.
 )
 timeout /t 1 >nul
-echo.
 7z x switch_dec2025.7z -aoa -p22446688 -o..\..\ >nul 2>&1
-echo.
 timeout /t 1 >nul
 del /Q switch_dec2025.7z >nul 2>&1
 echo Switch-v2 > Switch-v2
-echo.
 
 :Switch-Eden
 timeout /t 1 >nul
@@ -802,27 +801,24 @@ IF EXIST "Switch-Eden-v1" goto SW-FW
 del /Q Eden-v0.2.0-rc2-amd64-msvc-standard.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/Eden-v0.2.0-rc2-amd64-msvc-standard.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SW-FW
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x Eden-v0.2.0-rc2-amd64-msvc-standard.7z -aoa -p22446688 -o..\..\emulators\eden\ >nul 2>&1
-echo.
 timeout /t 1 >nul
 del /Q Eden-v0.2.0-rc2-amd64-msvc-standard.7z >nul 2>&1
 echo Switch-Eden-v1 > Switch-Eden-v1
-echo.
 
 :SW-FW
 REM This section checks for the updated Switch Firmware...
-echo.
 echo Checking for updated Switch Firmware
 echo.
-timeout /t 2 >nul
+timeout /t 1 >nul
 rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\citron\user\nand\system\Contents\registered --progress
 echo.
 rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\eden\user\nand\system\Contents\registered --progress
@@ -839,21 +835,21 @@ REM This section checks for the updated Switch Keys...
 del /Q switch_keys_v21.0.0.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/switch_keys_v21.0.0.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
+	echo.
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
+	echo.
 )
 timeout /t 1 >nul
-echo.
 7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\citron\user\keys\ >nul 2>&1
 7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\eden\user\keys\ >nul 2>&1
 7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\sudachi\user\keys\ >nul 2>&1
 7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\suyu\user\keys\ >nul 2>&1
 7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\yuzu\user\keys\ >nul 2>&1
 7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\saves\switch\ryujinx\portable\system\ >nul 2>&1
-echo.
 timeout /t 1 >nul
 del /Q switch_keys_v21.0.0.7z >nul 2>&1
 timeout /t 1 >nul
@@ -869,11 +865,13 @@ mkdir ..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered >nul 2>
 timeout /t 1 >nul
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/switch_fw_v21.0.0.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
+	echo.
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
+	echo.
 )
 timeout /t 1 >nul
 7z x switch_fw_v21.0.0.7z -aoa -p22446688 -o..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered\ >nul 2>&1
@@ -891,7 +889,6 @@ timeout /t 1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the Clone Hero Emulator...
-echo.
 echo Checking the Clone Hero Emulator...
 echo.
 timeout /t 1 >nul
@@ -899,18 +896,18 @@ IF EXIST "clonehero-emu-v1" goto SKIP
 del /Q clonehero_mar2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/clonehero_mar2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x clonehero_mar2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\clonehero >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy clonehero ..\..\emulators\clonehero\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q clonehero_mar2025.7z >nul 2>&1
@@ -929,16 +926,16 @@ timeout /t 1 >nul
 del /Q Win98-Retroarch.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/Win98-Retroarch.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 7z x Win98-Retroarch.7z -aoa -p22446688 -o.\ >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy retroarch ..\..\emulators\retroarch\ /S /E /I /Q /H /Y /R >nul 2>&1
 del /Q Win98-Retroarch.7z >nul 2>&1
 rmdir /S /Q retroarch >nul 2>&1
@@ -948,16 +945,16 @@ timeout /t 1 >nul
 del /Q Win98-Decorations.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Other_Updates/Win98-Decorations.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 7z x Win98-Decorations.7z -aoa -p22446688 -o.\ >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy decorations ..\..\system\decorations\ /S /E /I /Q /H /Y /R >nul 2>&1
 del /Q Win98-Decorations.7z >nul 2>&1
 rmdir /S /Q decorations >nul 2>&1
@@ -976,11 +973,11 @@ IF EXIST "TriForce-Config-v1" goto SKIP
 del /Q TriForce-Game-Settings.zip >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/TriForce-Game-Settings.zip >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
@@ -1047,16 +1044,16 @@ timeout /t 1 >nul
 IF EXIST "dolphin-bios-v1" goto SKIP
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/Dolphin-Extra-Bios.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x Dolphin-Extra-Bios.7z -aoa -p22446688 -o.\ >nul 2>&1
-echo Copying files...
+echo ...Copying files...
 echo.
 xcopy Dolphin-Extra-Bios\emulators\dolphin-emu\User ..\..\emulators\dolphin-emu\User\ /s /y /d >nul 2>&1
 xcopy Dolphin-Extra-Bios\saves\dolphin ..\..\saves\dolphin\ /s /y /d >nul 2>&1
@@ -1154,12 +1151,12 @@ echo.
 timeout /t 1 >nul
 ..\..\emulators\pixn\PortableGit\cmd\git clone https://github.com/PixelNostalgia/PixN-RBv8.x-Custom-Systems.git
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
     echo.
-	echo Download Completed Successfully...
+	echo ...Download Completed Successfully...
 )
 move /Y ".\PixN-RBv8.x-Custom-Systems\.emulationstation\*.cfg" ..\..\emulationstation\.emulationstation\ >nul 2>&1
 rmdir /S /Q ".\PixN-RBv8.x-Custom-Systems" >nul 2>&1
@@ -1312,18 +1309,18 @@ IF EXIST "Hypseus-v1" goto SKIP
 del /Q hypseus.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/hypseus.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x hypseus.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\hypseus >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy hypseus ..\..\emulators\hypseus\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q hypseus.7z >nul 2>&1
@@ -1344,18 +1341,18 @@ IF EXIST "solarus-emu-v1" goto SKIP
 del /Q solarus-v2.0.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/solarus-v2.0.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x solarus-v2.0.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\solarus >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy solarus ..\..\emulators\solarus\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q solarus-v2.0.7z >nul 2>&1
@@ -1379,18 +1376,18 @@ IF EXIST "cgenius-emu-v1" goto SKIP
 del /Q cgenius_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/cgenius_feb2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x cgenius_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\cgenius >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy cgenius ..\..\emulators\cgenius\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q cgenius_feb2025.7z >nul 2>&1
@@ -1409,18 +1406,18 @@ IF EXIST "kronos-emu-v1" goto SKIP
 del /Q kronos_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/kronos_feb2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x kronos_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\kronos >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy kronos ..\..\emulators\kronos\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q kronos_feb2025.7z >nul 2>&1
@@ -1439,18 +1436,18 @@ IF EXIST "lime3ds-emu-v1" goto SKIP
 del /Q lime3ds_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/lime3ds_feb2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x lime3ds_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\lime3ds >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy lime3ds ..\..\emulators\lime3ds\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q lime3ds_feb2025.7z >nul 2>&1
@@ -1469,18 +1466,18 @@ IF EXIST "magicengine-emu-v1" goto SKIP
 del /Q magicengine_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/magicengine_feb2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x magicengine_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\magicengine >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy magicengine ..\..\emulators\magicengine\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q magicengine_feb2025.7z >nul 2>&1
@@ -1499,18 +1496,18 @@ IF EXIST "mandarine-emu-v1" goto SKIP
 del /Q mandarine_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/mandarine_feb2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x mandarine_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\mandarine >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy mandarine ..\..\emulators\mandarine\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q mandarine_feb2025.7z >nul 2>&1
@@ -1529,18 +1526,18 @@ IF EXIST "openjazz-emu-v1" goto SKIP
 del /Q openjazz_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/openjazz_feb2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x openjazz_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\openjazz >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy openjazz ..\..\emulators\openjazz\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q openjazz_feb2025.7z >nul 2>&1
@@ -1559,18 +1556,18 @@ IF EXIST "pdark-emu-v1" goto SKIP
 del /Q pdark_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/pdark_feb2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x pdark_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\pdark >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy pdark ..\..\emulators\pdark\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q pdark_feb2025.7z >nul 2>&1
@@ -1589,18 +1586,18 @@ IF EXIST "xenia-emu-v2" goto SKIP
 del /Q xenia_Aug20-2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia_Aug20-2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x xenia_Aug20-2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\xenia >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy xenia ..\..\emulators\xenia\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q xenia_Aug20-2025.7z >nul 2>&1
@@ -1619,18 +1616,18 @@ IF EXIST "xenia-canary-emu-v2" goto SKIP
 del /Q xenia-canary_Oct06-2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia-canary_Oct06-2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x xenia-canary_Oct06-2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\xenia-canary >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy xenia-canary ..\..\emulators\xenia-canary\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q xenia-canary_Oct06-2025.7z >nul 2>&1
@@ -1649,18 +1646,18 @@ IF EXIST "xenia-manager-emu-v1" goto SKIP
 del /Q xenia-manager_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia-manager_feb2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x xenia-manager_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\xenia-manager >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy xenia-manager ..\..\emulators\xenia-manager\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q xenia-manager_feb2025.7z >nul 2>&1
@@ -1679,18 +1676,18 @@ IF EXIST "yabasanshiro-emu-v1" goto SKIP
 del /Q yabasanshiro_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/yabasanshiro_feb2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x yabasanshiro_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\yabasanshiro >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy yabasanshiro ..\..\emulators\yabasanshiro\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q yabasanshiro_feb2025.7z >nul 2>&1
@@ -1716,12 +1713,12 @@ echo.
 timeout /t 1 >nul
 ..\..\emulators\pixn\PortableGit\cmd\git clone https://github.com/PixelNostalgia/PixN-RBv7.x-Custom-Systems.git
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
     echo.
-	echo Download Completed Successfully...
+	echo ...Download Completed Successfully...
 	echo.
 )
 move /Y ".\PixN-RBv7.x-Custom-Systems\.emulationstation\*.cfg" ..\..\emulationstation\.emulationstation\ >nul 2>&1
@@ -1820,11 +1817,11 @@ IF EXIST "TriForce-Config-v1" goto SKIP
 del /Q TriForce-Game-Settings.zip >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/TriForce-Game-Settings.zip >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
@@ -1866,11 +1863,11 @@ echo.
 del /Q rb-7.3+emulators_11-08-2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/rb-7.3+emulators_11-08-2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
@@ -1935,18 +1932,18 @@ IF EXIST "Hypseus-v1" goto SKIP
 del /Q hypseus.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/hypseus.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x hypseus.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\hypseus >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy hypseus ..\..\emulators\hypseus\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q hypseus.7z >nul 2>&1
@@ -1967,18 +1964,18 @@ IF EXIST "solarus-emu-v1" goto SKIP
 del /Q solarus-v2.0.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/solarus-v2.0.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
 7z x solarus-v2.0.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\solarus >nul 2>&1
 echo.
-echo Copying files...
+echo ...Copying files...
 xcopy solarus ..\..\emulators\solarus\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
 del /Q solarus-v2.0.7z >nul 2>&1
@@ -1995,12 +1992,12 @@ echo.
 timeout /t 1 >nul
 ..\..\emulators\pixn\PortableGit\cmd\git clone https://github.com/PixelNostalgia/PixN-RBv6.x-Custom-Systems.git >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
     echo.
-	echo Download Completed Successfully...
+	echo ...Download Completed Successfully...
 	echo.
 )
 move /Y ".\PixN-RBv6.x-Custom-Systems\.emulationstation\*.cfg" ..\..\emulationstation\.emulationstation\ >nul 2>&1
@@ -2027,12 +2024,12 @@ timeout /t 1 >nul
 IF EXIST "es-checkversion-v1" goto SKIP
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/es-checkversion-v6.4.cmd -O es-checkversion.cmd >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
     echo.
-	echo Download Completed Successfully...
+	echo ...Download Completed Successfully...
 	echo.
 )
 move /Y "es-checkversion.cmd" ..\..\emulationstation\ >nul 2>&1
@@ -2212,11 +2209,11 @@ IF EXIST "pixnretrodeck-steamdeck-v1" goto SKIP
 
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/PixN-Splash-1.mp4 >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo Download Failed! - Skipping...
+    echo ...Download Failed! - Skipping...
     %handle_error%
 	goto SKIP
 ) else (
-    echo Download Completed Successfully...
+    echo ...Download Completed Successfully...
 )
 timeout /t 1 >nul
 echo.
