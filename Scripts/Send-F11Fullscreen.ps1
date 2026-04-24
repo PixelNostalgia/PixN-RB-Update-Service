@@ -17,7 +17,7 @@ try {
     $BaseDir = $BaseDir.Trim().Trim('"')
     $BaseDir = [System.IO.Path]::GetFullPath($BaseDir)
 
-    $LogDir  = Join-Path $BaseDir 'logs'
+    $LogDir  = Join-Path $BaseDir 'Scripts\Logs'
     $LogFile = Join-Path $LogDir  'Send-F11Fullscreen.log'
 
     if (-not (Test-Path -LiteralPath $LogDir)) {
