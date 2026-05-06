@@ -786,13 +786,13 @@ REM This section checks the TeknoParrot Emulator...
 echo Checking the TeknoParrot Emulator...
 echo.
 timeout /t 1 >nul
-IF EXIST ".\Flags\TeknoParrot-v4" goto SKIP
+IF EXIST ".\Flags\TeknoParrot-v5" goto SKIP
 REM Backup TecknoParrot data...
 7z a "..\..\emulators\teknoparrot\UserProfiles-PixN-Backup.zip" "..\..\emulators\teknoparrot\UserProfiles\" >nul 2>&1
 7z a "..\..\emulators\teknoparrot\GameProfiles-PixN-Backup.zip" "..\..\emulators\teknoparrot\GameProfiles\" >nul 2>&1
 timeout /t 1 >nul
-del /Q teknoparrot_jan2026.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/teknoparrot_jan2026.7z >nul 2>&1
+del /Q teknoparrot_apr2026.zip >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/teknoparrot_apr2026.zip >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
     %handle_error%
@@ -802,16 +802,16 @@ if %ERRORLEVEL% neq 0 (
 )
 timeout /t 1 >nul
 echo.
-7z x teknoparrot_jan2026.7z -aoa -p22446688 -o.\ >nul 2>&1
+7z x teknoparrot_apr2026.zip -aoa -o.\ >nul 2>&1
 md ..\..\emulators\teknoparrot >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy teknoparrot ..\..\emulators\teknoparrot\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
-del /Q teknoparrot_jan2026.7z >nul 2>&1
+del /Q teknoparrot_apr2026.zip >nul 2>&1
 rmdir /S /Q teknoparrot >nul 2>&1
 
-echo TeknoParrot-v4 > .\Flags\TeknoParrot-v4
+echo TeknoParrot-v5 > .\Flags\TeknoParrot-v5
 :SKIP
 echo.
 timeout /t 1 >nul
