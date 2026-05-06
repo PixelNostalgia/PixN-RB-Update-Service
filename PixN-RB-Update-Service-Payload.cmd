@@ -22,7 +22,7 @@ wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/mai
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Add-PixNService.ps1 -O .\Scripts\Add-PixNService.ps1 >nul 2>&1
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Fix-RetrobatShortname.ps1 -O .\Scripts\Fix-RetrobatShortname.ps1 >nul 2>&1
 wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Remove-Epic-Steam-Shortcuts.ps1 -O .\Scripts\Remove-Epic-Steam-Shortcuts.ps1 >nul 2>&1
-
+wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Set-DOSBoxBootFreeSpace.ps1 -O .\Scripts\Set-DOSBoxBootFreeSpace.ps1 >nul 2>&1
 REM Script to send the window full screen
 powershell -ExecutionPolicy Bypass -File ".\Scripts\Send-F11Fullscreen.ps1"
 
@@ -37,7 +37,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 8.03
+echo Version 8.04
 echo.
 timeout /t 3 >nul
 cls
@@ -961,8 +961,8 @@ echo clonehero-emu-v1 > .\Flags\clonehero-emu-v1
 echo.
 timeout /t 1 >nul
 REM *******************************************************************************************************************************************************************************************
-
-REM This section adds the Windows 98 support files...
+REM *************************************************************This section adds the Windows 98 support files...*****************************************************************************
+REM *******************************************************************************************************************************************************************************************
 echo Checking for the Windows 98 support files...
 echo.
 REM ----------------RetroArch-------------------
@@ -983,6 +983,8 @@ echo ...Copying files...
 xcopy retroarch ..\..\emulators\retroarch\ /S /E /I /Q /H /Y /R >nul 2>&1
 del /Q Win98-Retroarch.7z >nul 2>&1
 rmdir /S /Q retroarch >nul 2>&1
+REM ----------------BootOS Size--------------------
+powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File ".\Scripts\Set-DOSBoxBootFreeSpace.ps1"
 REM ----------------Decorations--------------------
 echo.
 timeout /t 1 >nul
