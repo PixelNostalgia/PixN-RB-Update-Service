@@ -804,7 +804,6 @@ timeout /t 1 >nul
 echo.
 7z x teknoparrot_apr2026.zip -aoa -o.\ >nul 2>&1
 md ..\..\emulators\teknoparrot >nul 2>&1
-echo.
 echo ...Copying files...
 xcopy teknoparrot ..\..\emulators\teknoparrot\ /S /E /I /Q /H /Y /R >nul 2>&1
 timeout /t 1 >nul
