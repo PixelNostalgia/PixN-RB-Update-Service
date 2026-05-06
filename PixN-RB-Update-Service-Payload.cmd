@@ -37,7 +37,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 8.04
+echo Version 8.05
 echo.
 timeout /t 3 >nul
 cls
