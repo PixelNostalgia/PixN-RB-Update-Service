@@ -59,27 +59,27 @@ echo #                                                       #
 echo #########################################################
 echo.
 
-ping -n 1 127.0.0.1 >nul
+ping -n 2 127.0.0.1 >nul
 REM Text color code for Yellow is E
 set "colorCode=E"
 color %colorCode%
-ping -n 1 127.0.0.1 >nul
+ping -n 2 127.0.0.1 >nul
 REM Text color code for Light Green is A
 set "colorCode=A"
 color %colorCode%
-ping -n 1 127.0.0.1 >nul
+ping -n 2 127.0.0.1 >nul
 REM Text color code for Yellow is E
 set "colorCode=E"
 color %colorCode%
-ping -n 1 127.0.0.1 >nul
+ping -n 2 127.0.0.1 >nul
 REM Text color code for Light Green is A
 set "colorCode=A"
 color %colorCode%
-ping -n 1 127.0.0.1 >nul
+ping -n 2 127.0.0.1 >nul
 REM Text color code for Yellow is E
 set "colorCode=E"
 color %colorCode%
-ping -n 1 127.0.0.1 >nul
+ping -n 2 127.0.0.1 >nul
 REM Text color code for Light Green is A
 set "colorCode=A"
 color %colorCode%
