@@ -1,4 +1,5 @@
 @echo off
+title PixN Update Service v8.05
 pushd %1
 REM Text color code for Light Green is A
 set "colorCode=A"
@@ -16,13 +17,13 @@ del /Q Add-PixNService.ps1 >nul 2>&1
 del /Q Fix-RetrobatShortname.ps1 >nul 2>&1
 del /Q Remove-Epic-Steam-Shortcuts.ps1 >nul 2>&1
 REM Download Latest...
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/PixN-Reset.cmd -O .\Scripts\PixN-Reset.cmd >nul 2>&1
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Move-Flags.cmd -O .\Scripts\Move-Flags.cmd >nul 2>&1
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Send-F11Fullscreen.ps1 -O .\Scripts\Send-F11Fullscreen.ps1 >nul 2>&1
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Add-PixNService.ps1 -O .\Scripts\Add-PixNService.ps1 >nul 2>&1
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Fix-RetrobatShortname.ps1 -O .\Scripts\Fix-RetrobatShortname.ps1 >nul 2>&1
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Remove-Epic-Steam-Shortcuts.ps1 -O .\Scripts\Remove-Epic-Steam-Shortcuts.ps1 >nul 2>&1
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Set-DOSBoxBootFreeSpace.ps1 -O .\Scripts\Set-DOSBoxBootFreeSpace.ps1 >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/PixN-Reset.cmd -O .\Scripts\PixN-Reset.cmd >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Move-Flags.cmd -O .\Scripts\Move-Flags.cmd >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Send-F11Fullscreen.ps1 -O .\Scripts\Send-F11Fullscreen.ps1 >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Add-PixNService.ps1 -O .\Scripts\Add-PixNService.ps1 >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Fix-RetrobatShortname.ps1 -O .\Scripts\Fix-RetrobatShortname.ps1 >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Remove-Epic-Steam-Shortcuts.ps1 -O .\Scripts\Remove-Epic-Steam-Shortcuts.ps1 >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Set-DOSBoxBootFreeSpace.ps1 -O .\Scripts\Set-DOSBoxBootFreeSpace.ps1 >nul 2>&1
 REM Script to send the window full screen
 powershell -ExecutionPolicy Bypass -File ".\Scripts\Send-F11Fullscreen.ps1"
 
@@ -30,7 +31,7 @@ REM Move Flag files to new home...
 start /wait .\Scripts\Move-Flags.cmd
 
 REM Function to handle errors with a pause
-set "handle_error=timeout /t 4 >nul"
+set "handle_error=ping -n 4 127.0.0.1 >nul"
 
 REM Read from ASCII.txt and visualize ASCII art
 type ASCII.txt
@@ -39,7 +40,7 @@ echo.
 echo Pixel Nostalgia updater running...
 echo Version 8.05
 echo.
-timeout /t 3 >nul
+ping -n 3 127.0.0.1 >nul
 cls
 
 echo.
@@ -58,27 +59,27 @@ echo #                                                       #
 echo #########################################################
 echo.
 
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM Text color code for Yellow is E
 set "colorCode=E"
 color %colorCode%
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM Text color code for Light Green is A
 set "colorCode=A"
 color %colorCode%
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM Text color code for Yellow is E
 set "colorCode=E"
 color %colorCode%
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM Text color code for Light Green is A
 set "colorCode=A"
 color %colorCode%
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM Text color code for Yellow is E
 set "colorCode=E"
 color %colorCode%
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM Text color code for Light Green is A
 set "colorCode=A"
 color %colorCode%
@@ -96,7 +97,7 @@ echo Updating rClone Configuration...
 echo.
 IF EXIST ".\Flags\rclone-v3" goto RC-END
 del /Q rc.7z >nul 2>&1
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rc.7z -O rc.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rc.7z -O rc.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo ...rClone download failed! - Skipping...
     %handle_error%
@@ -104,17 +105,17 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...rClone download successful...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 7z x rc.7z -aoa -p22446688 -o.\ >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q rc.7z >nul 2>&1
 echo rclone-v3 > .\Flags\rclone-v3
 :RC-END
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q rclone.conf >nul 2>&1
-timeout /t 1 >nul
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rclone.conf -O rclone.conf >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/rclone.conf -O rclone.conf >nul 2>&1
+ping -n 1 127.0.0.1 >nul
 :SKIP
 REM *******************************************************************************************************************************************************************************************
 
@@ -160,7 +161,7 @@ REM This section pulls down the latest PixN Custom Collections...
 echo.
 echo Updating the PixN Custom Collections...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 rmdir /S /Q ".\PixN-Collections" >nul 2>&1
 md "..\..\emulationstation\.emulationstation\collections" >nul 2>&1
 ..\..\emulators\pixn\PortableGit\cmd\git clone https://github.com/PixelNostalgia/PixN-Collections.git
@@ -175,19 +176,19 @@ if %ERRORLEVEL% neq 0 (
 move /Y ".\PixN-Collections\*.cfg" ..\..\emulationstation\.emulationstation\collections\ >nul 2>&1
 rmdir /S /Q ".\PixN-Collections" >nul 2>&1
 :SKIP
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 REM *******************************************************************************************************************************************************************************************
 
 REM This section restores the PixN Update Service artwork...
 echo Checking if the PixN Update Service artwork needs restoring...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 powershell -ExecutionPolicy Bypass -File ".\Scripts\Add-PixNService.ps1"
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q "pixn-rb-update-service-logo.png" >nul 2>&1
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/pixn-rb-update-service-logo.png -O pixn-rb-update-service-logo.png >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/pixn-rb-update-service-logo.png -O pixn-rb-update-service-logo.png >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
     %handle_error%
@@ -197,7 +198,7 @@ if %ERRORLEVEL% neq 0 (
 )
 move /Y "pixn-rb-update-service-logo.png" ..\..\system\es_menu\media\ >nul 2>&1
 :SKIP
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 REM *******************************************************************************************************************************************************************************************
 
@@ -208,9 +209,9 @@ REM ****************************************************************************
 REM This section applies the PinballFX and Piball M Fix...
 echo Applying PinballFX and Piball M Fix if required...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\pinballfx-v1" goto SKIP
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Pin-Lic.7z -O Pin-Lic.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Pin-Lic.7z -O Pin-Lic.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
     %handle_error%
@@ -218,7 +219,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/7z.exe -O 7z.exe >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/7z.exe -O 7z.exe >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
     %handle_error%
@@ -226,7 +227,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/7z.dll -O 7z.dll >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/7z.dll -O 7z.dll >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
     %handle_error%
@@ -234,7 +235,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 7z x Pin-Lic.7z -aoa -p22446688 -o.\ >nul 2>&1
 
 md "%localappdata%\PinballFX" >nul 2>&1
@@ -250,17 +251,17 @@ robocopy "PinballM\Saved\SaveGames" "%localappdata%\PinballM\Saved\SaveGames" /m
 rmdir /S /Q "PinballFX" >nul 2>&1
 rmdir /S /Q "PinballM" >nul 2>&1
 del /Q Pin-Lic.7z >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo pinballfx-v1 > .\Flags\pinballfx-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section applies Zaccaria Pinball config...
 echo Applying Zaccaria Pinball Config if required...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\ZP-v1" goto SKIP
 del /Q ZP.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/ZP.7z >nul 2>&1
@@ -271,7 +272,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 7z x ZP.7z -aoa -p22446688 -o.\ >nul 2>&1
 echo.
 ver | find "XP" > nul
@@ -280,24 +281,24 @@ ver | find "XP" > nul
 echo ...Copying files...
 md "%PixN-MyDocs%\Zaccaria_Pinball" >nul 2>&1
 echo n | copy /-y "Zaccaria_Pinball" "%PixN-MyDocs%\Zaccaria_Pinball" >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 rmdir /S /Q "Zaccaria_Pinball" >nul 2>&1
 del /Q ZP.7z >nul 2>&1
 echo ZP-v1 > .\Flags\ZP-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section adds OpenAL32.dll if required...
 echo Checking if OpenAL32.dll is required...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\OpenAL32.dll-v1" goto SKIP
 IF NOT EXIST ..\..\roms\zaccariapinball\ZaccariaPinball.pc\ goto SKIP
 IF EXIST ..\..\roms\zaccariapinball\ZaccariaPinball.pc\OpenAL32.dll goto SKIP
 
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/OpenAL32.dll -O OpenAL32.dll >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/OpenAL32.dll -O OpenAL32.dll >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
     %handle_error%
@@ -305,20 +306,20 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 copy OpenAL32.dll ..\..\roms\zaccariapinball\ZaccariaPinball.pc\ >nul 2>&1
 echo.
 del /Q OpenAL32.dll >nul 2>&1
 echo OpenAL32.dll-v1 > .\Flags\OpenAL32.dll-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for updated Radio stations...
 echo Checking for updated Radio Stations...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 mkdir ..\..\roms\radio >nul 2>&1
 IF EXIST ".\Flags\Radio-v4" goto SKIP
 del /Q radio.7z >nul 2>&1
@@ -330,9 +331,9 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q /S ..\..\roms\radio\*.* >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 7z x radio.7z -aoa -p22446688 -o..\..\roms\radio\ >nul 2>&1
 echo.
 del /Q radio.7z >nul 2>&1
@@ -340,13 +341,13 @@ del /Q radio.7z >nul 2>&1
 echo Radio-v4 > .\Flags\Radio-v4
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for updates to the PixN Radio station...
 echo Checking for updates to the PixN Radio Station...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\PixN-Radio-v5" goto SKIP
 del /Q PixN-Radio.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/PixN-Radio.7z >nul 2>&1
@@ -357,30 +358,30 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q /S ..\..\roms\radio\content\vlc\PixN-Radio\*.* >nul 2>&1
 del /Q /S "..\..\roms\radio\content\vlc\PixN Radio.m3u8" >nul 2>&1
 del /Q /S "..\..\roms\radio\content\vlc\PixN-Radio.m3u8" >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 7z x PixN-Radio.7z -aoa -p22446688 -o..\..\roms\radio\content\vlc\ >nul 2>&1
 echo.
 del /Q PixN-Radio.7z >nul 2>&1
 
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/PixN-Radio.bat -O PixN-Radio.bat >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/PixN-Radio.bat -O PixN-Radio.bat >nul 2>&1
 copy PixN-Radio.bat ..\..\roms\radio\PixN-Radio.bat /y >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q /S ..\..\emulators\pixn\PixN-Radio.bat >nul 2>&1
 
 echo PixN-Radio-v5 > .\Flags\PixN-Radio-v5
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section adds the Konami LCD Artwork files...
 echo Downloading the Konami LCD Artwork files if required...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\konami-LCD-artwork-v1" goto SKIP
 del /Q Konami-LCD-Artwork.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Game_Updates/Konami-LCD-Artwork/Konami-LCD-Artwork.7z >nul 2>&1
@@ -391,24 +392,24 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x Konami-LCD-Artwork.7z -aoa -p22446688 -o..\..\saves\mame\artwork\ >nul 2>&1
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q Konami-LCD-Artwork.7z >nul 2>&1
 echo konami-LCD-artwork-v1 > .\Flags\konami-LCD-artwork-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section adds the Skylanders files to the Dolphin Emulator...
 echo Adding Skylanders files to the Dolphin Emulator if required...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\Sky-v1" goto SKIP
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Sky.7z -O Sky.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Sky.7z -O Sky.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
     %handle_error%
@@ -416,7 +417,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x Sky.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\dolphin-emu >nul 2>&1
@@ -424,20 +425,20 @@ md ..\..\emulators\dolphin-emu\User >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy Skylanders ..\..\emulators\dolphin-emu\User\Skylanders\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q Sky.7z >nul 2>&1
 rmdir /S /Q Skylanders >nul 2>&1
 
 echo Sky-v1 > .\Flags\Sky-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated 3dSen Emulator...
 echo Checking for the updated 3dSen Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 
 IF EXIST ".\Flags\3dSen-v1" goto SKIP
 del /Q 3d-N.7z >nul 2>&1
@@ -449,27 +450,27 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x 3d-N.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\3dsen >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy 3dsen ..\..\emulators\3dsen\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q 3d-N.7z >nul 2>&1
 rmdir /S /Q 3dsen >nul 2>&1
 
 echo 3dSen-v1 > .\Flags\3dSen-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated genesis_plus_gx_libretro core...
 echo Checking for the updated genesis_plus_gx_libretro.dll core...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 
 IF EXIST ".\Flags\paprium-core-v1" goto SKIP
 del /Q genesis_plus_gx_libretro.dll >nul 2>&1
@@ -481,21 +482,21 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 echo ...Copying files...
 move /Y "genesis_plus_gx_libretro.dll" ..\..\emulators\retroarch\cores\ >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo paprium-core-v1 > .\Flags\paprium-core-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated Virtual Pinball Emulator...
 echo Checking for the updated Virtual Pinball Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\VPinball-v2" goto SKIP
 del /Q vpinball_jan2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/vpinball_jan2025.7z >nul 2>&1
@@ -506,27 +507,27 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x vpinball_jan2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\vpinball >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy vpinball ..\..\emulators\vpinball\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q vpinball_jan2025.7z >nul 2>&1
 rmdir /S /Q vpinball >nul 2>&1
 
 echo VPinball-v2 > .\Flags\VPinball-v2
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks that the Ngage emulator is configured...
 echo Checking Ngage Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\eka-emu-v1" goto SKIP
 del /Q eka_jan2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/eka_jan2025.7z >nul 2>&1
@@ -537,7 +538,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x eka_jan2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\bios\eka2l1\ >nul 2>&1
@@ -545,14 +546,14 @@ md ..\..\bios\eka2l1\data\ >nul 2>&1
 echo.
 echo ...Copying files...
 robocopy data ..\..\bios\eka2l1\data\ /E /XC /XN /XO /NP >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q eka_jan2025.7z >nul 2>&1
 rmdir /S /Q data >nul 2>&1
 
 echo eka-emu-v1 > .\Flags\eka-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section enables HD texture packs for the NES HD system...
@@ -725,7 +726,7 @@ REM This section adds the ffmpeg core to Retroarch...
 echo.
 echo Checking Retroarch for the ffmpeg core...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\retroarch-emu-v1" goto SKIP
 del /Q retroarch_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/retroarch_feb2025.7z >nul 2>&1
@@ -736,26 +737,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x retroarch_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\retroarch >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy retroarch ..\..\emulators\retroarch\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q retroarch_feb2025.7z >nul 2>&1
 rmdir /S /Q retroarch >nul 2>&1
 echo retroarch-emu-v1 > .\Flags\retroarch-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks the ShadPS4 Emulator...
 echo Checking the ShadPS4 Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\shadps4-emu-v2" goto SKIP
 del /Q shadps4_dec2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/shadps4_dec2025.7z >nul 2>&1
@@ -766,31 +767,31 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x shadps4_dec2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\shadps4 >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy shadps4 ..\..\emulators\shadps4\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q shadps4_dec2025.7z >nul 2>&1
 rmdir /S /Q shadps4 >nul 2>&1
 echo shadps4-emu-v2 > .\Flags\shadps4-emu-v2
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks the TeknoParrot Emulator...
 echo Checking the TeknoParrot Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\TeknoParrot-v5" goto SKIP
 REM Backup TecknoParrot data...
 7z a "..\..\emulators\teknoparrot\UserProfiles-PixN-Backup.zip" "..\..\emulators\teknoparrot\UserProfiles\" >nul 2>&1
 7z a "..\..\emulators\teknoparrot\GameProfiles-PixN-Backup.zip" "..\..\emulators\teknoparrot\GameProfiles\" >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q teknoparrot_apr2026.zip >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/teknoparrot_apr2026.zip >nul 2>&1
 if %ERRORLEVEL% neq 0 (
@@ -800,26 +801,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x teknoparrot_apr2026.zip -aoa -o.\ >nul 2>&1
 md ..\..\emulators\teknoparrot >nul 2>&1
 echo ...Copying files...
 xcopy teknoparrot ..\..\emulators\teknoparrot\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q teknoparrot_apr2026.zip >nul 2>&1
 rmdir /S /Q teknoparrot >nul 2>&1
 
 echo TeknoParrot-v5 > .\Flags\TeknoParrot-v5
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks the Switch Emulators...
 echo Checking the Switch Emulators: Eden - Citron - Ryujinx
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\Switch-v2" goto Switch-Eden
 del /Q switch_dec2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/switch_dec2025.7z >nul 2>&1
@@ -832,14 +833,14 @@ if %ERRORLEVEL% neq 0 (
     echo ...Download Completed Successfully...
 	echo.
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 7z x switch_dec2025.7z -aoa -p22446688 -o..\..\ >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q switch_dec2025.7z >nul 2>&1
 echo Switch-v2 > .\Flags\Switch-v2
 
 :Switch-Eden
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\Switch-Eden-v1" goto SW-FW
 del /Q Eden-v0.2.0-rc2-amd64-msvc-standard.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/Eden-v0.2.0-rc2-amd64-msvc-standard.7z >nul 2>&1
@@ -850,10 +851,10 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x Eden-v0.2.0-rc2-amd64-msvc-standard.7z -aoa -p22446688 -o..\..\emulators\eden\ >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q Eden-v0.2.0-rc2-amd64-msvc-standard.7z >nul 2>&1
 echo Switch-Eden-v1 > .\Flags\Switch-Eden-v1
 
@@ -861,7 +862,7 @@ echo Switch-Eden-v1 > .\Flags\Switch-Eden-v1
 REM This section checks for the updated Switch Firmware...
 echo Checking for updated Switch Firmware
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\citron\user\nand\system\Contents\registered --progress
 echo.
 rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\eden\user\nand\system\Contents\registered --progress
@@ -872,7 +873,7 @@ rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\em
 echo.
 rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\yuzu\user\nand\system\Contents\registered --progress
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 
 REM This section checks for the updated Switch Keys...
 del /Q switch_keys_v21.0.0.7z >nul 2>&1
@@ -886,26 +887,26 @@ if %ERRORLEVEL% neq 0 (
     echo ...Download Completed Successfully...
 	echo.
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\citron\user\keys\ >nul 2>&1
 7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\eden\user\keys\ >nul 2>&1
 7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\sudachi\user\keys\ >nul 2>&1
 7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\suyu\user\keys\ >nul 2>&1
 7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\emulators\yuzu\user\keys\ >nul 2>&1
 7z x switch_keys_v21.0.0.7z -aoa -p22446688 -o..\..\saves\switch\ryujinx\portable\system\ >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q switch_keys_v21.0.0.7z >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 
 :SKIP
 REM This section updates Firmware for Ryujinx...
 IF EXIST ".\Flags\Ryujinx-FW-v21.0.0" goto SKIP
 del /Q switch_fw_v21.0.0.7z >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 rmdir /S /Q ..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 mkdir ..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/switch_fw_v21.0.0.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
@@ -916,25 +917,25 @@ if %ERRORLEVEL% neq 0 (
     echo ...Download Completed Successfully...
 	echo.
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 7z x switch_fw_v21.0.0.7z -aoa -p22446688 -o..\..\saves\switch\ryujinx\portable\bis\system\Contents\registered\ >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q switch_fw_v21.0.0.7z >nul 2>&1
 echo Ryujinx-FW-v21.0.0 > .\Flags\Ryujinx-FW-v21.0.0
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 
 :SKIP
 REM This section cleans up old folders and firmware etc...
 rmdir /S /Q ..\..\emulators\citron\fw_prodkey >nul 2>&1
 rmdir /S /Q ..\..\emulators\suyu\user\Firmware.19.0.1 >nul 2>&1
 rmdir /S /Q ..\..\saves\switch\ryujinx\portable\Firmware.19.0.1 >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the Clone Hero Emulator...
 echo Checking the Clone Hero Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\clonehero-emu-v1" goto SKIP
 del /Q clonehero_mar2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/clonehero_mar2025.7z >nul 2>&1
@@ -945,27 +946,27 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x clonehero_mar2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\clonehero >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy clonehero ..\..\emulators\clonehero\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q clonehero_mar2025.7z >nul 2>&1
 rmdir /S /Q clonehero >nul 2>&1
 echo clonehero-emu-v1 > .\Flags\clonehero-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 REM *************************************************************This section adds the Windows 98 support files...*****************************************************************************
 REM *******************************************************************************************************************************************************************************************
 echo Checking for the Windows 98 support files...
 echo.
 REM ----------------RetroArch-------------------
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q Win98-Retroarch.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/Win98-Retroarch.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
@@ -975,7 +976,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 7z x Win98-Retroarch.7z -aoa -p22446688 -o.\ >nul 2>&1
 echo.
 echo ...Copying files...
@@ -986,7 +987,7 @@ REM ----------------BootOS Size--------------------
 powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File ".\Scripts\Set-DOSBoxBootFreeSpace.ps1"
 REM ----------------Decorations--------------------
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q Win98-Decorations.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Other_Updates/Win98-Decorations.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
@@ -996,7 +997,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 7z x Win98-Decorations.7z -aoa -p22446688 -o.\ >nul 2>&1
 echo.
 echo ...Copying files...
@@ -1006,14 +1007,14 @@ rmdir /S /Q decorations >nul 2>&1
 REM ----------------Win98-End---------------------
 echo win98-bios-v2 > .\Flags\win98-bios-v2
 :SKIP
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section fixes TriForce Games...
 echo.
 echo Updating config for TriForce Games...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\TriForce-Config-v1" goto SKIP
 del /Q TriForce-Game-Settings.zip >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/TriForce-Game-Settings.zip >nul 2>&1
@@ -1024,16 +1025,16 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x TriForce-Game-Settings.zip -aoa -o..\..\emulators\dolphin-triforce\User\GameSettings\ >nul 2>&1
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q TriForce-Game-Settings.zip >nul 2>&1
 echo TriForce-Config-v1 > .\Flags\TriForce-Config-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 
 REM *******************************************************************************************************************************************************************************************
 REM *******************************************************************************************************************************************************************************************
@@ -1043,19 +1044,19 @@ REM ****************************************************************************
 
 CLS
 REM This section removes old files that are not needed for the IGT Slots ROMpack...
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 ren ..\..\roms\igtslots\fruitmach.pc\_Emu_Clean_\autorun.cmd autorun.old >nul 2>&1
 ren ..\..\roms\igtslots\fruitmach.pc\autorun.cmd autorun.old >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section removes the shortname entires from the gamelist files...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo Checking for incorrect shortnames, please wait...
 powershell -ExecutionPolicy Bypass -File ".\Scripts\Fix-RetrobatShortname.ps1"
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo Check complete...
 echo.
 REM *******************************************************************************************************************************************************************************************
@@ -1063,9 +1064,9 @@ REM ****************************************************************************
 REM This section removes old EPIC and Steam shortcuts...
 echo Removing old EPIC and Steam shortcuts...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 powershell -ExecutionPolicy Bypass -File ".\Scripts\Remove-Epic-Steam-Shortcuts.ps1"
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 
 REM *******************************************************************************************************************************************************************************************
 REM *******************************************************************************************************************************************************************************************
@@ -1076,16 +1077,16 @@ REM ****************************************************************************
 echo.
 echo Adding new BIOS files as required...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 rclone copy PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/bios ..\..\bios --progress --ignore-existing
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section downloads addidtional BIOS files for the Dolphin Emulator...
 echo Checking addidtional BIOS files for the Dolphin Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\dolphin-bios-v1" goto SKIP
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/Dolphin-Extra-Bios.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
@@ -1095,7 +1096,7 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x Dolphin-Extra-Bios.7z -aoa -p22446688 -o.\ >nul 2>&1
 echo ...Copying files...
@@ -1103,14 +1104,14 @@ echo.
 xcopy Dolphin-Extra-Bios\emulators\dolphin-emu\User ..\..\emulators\dolphin-emu\User\ /s /y /d >nul 2>&1
 xcopy Dolphin-Extra-Bios\saves\dolphin ..\..\saves\dolphin\ /s /y /d >nul 2>&1
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 rmdir /S /Q "Dolphin-Extra-Bios" >nul 2>&1
 del /Q Dolphin-Extra-Bios.7z >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo dolphin-bios-v1 > .\Flags\dolphin-bios-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 
 REM *******************************************************************************************************************************************************************************************
 REM *******************************************************************************************************************************************************************************************
@@ -1133,7 +1134,7 @@ REM IF NOT EXIST "..\..\system\version.info" goto WARNING
     echo #                                             #
     echo ###############################################
     echo.
-timeout /t 2 >nul
+ping -n 2 127.0.0.1 >nul
 CLS
 goto THEMES
 
@@ -1179,7 +1180,7 @@ REM This section removes old custom system config files that are no longer neede
 echo.
 echo Cleaning up old config files...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q ..\..\emulationstation\.emulationstation\es_systems_cgenius.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_cdogs.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_corsixth.cfg >nul 2>&1
@@ -1187,13 +1188,13 @@ del /Q ..\..\emulationstation\.emulationstation\es_systems_3ds.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_tg-16.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_examu.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_segalindbergh.cfg >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section pulls down the latest custom system config files for RB v8.x...
 echo Updating system config files...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 ..\..\emulators\pixn\PortableGit\cmd\git clone https://github.com/PixelNostalgia/PixN-RBv8.x-Custom-Systems.git
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
@@ -1206,7 +1207,7 @@ if %ERRORLEVEL% neq 0 (
 move /Y ".\PixN-RBv8.x-Custom-Systems\.emulationstation\*.cfg" ..\..\emulationstation\.emulationstation\ >nul 2>&1
 rmdir /S /Q ".\PixN-RBv8.x-Custom-Systems" >nul 2>&1
 :SKIP
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM Renaming game folders...
@@ -1277,23 +1278,23 @@ cscript replace.vbs "..\..\roms\captpower\gamelist.xml" ".daphne</path>" ".hypse
 cscript replace.vbs "..\..\roms\captpower\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
 cscript replace.vbs "..\..\roms\videodriver\gamelist.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
 cscript replace.vbs "..\..\roms\videodriver\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section updates the PS3 m3u files as required...
 echo.
 echo Updating PS3 m3u files as required...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\PS3-m3u-update-v1" goto SKIP
 REM Backup files...
 7z a "..\..\emulators\pixn\PS3-M3U-PixN-Backup.zip" "..\..\roms\ps3\*.m3u" >nul 2>&1
 for %%i in (..\..\roms\ps3\*.m3u) do cscript replace.vbs "%%i" "\dev_hdd0\" "SAVESPATH\dev_hdd0\" > nul
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 for %%i in (..\..\roms\ps3\*.m3u) do cscript replace.vbs "%%i" "SAVESPATHSAVESPATH\" "SAVESPATH\" > nul
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 for %%i in (..\..\roms\ps3\*.m3u) do cscript replace.vbs "%%i" "SAVESPATHSAVESPATHSAVESPATH\" "SAVESPATH\" > nul
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo PS3-m3u-update-v1 > .\Flags\PS3-m3u-update-v1
 echo.
 del /Q replace.vbs >nul 2>&1
@@ -1334,7 +1335,7 @@ REM This section removes old custom system config files that are no longer neede
 echo.
 echo Cleaning up old config files...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q ..\..\emulationstation\.emulationstation\es_systems_cgenius.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_cdogs.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_corsixth.cfg >nul 2>&1
@@ -1342,13 +1343,13 @@ del /Q ..\..\emulationstation\.emulationstation\es_systems_3ds.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_tg-16.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_examu.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_segalindbergh.cfg >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated Hypseus Emulator...
 echo Checking for the updated Hypseus Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 
 IF EXIST ".\Flags\Hypseus-v1" goto SKIP
 del /Q hypseus.7z >nul 2>&1
@@ -1360,27 +1361,27 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x hypseus.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\hypseus >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy hypseus ..\..\emulators\hypseus\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q hypseus.7z >nul 2>&1
 rmdir /S /Q hypseus >nul 2>&1
 echo Hypseus-v1 > .\Flags\Hypseus-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for Solarus emulator updates...
 echo.
 echo Checking for Solarus emulator updates...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\solarus-emu-v1" goto SKIP
 del /Q solarus-v2.0.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/solarus-v2.0.7z >nul 2>&1
@@ -1391,20 +1392,20 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x solarus-v2.0.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\solarus >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy solarus ..\..\emulators\solarus\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q solarus-v2.0.7z >nul 2>&1
 rmdir /S /Q solarus >nul 2>&1
 echo solarus-emu-v1 > .\Flags\solarus-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section adds the new Emulators required for RBv7.x...
@@ -1415,7 +1416,7 @@ REM This section checks for the updated cGenius Emulator...
 echo.
 echo Checking for the updated cGenius Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\cgenius-emu-v1" goto SKIP
 del /Q cgenius_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/cgenius_feb2025.7z >nul 2>&1
@@ -1426,26 +1427,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x cgenius_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\cgenius >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy cgenius ..\..\emulators\cgenius\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q cgenius_feb2025.7z >nul 2>&1
 rmdir /S /Q cgenius >nul 2>&1
 echo cgenius-emu-v1 > .\Flags\cgenius-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated Kronos Emulator...
 echo Checking for the updated Kronos Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\kronos-emu-v1" goto SKIP
 del /Q kronos_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/kronos_feb2025.7z >nul 2>&1
@@ -1456,26 +1457,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x kronos_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\kronos >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy kronos ..\..\emulators\kronos\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q kronos_feb2025.7z >nul 2>&1
 rmdir /S /Q kronos >nul 2>&1
 echo kronos-emu-v1 > .\Flags\kronos-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated Lime3DS Emulator...
 echo Checking for the updated Lime3DS Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\lime3ds-emu-v1" goto SKIP
 del /Q lime3ds_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/lime3ds_feb2025.7z >nul 2>&1
@@ -1486,26 +1487,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x lime3ds_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\lime3ds >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy lime3ds ..\..\emulators\lime3ds\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q lime3ds_feb2025.7z >nul 2>&1
 rmdir /S /Q lime3ds >nul 2>&1
 echo lime3ds-emu-v1 > .\Flags\lime3ds-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated MagicEngine Emulator...
 echo Checking for the updated MagicEngine Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\magicengine-emu-v1" goto SKIP
 del /Q magicengine_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/magicengine_feb2025.7z >nul 2>&1
@@ -1516,26 +1517,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x magicengine_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\magicengine >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy magicengine ..\..\emulators\magicengine\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q magicengine_feb2025.7z >nul 2>&1
 rmdir /S /Q magicengine >nul 2>&1
 echo magicengine-emu-v1 > .\Flags\magicengine-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated Mandarine Emulator...
 echo Checking for the updated Mandarine Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\mandarine-emu-v1" goto SKIP
 del /Q mandarine_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/mandarine_feb2025.7z >nul 2>&1
@@ -1546,26 +1547,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x mandarine_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\mandarine >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy mandarine ..\..\emulators\mandarine\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q mandarine_feb2025.7z >nul 2>&1
 rmdir /S /Q mandarine >nul 2>&1
 echo mandarine-emu-v1 > .\Flags\mandarine-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated OpenJazz Emulator...
 echo Checking for the updated OpenJazz Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\openjazz-emu-v1" goto SKIP
 del /Q openjazz_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/openjazz_feb2025.7z >nul 2>&1
@@ -1576,26 +1577,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x openjazz_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\openjazz >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy openjazz ..\..\emulators\openjazz\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q openjazz_feb2025.7z >nul 2>&1
 rmdir /S /Q openjazz >nul 2>&1
 echo openjazz-emu-v1 > .\Flags\openjazz-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated PDark Emulator...
 echo Checking for the updated PDark Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\pdark-emu-v1" goto SKIP
 del /Q pdark_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/pdark_feb2025.7z >nul 2>&1
@@ -1606,26 +1607,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x pdark_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\pdark >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy pdark ..\..\emulators\pdark\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q pdark_feb2025.7z >nul 2>&1
 rmdir /S /Q pdark >nul 2>&1
 echo pdark-emu-v1 > .\Flags\pdark-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated Xenia Emulator...
 echo Checking for the updated Xenia Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\xenia-emu-v2" goto SKIP
 del /Q xenia_Aug20-2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia_Aug20-2025.7z >nul 2>&1
@@ -1636,26 +1637,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x xenia_Aug20-2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\xenia >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy xenia ..\..\emulators\xenia\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q xenia_Aug20-2025.7z >nul 2>&1
 rmdir /S /Q xenia >nul 2>&1
 echo xenia-emu-v2 > .\Flags\xenia-emu-v2
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated Xenia-Canary Emulator...
 echo Checking for the updated Xenia-Canary Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\xenia-canary-emu-v2" goto SKIP
 del /Q xenia-canary_Oct06-2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia-canary_Oct06-2025.7z >nul 2>&1
@@ -1666,26 +1667,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x xenia-canary_Oct06-2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\xenia-canary >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy xenia-canary ..\..\emulators\xenia-canary\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q xenia-canary_Oct06-2025.7z >nul 2>&1
 rmdir /S /Q xenia-canary >nul 2>&1
 echo xenia-canary-emu-v2 > .\Flags\xenia-canary-emu-v2
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated Xenia-Manager Emulator...
 echo Checking for the updated Xenia-Manager Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\xenia-manager-emu-v1" goto SKIP
 del /Q xenia-manager_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/xenia-manager_feb2025.7z >nul 2>&1
@@ -1696,26 +1697,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x xenia-manager_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\xenia-manager >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy xenia-manager ..\..\emulators\xenia-manager\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q xenia-manager_feb2025.7z >nul 2>&1
 rmdir /S /Q xenia-manager >nul 2>&1
 echo xenia-manager-emu-v1 > .\Flags\xenia-manager-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated Yabasanshiro Emulator...
 echo Checking for the updated Yabasanshiro Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\yabasanshiro-emu-v1" goto SKIP
 del /Q yabasanshiro_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/yabasanshiro_feb2025.7z >nul 2>&1
@@ -1726,20 +1727,20 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x yabasanshiro_feb2025.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\yabasanshiro >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy yabasanshiro ..\..\emulators\yabasanshiro\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q yabasanshiro_feb2025.7z >nul 2>&1
 rmdir /S /Q yabasanshiro >nul 2>&1
 echo yabasanshiro-emu-v1 > .\Flags\yabasanshiro-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM Download MAME Samples...
@@ -1748,13 +1749,13 @@ echo Checking for missing MAME Samples...
 echo.
 rclone copy PixN-Themes-SH:/update/Batocera/bios/mame/samples ..\..\saves\mame\samples --progress --ignore-existing
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section pulls down the latest custom system config files for RBv7.x...
 echo Updating system config files...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 ..\..\emulators\pixn\PortableGit\cmd\git clone https://github.com/PixelNostalgia/PixN-RBv7.x-Custom-Systems.git
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
@@ -1768,7 +1769,7 @@ if %ERRORLEVEL% neq 0 (
 move /Y ".\PixN-RBv7.x-Custom-Systems\.emulationstation\*.cfg" ..\..\emulationstation\.emulationstation\ >nul 2>&1
 rmdir /S /Q ".\PixN-RBv7.x-Custom-Systems" >nul 2>&1
 :SKIP
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 REM *******************************************************************************************************************************************************************************************
 
@@ -1848,7 +1849,7 @@ cscript replace.vbs "..\..\roms\captpower\gamelist.xml" ".daphne</path>" ".hypse
 cscript replace.vbs "..\..\roms\captpower\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
 cscript replace.vbs "..\..\roms\videodriver\gamelist.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
 cscript replace.vbs "..\..\roms\videodriver\gamelist_ARRM.xml" ".daphne</path>" ".hypseus</path>" > nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q replace.vbs >nul 2>&1
 REM *******************************************************************************************************************************************************************************************
 
@@ -1856,7 +1857,7 @@ REM This section fixes TriForce Games...
 echo.
 echo Updating config for TriForce Games...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\TriForce-Config-v1" goto SKIP
 del /Q TriForce-Game-Settings.zip >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/TriForce-Game-Settings.zip >nul 2>&1
@@ -1867,16 +1868,16 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x TriForce-Game-Settings.zip -aoa -o..\..\emulators\dolphin-triforce\User\GameSettings\ >nul 2>&1
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q TriForce-Game-Settings.zip >nul 2>&1
 echo TriForce-Config-v1 > .\Flags\TriForce-Config-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 :CHECKv7.3+
@@ -1899,10 +1900,10 @@ REM This section adds the new Emulators required for RetroBat v7.3 and higher
 echo.
 echo Adding the new Emulators required for RetroBat v7.3 and higher...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 
 IF EXIST ".\Flags\rb-7.3+emulators_11-08-2025" goto SKIP
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 del /Q rb-7.3+emulators_11-08-2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/rb-7.3+emulators_11-08-2025.7z >nul 2>&1
@@ -1913,16 +1914,16 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x rb-7.3+emulators_11-08-2025.7z -aoa -p22446688 -o..\..\emulators\ >nul 2>&1
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q rb-7.3+emulators_11-08-2025.7z >nul 2>&1
 echo rb-7.3+emulators_11-08-2025 > .\Flags\rb-7.3+emulators_11-08-2025
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 :CHECKv7.5+
@@ -1960,17 +1961,17 @@ REM This section removes old custom system config files that are no longer neede
 echo.
 echo Cleaning up old config files...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q ..\..\emulationstation\.emulationstation\es_systems_tg-16.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_examu.cfg >nul 2>&1
 del /Q ..\..\emulationstation\.emulationstation\es_systems_segalindbergh.cfg >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for the updated Hypseus Emulator...
 echo Checking for the updated Hypseus Emulator...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 
 IF EXIST ".\Flags\Hypseus-v1" goto SKIP
 del /Q hypseus.7z >nul 2>&1
@@ -1982,28 +1983,28 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x hypseus.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\hypseus >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy hypseus ..\..\emulators\hypseus\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q hypseus.7z >nul 2>&1
 rmdir /S /Q hypseus >nul 2>&1
 
 echo Hypseus-v1 > .\Flags\Hypseus-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section checks for Solarus emulator updates...
 echo.
 echo Checking for Solarus emulator updates...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\solarus-emu-v1" goto SKIP
 del /Q solarus-v2.0.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/solarus-v2.0.7z >nul 2>&1
@@ -2014,26 +2015,26 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 7z x solarus-v2.0.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\solarus >nul 2>&1
 echo.
 echo ...Copying files...
 xcopy solarus ..\..\emulators\solarus\ /S /E /I /Q /H /Y /R >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q solarus-v2.0.7z >nul 2>&1
 rmdir /S /Q solarus >nul 2>&1
 echo solarus-emu-v1 > .\Flags\solarus-emu-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section pulls down the latest custom system config files for RBv6.x...
 echo Updating system config files...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 ..\..\emulators\pixn\PortableGit\cmd\git clone https://github.com/PixelNostalgia/PixN-RBv6.x-Custom-Systems.git >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
@@ -2047,7 +2048,7 @@ if %ERRORLEVEL% neq 0 (
 move /Y ".\PixN-RBv6.x-Custom-Systems\.emulationstation\*.cfg" ..\..\emulationstation\.emulationstation\ >nul 2>&1
 rmdir /S /Q ".\PixN-RBv6.x-Custom-Systems" >nul 2>&1
 :SKIP
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 REM *******************************************************************************************************************************************************************************************
 
@@ -2057,16 +2058,16 @@ echo Checking for missing MAME Samples...
 echo.
 rclone copy PixN-Themes-SH:/update/Batocera/bios/mame/samples ..\..\saves\mame\samples --progress --ignore-existing
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section pulls down the latest es-checkversion script...
 echo.
 echo Updating es-checkversion script if required...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 IF EXIST ".\Flags\es-checkversion-v1" goto SKIP
-wget https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/es-checkversion-v6.4.cmd -O es-checkversion.cmd >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/es-checkversion-v6.4.cmd -O es-checkversion.cmd >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
     %handle_error%
@@ -2077,11 +2078,11 @@ if %ERRORLEVEL% neq 0 (
 	echo.
 )
 move /Y "es-checkversion.cmd" ..\..\emulationstation\ >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo es-checkversion-v1 > .\Flags\es-checkversion-v1
 :SKIP
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 goto THEMES
 
 
@@ -2099,12 +2100,12 @@ color %colorCode%
 cls
 echo Checking for theme updates...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q "Full Download - Hypermax Plus PixN.bat" >nul 2>&1
 del /Q "Full Download - Alekfull-ARTFLIX-PixN.bat" >nul 2>&1
 del /Q "Full Download - Carbon-PixN.bat" >nul 2>&1
 del /Q "Full Download - Ckau Book PixN.bat" >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section removes the HyperMax-Lite-PixN Theme...
@@ -2132,7 +2133,7 @@ echo objFile.Write strNewText >> replace.vbs
 echo objFile.Close>> replace.vbs
 
 cscript replace.vbs "..\..\emulationstation\.emulationstation\es_settings.cfg" "Hypermax-Lite-PixN" "Hypermax-Plus-PixN" > NUL
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM This section removes the old ckau-book-rgs Theme...
@@ -2160,7 +2161,7 @@ echo objFile.Write strNewText >> replace.vbs
 echo objFile.Close>> replace.vbs
 
 cscript replace.vbs "..\..\emulationstation\.emulationstation\es_settings.cfg" "ckau-book-rgs" "ckau-book-PixN" > NUL
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 cls
@@ -2183,29 +2184,29 @@ echo #                                                       #
 echo #########################################################
 echo.
 
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo Checking Hypermax-Plus-PixN for updates...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 rclone sync PixN-Themes-SH:/update/Themes/Hypermax-Plus-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN --exclude=/_inc/videos/** --progress
 md "..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\videos" >nul 2>&1
 
 echo.
 echo Checking Carbon-PixN for updates...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 rclone sync PixN-Themes-SH:/update/Themes/Carbon-PixN ..\..\emulationstation\.emulationstation\themes\Carbon-PixN --progress
 
 echo.
 echo Checking Ckau-Book-PixN for updates...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 rclone sync PixN-Themes-SH:/update/Themes/ckau-book-PixN ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN --progress
 
 echo.
 echo Checking Ckau-Book for updates...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 rclone sync PixN-Themes-SH:/update/Themes/ckau-book ..\..\emulationstation\.emulationstation\themes\ckau-book --progress
 echo.
 REM *******************************************************************************************************************************************************************************************
@@ -2222,7 +2223,7 @@ REM move /Y default.info ..\..\decorations\thebezelproject\ >nul 2>&1
 REM move /Y default.png ..\..\decorations\thebezelproject\ >nul 2>&1
 move /Y neogeo.png ..\..\decorations\thebezelproject\systems\ >nul 2>&1
 move /Y mame.png ..\..\decorations\thebezelproject\systems\ >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM ren ..\..\decorations\thebezelproject\default.info PixN-Bezel.info >nul 2>&1
 REM ren ..\..\decorations\thebezelproject\default.png PixN-Bezel.png >nul 2>&1
 del /Q ..\..\decorations\thebezelproject\default.info >nul 2>&1
@@ -2232,7 +2233,7 @@ del /Q ..\..\decorations\thebezelproject\PixN-Bezel.png >nul 2>&1
 rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/games ..\..\decorations\thebezelproject\games --progress --ignore-existing
 rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/systems ..\..\decorations\thebezelproject\systems --progress --ignore-existing
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM Sync MAME Artwork...
@@ -2241,12 +2242,12 @@ echo Checking for updated/missing MAME Artwork...
 echo.
 rclone copy PixN-Themes-SH:/update/Batocera/bios/mame/artwork ..\..\saves\mame\artwork --progress --ignore-existing
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
 
 REM Apply the PixB Spash video...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 REM IF EXIST ".\Flags\Set-PixN-Splash-v2" goto SKIP
 IF EXIST "pixnretrodeck-ally-v1" goto SKIP
 IF EXIST "pixnretrodeck-steamdeck-v1" goto SKIP
@@ -2259,13 +2260,13 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     echo ...Download Completed Successfully...
 )
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo.
 move /Y "PixN-Splash-1.mp4" ..\..\emulationstation\.emulationstation\video\ >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 echo Set-PixN-Splash-v2 > .\Flags\Set-PixN-Splash-v2
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 
 setlocal
 REM Set variable for the file path (relative to the script's location)
@@ -2310,7 +2311,7 @@ del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system1.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-ally.svg >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-silver.png >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system.png >nul 2>&1
@@ -2331,7 +2332,7 @@ copy /Y pixnretrodeck-hyper-silver.png ..\..\emulationstation\.emulationstation\
 copy /Y pixnretrodeck-hyper-system.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system.png >nul 2>&1
 copy /Y pixnretrodeck-hyper-system1.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system1.png >nul 2>&1
 copy /Y pixnretrodeck-hyper-system2.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system2.png >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q pixnretrodeck.svg >nul 2>&1
 del /Q pixnretrodeck-ally.svg >nul 2>&1
 del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
@@ -2342,7 +2343,7 @@ del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
 echo.
 echo Updating Music...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 rclone sync PixN-Themes-SH:/update/Music/RetroDeck ..\..\emulationstation\.emulationstation\music --progress
 
 
@@ -2360,7 +2361,7 @@ del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system1.png >nul 2>&1
 del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-steamdecklcd.svg >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-silver.png >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Themes/RetroDeck/pixnretrodeck-hyper-system.png >nul 2>&1
@@ -2381,7 +2382,7 @@ copy /Y pixnretrodeck-hyper-silver.png ..\..\emulationstation\.emulationstation\
 copy /Y pixnretrodeck-hyper-system.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system.png >nul 2>&1
 copy /Y pixnretrodeck-hyper-system1.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system1.png >nul 2>&1
 copy /Y pixnretrodeck-hyper-system2.png ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\retrobat\_inc\system2.png >nul 2>&1
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 del /Q pixnretrodeck.svg >nul 2>&1
 del /Q pixnretrodeck-steamdecklcd.svg >nul 2>&1
 del /Q pixnretrodeck-hyper-silver.png >nul 2>&1
@@ -2392,7 +2393,7 @@ del /Q pixnretrodeck-hyper-system2.png >nul 2>&1
 echo.
 echo Updating Music...
 echo.
-timeout /t 1 >nul
+ping -n 1 127.0.0.1 >nul
 rclone sync PixN-Themes-SH:/update/Music/RetroDeck ..\..\emulationstation\.emulationstation\music --progress
 
 :SKIP-SDLCD
@@ -2410,7 +2411,7 @@ echo #                       Enjoy...                         #
 echo #                                                        #
 echo ##########################################################
 echo.
-timeout /t 5 >nul
+ping -n 5 127.0.0.1 >nul
 cls
 popd
 exit
