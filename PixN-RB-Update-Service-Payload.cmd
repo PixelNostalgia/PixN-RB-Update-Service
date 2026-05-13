@@ -1,5 +1,5 @@
 @echo off
-title PixN Update Service v8.06
+title PixN Update Service v8.07
 pushd %1
 REM Text color code for Light Green is A
 set "colorCode=A"
@@ -38,7 +38,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 8.06
+echo Version 8.07
 echo.
 ping -n 3 127.0.0.1 >nul
 cls
@@ -863,15 +863,15 @@ REM This section checks for the updated Switch Firmware...
 echo Checking for updated Switch Firmware
 echo.
 ping -n 1 127.0.0.1 >nul
-rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\citron\user\nand\system\Contents\registered --progress
+rclone sync PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/Switch/fw-v21.0.0/Firmware ..\..\emulators\citron\user\nand\system\Contents\registered --progress --modify-window 2s
 echo.
-rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\eden\user\nand\system\Contents\registered --progress
+rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\eden\user\nand\system\Contents\registered --progress --modify-window 2s
 echo.
-rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\sudachi\user\nand\system\Contents\registered --progress
+rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\sudachi\user\nand\system\Contents\registered --progress --modify-window 2s
 echo.
-rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\suyu\user\nand\system\Contents\registered --progress
+rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\suyu\user\nand\system\Contents\registered --progress --modify-window 2s
 echo.
-rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\yuzu\user\nand\system\Contents\registered --progress
+rclone sync ..\..\emulators\citron\user\nand\system\Contents\registered ..\..\emulators\yuzu\user\nand\system\Contents\registered --progress --modify-window 2s
 echo.
 ping -n 1 127.0.0.1 >nul
 
@@ -1078,7 +1078,7 @@ echo.
 echo Adding new BIOS files as required...
 echo.
 ping -n 1 127.0.0.1 >nul
-rclone copy PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/bios ..\..\bios --progress --ignore-existing
+rclone copy PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/bios ..\..\bios --progress --ignore-existing --modify-window 2s
 echo.
 ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
@@ -1747,7 +1747,7 @@ REM Download MAME Samples...
 echo.
 echo Checking for missing MAME Samples...
 echo.
-rclone copy PixN-Themes-SH:/update/Batocera/bios/mame/samples ..\..\saves\mame\samples --progress --ignore-existing
+rclone copy PixN-Themes-SH:/update/Batocera/bios/mame/samples ..\..\saves\mame\samples --progress --ignore-existing --modify-window 2s
 echo.
 ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
@@ -2056,7 +2056,7 @@ REM Download MAME Samples...
 echo.
 echo Checking for missing MAME Samples...
 echo.
-rclone copy PixN-Themes-SH:/update/Batocera/bios/mame/samples ..\..\saves\mame\samples --progress --ignore-existing
+rclone copy PixN-Themes-SH:/update/Batocera/bios/mame/samples ..\..\saves\mame\samples --progress --ignore-existing --modify-window 2s
 echo.
 ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
@@ -2188,26 +2188,26 @@ ping -n 1 127.0.0.1 >nul
 echo Checking Hypermax-Plus-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 >nul
-rclone sync PixN-Themes-SH:/update/Themes/Hypermax-Plus-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN --exclude=/_inc/videos/** --progress
+rclone sync PixN-Themes-SH:/update/Themes/Hypermax-Plus-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN --exclude=/_inc/videos/** --progress --modify-window 2s
 md "..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\videos" >nul 2>&1
 
 echo.
 echo Checking Carbon-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 >nul
-rclone sync PixN-Themes-SH:/update/Themes/Carbon-PixN ..\..\emulationstation\.emulationstation\themes\Carbon-PixN --progress
+rclone sync PixN-Themes-SH:/update/Themes/Carbon-PixN ..\..\emulationstation\.emulationstation\themes\Carbon-PixN --progress --modify-window 2s
 
 echo.
 echo Checking Ckau-Book-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 >nul
-rclone sync PixN-Themes-SH:/update/Themes/ckau-book-PixN ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN --progress
+rclone sync PixN-Themes-SH:/update/Themes/ckau-book-PixN ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN --progress --modify-window 2s
 
 echo.
 echo Checking Ckau-Book for updates...
 echo.
 ping -n 1 127.0.0.1 >nul
-rclone sync PixN-Themes-SH:/update/Themes/ckau-book ..\..\emulationstation\.emulationstation\themes\ckau-book --progress
+rclone sync PixN-Themes-SH:/update/Themes/ckau-book ..\..\emulationstation\.emulationstation\themes\ckau-book --progress --modify-window 2s
 echo.
 REM *******************************************************************************************************************************************************************************************
 
@@ -2230,8 +2230,8 @@ del /Q ..\..\decorations\thebezelproject\default.info >nul 2>&1
 del /Q ..\..\decorations\thebezelproject\default.png >nul 2>&1
 del /Q ..\..\decorations\thebezelproject\PixN-Bezel.info >nul 2>&1
 del /Q ..\..\decorations\thebezelproject\PixN-Bezel.png >nul 2>&1
-rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/games ..\..\decorations\thebezelproject\games --progress --ignore-existing
-rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/systems ..\..\decorations\thebezelproject\systems --progress --ignore-existing
+rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/games ..\..\decorations\thebezelproject\games --progress --ignore-existing --modify-window 2s
+rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/systems ..\..\decorations\thebezelproject\systems --progress --ignore-existing --modify-window 2s
 echo.
 ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
@@ -2240,7 +2240,7 @@ REM Sync MAME Artwork...
 echo.
 echo Checking for updated/missing MAME Artwork...
 echo.
-rclone copy PixN-Themes-SH:/update/Batocera/bios/mame/artwork ..\..\saves\mame\artwork --progress --ignore-existing
+rclone copy PixN-Themes-SH:/update/Batocera/bios/mame/artwork ..\..\saves\mame\artwork --progress --ignore-existing --modify-window 2s
 echo.
 ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
@@ -2344,7 +2344,7 @@ echo.
 echo Updating Music...
 echo.
 ping -n 1 127.0.0.1 >nul
-rclone sync PixN-Themes-SH:/update/Music/RetroDeck ..\..\emulationstation\.emulationstation\music --progress
+rclone sync PixN-Themes-SH:/update/Music/RetroDeck ..\..\emulationstation\.emulationstation\music --progress --modify-window 2s
 
 
 :SKIP-ALLY
@@ -2394,7 +2394,7 @@ echo.
 echo Updating Music...
 echo.
 ping -n 1 127.0.0.1 >nul
-rclone sync PixN-Themes-SH:/update/Music/RetroDeck ..\..\emulationstation\.emulationstation\music --progress
+rclone sync PixN-Themes-SH:/update/Music/RetroDeck ..\..\emulationstation\.emulationstation\music --progress --modify-window 2s
 
 :SKIP-SDLCD
 
