@@ -123,7 +123,7 @@ REM This section checks for Download Service Updates...
 echo.
 echo Checking for script updates...
 ping -n 1 127.0.0.1 > nul
-IF EXIST ".\Flags\PixN-DS-v0.10" goto SKIP
+REM IF EXIST ".\Flags\PixN-DS-v0.10" goto SKIP
 del /Q rgs_download_service_0.10.exe >nul 2>&1
 del /Q rgs_download_service.exe >nul 2>&1
 del /Q RGSDownloadService-Setup.exe >nul 2>&1
