@@ -203,7 +203,7 @@ echo.
 REM *******************************************************************************************************************************************************************************************
 
 REM This section cleans up from when the PixN Update Service was added to the system wheel...
-rmdir /S /Q "..\..\roms\pixn" >nul 2>&1
+REM rmdir /S /Q "..\..\roms\pixn" >nul 2>&1
 REM *******************************************************************************************************************************************************************************************
 
 REM This section applies the PinballFX and Piball M Fix...
@@ -294,7 +294,7 @@ REM This section adds OpenAL32.dll if required...
 echo Checking if OpenAL32.dll is required...
 echo.
 ping -n 1 127.0.0.1 >nul
-IF EXIST ".\Flags\OpenAL32.dll-v1" goto SKIP
+REM IF EXIST ".\Flags\OpenAL32.dll-v1" goto SKIP
 IF NOT EXIST ..\..\roms\zaccariapinball\ZaccariaPinball.pc\ goto SKIP
 IF EXIST ..\..\roms\zaccariapinball\ZaccariaPinball.pc\OpenAL32.dll goto SKIP
 
