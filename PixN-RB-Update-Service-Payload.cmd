@@ -2244,6 +2244,10 @@ REM Sync latest Decorations/Bezels...
 echo.
 echo Checking for updated/missing Decorations/Bezels...
 echo.
+del /Q neogeo.png >nul 2>&1
+del /Q neogeo.png.* >nul 2>&1
+del /Q mame.png >nul 2>&1
+del /Q mame.png.* >nul 2>&1
 REM wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/decorations/mybezels16-9/default.info >nul 2>&1
 REM wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/decorations/mybezels16-9/default.png >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/decorations/mybezels16-9/neogeo.png >nul 2>&1
