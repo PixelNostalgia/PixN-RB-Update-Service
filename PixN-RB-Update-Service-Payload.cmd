@@ -123,7 +123,8 @@ REM This section checks for Download Service Updates...
 echo.
 echo Checking for script updates...
 ping -n 1 127.0.0.1 > nul
-REM IF EXIST ".\Flags\PixN-DS-v0.11" goto SKIP
+REM IF EXIST ".\Flags\PixN-DS-v0.12" goto SKIP
+del /Q rgs_download_service_0.12.exe >nul 2>&1
 del /Q rgs_download_service_0.11.exe >nul 2>&1
 del /Q rgs_download_service_0.10.exe >nul 2>&1
 del /Q rgs_download_service_0.9.exe >nul 2>&1
@@ -132,7 +133,7 @@ del /Q RGSDownloadService-Setup.exe >nul 2>&1
 del /Q RGSDownloadService-Setup.exe.* >nul 2>&1
 del /Q README.txt >nul 2>&1
 del /Q "RGS Download Service - README.txt" >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/rgs_download_service_0.11.exe" >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/rgs_download_service_0.12.exe" >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/RGS Download Service - README.txt" >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/RGSDownloadService-Setup.exe" >nul 2>&1
 if %ERRORLEVEL% neq 0 (
@@ -143,7 +144,7 @@ if %ERRORLEVEL% neq 0 (
     echo.
 )
 ping -n 1 127.0.0.1 > nul
-ren rgs_download_service_0.11.exe rgs_download_service.exe >nul 2>&1
+ren rgs_download_service_0.12.exe rgs_download_service.exe >nul 2>&1
 echo.
 REM echo Copying files...
 net stop "RGS Download Service" >nul 2>&1
@@ -153,7 +154,7 @@ move /Y "RGS Download Service - README.txt" ..\..\emulators\pixn\RGSDownloadServ
 ping -n 2 127.0.0.1 > nul
 net start "RGS Download Service" >nul 2>&1
 
-echo PixN-DS-v0.11 > .\Flags\PixN-DS-v0.11
+echo PixN-DS-v0.12 > .\Flags\PixN-DS-v0.12
 :SKIP
 echo.
 ping -n 1 127.0.0.1 > nul
