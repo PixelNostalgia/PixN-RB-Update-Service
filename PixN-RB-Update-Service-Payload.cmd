@@ -1,5 +1,5 @@
 @echo off
-title PixN Update Service v8.07
+title PixN Update Service v8.09
 pushd %1
 REM Text color code for Light Green is A
 set "colorCode=A"
@@ -38,7 +38,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 8.08
+echo Version 8.09
 echo.
 ping -n 3 127.0.0.1 >nul
 cls
@@ -1062,6 +1062,26 @@ echo.
 ping -n 1 127.0.0.1 >nul
 echo Check complete...
 echo.
+REM *******************************************************************************************************************************************************************************************
+
+REM This section fixes SuperBrosWar...
+ping -n 1 127.0.0.1 >nul
+IF EXIST "..\..\roms\superbroswar\sbw.sbw" goto SKIP
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Game-Fixes/superbroswar/sbw.sbw -O ..\..\roms\superbroswar\sbw.sbw >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    goto SKIP
+) else (
+    echo.
+)
+ping -n 1 127.0.0.1 >nul
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/Game-Fixes/superbroswar/gamelist.xml -O ..\..\roms\superbroswar\gamelist.xml >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    goto SKIP
+) else (
+    echo.
+)
+ping -n 1 127.0.0.1 >nul
+:SKIP
 REM *******************************************************************************************************************************************************************************************
 
 REM This section removes old EPIC and Steam shortcuts...
@@ -2266,6 +2286,17 @@ del /Q ..\..\decorations\thebezelproject\PixN-Bezel.info >nul 2>&1
 del /Q ..\..\decorations\thebezelproject\PixN-Bezel.png >nul 2>&1
 rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/games ..\..\decorations\thebezelproject\games --progress --ignore-existing --modify-window 2s
 rclone copy PixN-Themes-SH:/update/decorations/mybezels16-9/systems ..\..\decorations\thebezelproject\systems --progress --ignore-existing --modify-window 2s
+
+ren ..\..\system\decorations\default_unglazed\systems\saturn.png saturn.old >nul 2>&1
+ren ..\..\system\decorations\default_unglazed\systems\snes.png snes.old >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Decoration_Updates/default_unglazed/systems/saturn.png -O ..\..\system\decorations\default_unglazed\systems\saturn.png >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Decoration_Updates/default_unglazed/systems/snes.png -O ..\..\system\decorations\default_unglazed\systems\snes.png >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Decoration_Updates/default_unglazed/systems/jaguarcd.info -O ..\..\system\decorations\default_unglazed\systems\jaguarcd.info >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Decoration_Updates/default_unglazed/systems/jaguarcd.png -O ..\..\system\decorations\default_unglazed\systems\jaguarcd.png >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Decoration_Updates/default_unglazed/systems/sega32xcd.info -O ..\..\system\decorations\default_unglazed\systems\sega32xcd.info >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Decoration_Updates/default_unglazed/systems/sega32xcd.png -O ..\..\system\decorations\default_unglazed\systems\sega32xcd.png >nul 2>&1
+
+
 echo.
 ping -n 1 127.0.0.1 >nul
 REM *******************************************************************************************************************************************************************************************
