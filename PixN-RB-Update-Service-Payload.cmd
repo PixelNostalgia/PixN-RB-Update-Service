@@ -1,5 +1,5 @@
 @echo off
-title PixN Update Service v8.09
+title PixN Update Service v8.10
 pushd %1
 REM Text color code for Light Green is A
 set "colorCode=A"
@@ -16,6 +16,8 @@ del /Q Send-F11Fullscreen.ps1 >nul 2>&1
 del /Q Add-PixNService.ps1 >nul 2>&1
 del /Q Fix-RetrobatShortname.ps1 >nul 2>&1
 del /Q Remove-Epic-Steam-Shortcuts.ps1 >nul 2>&1
+del /Q AtariST-Settings.cmd >nul 2>&1
+ping -n 2 127.0.0.1 >nul
 REM Download Latest...
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/PixN-Reset.cmd -O .\Scripts\PixN-Reset.cmd >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Move-Flags.cmd -O .\Scripts\Move-Flags.cmd >nul 2>&1
@@ -24,6 +26,7 @@ wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https:
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Fix-RetrobatShortname.ps1 -O .\Scripts\Fix-RetrobatShortname.ps1 >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Remove-Epic-Steam-Shortcuts.ps1 -O .\Scripts\Remove-Epic-Steam-Shortcuts.ps1 >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Set-DOSBoxBootFreeSpace.ps1 -O .\Scripts\Set-DOSBoxBootFreeSpace.ps1 >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/AtariST-Settings.cmd -O .\Scripts\AtariST-Settings.cmd >nul 2>&1
 REM Script to send the window full screen
 powershell -ExecutionPolicy Bypass -File ".\Scripts\Send-F11Fullscreen.ps1"
 
@@ -38,7 +41,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 8.09
+echo Version 8.10
 echo.
 ping -n 3 127.0.0.1 >nul
 cls
@@ -1349,6 +1352,11 @@ powershell -ExecutionPolicy Bypass -Command ^
     "}"
 
 endlocal
+REM *******************************************************************************************************************************************************************************************
+
+REM Setting options for the AtariST pack...
+start /wait .\Scripts\AtariST-Settings.cmd
+
 REM *******************************************************************************************************************************************************************************************
 
 :CHECKv8.1+
