@@ -11,7 +11,7 @@ REM This section sets options for the AtariST pack (1of6)...
 setlocal
 
 REM Set variable for the file path (relative to the script's location)
-set "filePath=..\..\..\emulationstation\.emulationstation\es_settings.cfg"
+set "filePath=..\..\emulationstation\.emulationstation\es_settings.cfg"
 
 REM Execute Windows PowerShell in Bypass mode
 powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command ^
@@ -37,7 +37,7 @@ REM This section sets options for the AtariST pack (2of6)...
 setlocal
 
 REM Set variable for the file path (relative to the script's location)
-set "filePath=..\..\..\emulationstation\.emulationstation\es_settings.cfg"
+set "filePath=..\..\emulationstation\.emulationstation\es_settings.cfg"
 
 REM Execute Windows PowerShell in Bypass mode
 powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command ^
@@ -63,7 +63,7 @@ REM This section sets options for the AtariST pack (3of6)...
 setlocal
 
 REM Set variable for the file path (relative to the script's location)
-set "filePath=..\..\..\emulationstation\.emulationstation\es_settings.cfg"
+set "filePath=..\..\emulationstation\.emulationstation\es_settings.cfg"
 
 REM Execute Windows PowerShell in Bypass mode
 powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command ^
@@ -89,7 +89,7 @@ REM This section sets options for the AtariST pack (4of6)...
 setlocal
 
 REM Set variable for the file path (relative to the script's location)
-set "filePath=..\..\..\emulationstation\.emulationstation\es_settings.cfg"
+set "filePath=..\..\emulationstation\.emulationstation\es_settings.cfg"
 
 REM Execute Windows PowerShell in Bypass mode
 powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command ^
@@ -115,7 +115,7 @@ REM This section sets options for the AtariST pack (5of6)...
 setlocal
 
 REM Set variable for the file path (relative to the script's location)
-set "filePath=..\..\..\emulationstation\.emulationstation\es_settings.cfg"
+set "filePath=..\..\emulationstation\.emulationstation\es_settings.cfg"
 
 REM Execute Windows PowerShell in Bypass mode
 powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command ^
@@ -141,7 +141,7 @@ REM This section sets options for the AtariST pack (6of6)...
 setlocal
 
 REM Set variable for the file path (relative to the script's location)
-set "filePath=..\..\..\emulationstation\.emulationstation\es_settings.cfg"
+set "filePath=..\..\emulationstation\.emulationstation\es_settings.cfg"
 
 REM Execute Windows PowerShell in Bypass mode
 powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command ^
