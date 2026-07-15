@@ -793,7 +793,7 @@ REM This section checks the TeknoParrot Emulator...
 echo Checking the TeknoParrot Emulator...
 echo.
 ping -n 1 127.0.0.1 >nul
-IF EXIST ".\Flags\TeknoParrot-v6" goto SKIP
+IF EXIST ".\Flags\TeknoParrot-v7" goto SKIP
 REM Backup TecknoParrot data...
 7z a "..\..\emulators\teknoparrot\UserProfiles-PixN-Backup.zip" "..\..\emulators\teknoparrot\UserProfiles\" >nul 2>&1
 7z a "..\..\emulators\teknoparrot\GameProfiles-PixN-Backup.zip" "..\..\emulators\teknoparrot\GameProfiles\" >nul 2>&1
@@ -817,7 +817,7 @@ ping -n 1 127.0.0.1 >nul
 del /Q teknoparrot_jul2026.7z >nul 2>&1
 rmdir /S /Q teknoparrot >nul 2>&1
 
-echo TeknoParrot-v6 > .\Flags\TeknoParrot-v6
+echo TeknoParrot-v7 > .\Flags\TeknoParrot-v7
 :SKIP
 echo.
 ping -n 1 127.0.0.1 >nul
