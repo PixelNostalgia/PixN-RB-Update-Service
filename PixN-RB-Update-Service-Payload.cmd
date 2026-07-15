@@ -809,7 +809,7 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 >nul
 echo.
-7z x teknoparrot_jul2026.7z -aoa -o.\ >nul 2>&1
+7z x teknoparrot_jul2026.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\teknoparrot >nul 2>&1
 echo ...Copying files...
 xcopy teknoparrot ..\..\emulators\teknoparrot\ /S /E /I /Q /H /Y /R >nul 2>&1
