@@ -733,7 +733,7 @@ echo.
 echo Checking Retroarch for the ffmpeg core...
 echo.
 ping -n 1 127.0.0.1 >nul
-IF EXIST ".\Flags\retroarch-emu-v1" goto SKIP
+IF EXIST ".\Flags\retroarch-emu-v2" goto SKIP
 del /Q retroarch_feb2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/retroarch_feb2025.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
@@ -753,7 +753,7 @@ xcopy retroarch ..\..\emulators\retroarch\ /S /E /I /Q /H /Y /R >nul 2>&1
 ping -n 1 127.0.0.1 >nul
 del /Q retroarch_feb2025.7z >nul 2>&1
 rmdir /S /Q retroarch >nul 2>&1
-echo retroarch-emu-v1 > .\Flags\retroarch-emu-v1
+echo retroarch-emu-v2 > .\Flags\retroarch-emu-v2
 :SKIP
 echo.
 ping -n 1 127.0.0.1 >nul
