@@ -1,5 +1,5 @@
 @echo off
-title PixN Update Service v8.11
+title PixN Update Service v8.12
 pushd %1
 REM Text color code for Light Green is A
 set "colorCode=A"
@@ -41,7 +41,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 8.11
+echo Version 8.12
 echo.
 ping -n 3 127.0.0.1 >nul
 cls
