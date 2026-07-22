@@ -2244,29 +2244,37 @@ echo #########################################################
 echo.
 
 ping -n 1 127.0.0.1 >nul
+IF EXIST ".\Flags\Skip-HyperMax-PixN" goto SKIP
 echo Checking Hypermax-Plus-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 >nul
 rclone sync PixN-Themes-SH:/update/Themes/Hypermax-Plus-PixN ..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN --exclude=/_inc/videos/** --progress --modify-window 2s
 md "..\..\emulationstation\.emulationstation\themes\Hypermax-Plus-PixN\_inc\videos" >nul 2>&1
+:SKIP
 
+IF EXIST ".\Flags\Skip-Carbon-PixN" goto SKIP
 echo.
 echo Checking Carbon-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 >nul
 rclone sync PixN-Themes-SH:/update/Themes/Carbon-PixN ..\..\emulationstation\.emulationstation\themes\Carbon-PixN --progress --modify-window 2s
+:SKIP
 
+IF EXIST ".\Flags\Skip-Ckau-book-PixN" goto SKIP
 echo.
 echo Checking Ckau-Book-PixN for updates...
 echo.
 ping -n 1 127.0.0.1 >nul
 rclone sync PixN-Themes-SH:/update/Themes/ckau-book-PixN ..\..\emulationstation\.emulationstation\themes\ckau-book-PixN --progress --modify-window 2s
+:SKIP
 
+IF EXIST ".\Flags\Skip-Ckau-book" goto SKIP
 echo.
 echo Checking Ckau-Book for updates...
 echo.
 ping -n 1 127.0.0.1 >nul
 rclone sync PixN-Themes-SH:/update/Themes/ckau-book ..\..\emulationstation\.emulationstation\themes\ckau-book --progress --modify-window 2s
+:SKIP
 echo.
 REM *******************************************************************************************************************************************************************************************
 
