@@ -1,6 +1,5 @@
 @echo off
-title PixN Update Service Loader
-pushd %1
+title PixN Update Service...
 setlocal
 
 rem Version 2.0
@@ -21,8 +20,7 @@ CSCRIPT //nologo "%TempVBSFile%"
 echo .
 echo Updating the script...
 ping -n 2 127.0.0.1 > nul
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/PixN-RB-Update-Service-Payload.cmd -O PixN-RB-Update-Service-Payload.cmd
+curl --insecure -O https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/PixN-RB-Update-Service-Payload.cmd
 ping -n 2 127.0.0.1 > nul
 start /wait PixN-RB-Update-Service-Payload.cmd
-popd
 exit
