@@ -1335,6 +1335,45 @@ REM ****************************************************************************
 set "colorCode=A"
 color %colorCode%
 cls
+
+REM *******************************************************************************************************************************************************************************************
+REM Setting default theme on first run...
+REM *******************************************************************************************************************************************************************************************
+
+echo.
+ping -n 1 127.0.0.1 >nul
+IF EXIST ".\Flags\set-default-theme-v1" goto SKIP
+
+echo Const ForReading = 1 > replace.vbs
+echo Const ForWriting = 2 >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo strFileName = Wscript.Arguments(0) >> replace.vbs
+echo strOldText = Wscript.Arguments(1) >> replace.vbs
+echo strNewText = Wscript.Arguments(2) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo Set objFSO = CreateObject("Scripting.FileSystemObject") >> replace.vbs
+echo Set objFile = objFSO.OpenTextFile(strFileName, ForReading) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo strText = objFile.ReadAll >> replace.vbs
+echo objFile.Close >> replace.vbs
+echo strNewText = Replace(strText, strOldText, strNewText) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo objFile.Close >> replace.vbs
+echo Set objFile = objFSO.OpenTextFile(strFileName, ForWriting) >> replace.vbs
+echo objFile.Write strNewText >> replace.vbs
+echo objFile.Close>> replace.vbs
+
+cscript replace.vbs "..\..\emulationstation\.emulationstation\es_settings.cfg" "es-theme-carbon" "ckau-book-PixN" > NUL
+
+echo set-default-theme-v1 > .\Flags\set-default-theme-v1
+:SKIP
+echo.
+REM *******************************************************************************************************************************************************************************************
+
 echo Checking for theme updates...
 echo.
 ping -n 1 127.0.0.1 >nul
