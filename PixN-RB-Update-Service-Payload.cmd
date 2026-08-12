@@ -18,6 +18,7 @@ mkdir RGSDownloadService >nul 2>&1
 mkdir PortableGit >nul 2>&1
 IF EXIST ".\Flags\pixn-core-files-v1" goto SKIP
 del /Q pixn-core-files.7z >nul 2>&1
+curl --insecure -O "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/- PixN_ReadMe.txt" >nul 2>&1
 curl --insecure -O "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/7z.exe" >nul 2>&1
 curl --insecure -O "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/7z.dll" >nul 2>&1
 curl --insecure -O "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/pixn-core-files.7z" >nul 2>&1
@@ -1163,6 +1164,15 @@ echo Removing old EPIC and Steam shortcuts...
 echo.
 ping -n 1 127.0.0.1 >nul
 powershell -ExecutionPolicy Bypass -File ".\Scripts\Remove-Epic-Steam-Shortcuts.ps1"
+ping -n 1 127.0.0.1 >nul
+REM *******************************************************************************************************************************************************************************************
+
+REM This section syncs PS3 licence files...
+echo Adding new PS3 Licence files as required...
+echo.
+ping -n 1 127.0.0.1 >nul
+rclone copy PixN-Themes-SH:/update/Game-Fixes/ps3/lics ..\..\saves\ps3\rpcs3\dev_hdd0\home\00000001\exdata --progress --ignore-existing --modify-window 2s
+echo.
 ping -n 1 127.0.0.1 >nul
 
 
