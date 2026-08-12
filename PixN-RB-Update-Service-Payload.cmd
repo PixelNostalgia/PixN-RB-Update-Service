@@ -1187,8 +1187,25 @@ echo Adding new BIOS files as required...
 echo.
 ping -n 1 127.0.0.1 >nul
 rclone copy PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/bios ..\..\bios --progress --ignore-existing --modify-window 2s
-echo.
 ping -n 1 127.0.0.1 >nul
+
+REM *******************************************************************************************************************************************************************************************
+REM Download PCSX2x6 BIOS files...
+REM *******************************************************************************************************************************************************************************************
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/r27v1602f.7d" >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/r27v1602f.8g" >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo.
+    %handle_error%
+	goto SKIP
+) else (
+    echo.
+)
+ping -n 2 127.0.0.1 > nul
+move /Y "r27v1602f.7d" ..\..\emulators\teknoparrot\pcsx2x6\TeknoParrot\bios\ >nul 2>&1
+move /Y "r27v1602f.8g" ..\..\emulators\teknoparrot\pcsx2x6\TeknoParrot\bios\ >nul 2>&1
+ping -n 2 127.0.0.1 > nul
+:SKIP
 
 REM *******************************************************************************************************************************************************************************************
 REM Download MAME Samples...
