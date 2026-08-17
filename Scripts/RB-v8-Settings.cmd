@@ -211,7 +211,42 @@ REM ****************************************************************************
 REM *******************************************************************************************************************************************************************************************
 REM *******************************************************************************************************************************************************************************************
 
-REM Nothing required here yet...
+REM *******************************************************************************************************************************************************************************************
+REM Updating Emulators for the Namco2x6 pack...
+REM *******************************************************************************************************************************************************************************************
+
+echo Checking for required Namco2x6 files...
+echo.
+ping -n 1 127.0.0.1 >nul
+
+IF EXIST ".\Flags\Namco2x6-v1" goto SKIP
+del /Q memcards.7z >nul 2>&1
+del /Q namco2x6.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/namco2x6.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/BIOS_Updates/memcards.7z >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo ...Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo ...Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 >nul
+echo.
+rmdir /S /Q "..\..\emulators\teknoparrot\pcsx2x6" >nul 2>&1
+md ..\..\emulators\pcsx2x6 >nul 2>&1
+md ..\..\saves\namco2x6 >nul 2>&1
+7z x memcards.7z -aoa -o..\..\saves\namco2x6\ >nul 2>&1
+7z x namco2x6.7z -aoa -o..\..\emulators\ >nul 2>&1
+ping -n 1 127.0.0.1 >nul
+del /Q memcards.7z >nul 2>&1
+del /Q namco2x6.7z >nul 2>&1
+echo Namco2x6-v1 > .\Flags\Namco2x6-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 >nul
+
+REM *******************************************************************************************************************************************************************************************
 
 REM *******************************************************************************************************************************************************************************************
 
