@@ -1,9 +1,21 @@
 @echo off
 title PixN Update Service v8.16
 pushd %1
+
 REM Text color code for Light Green is A
 set "colorCode=A"
 color %colorCode%
+
+REM Script to send the window full screen
+:VBSDynamicBuild
+SET TempVBSFile=%temp%\~tmpSendKeysTemp.vbs
+IF EXIST "%TempVBSFile%" DEL /F /Q "%TempVBSFile%"
+ECHO Set WshShell = WScript.CreateObject("WScript.Shell") >>"%TempVBSFile%"
+ECHO Wscript.Sleep 900                                    >>"%TempVBSFile%"
+ECHO WshShell.SendKeys "{F11}"                            >>"%TempVBSFile%"
+ECHO Wscript.Sleep 900                                    >>"%TempVBSFile%"
+
+CSCRIPT //nologo "%TempVBSFile%"
 
 REM Function to handle errors with a pause
 set "handle_error=ping -n 4 127.0.0.1 >nul"
@@ -67,8 +79,9 @@ wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https:
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/RB-v6-Settings.cmd -O .\Scripts\RB-v6-Settings.cmd >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/RB-v7-Settings.cmd -O .\Scripts\RB-v7-Settings.cmd >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/RB-v8-Settings.cmd -O .\Scripts\RB-v8-Settings.cmd >nul 2>&1
+
 REM Script to send the window full screen
-powershell -ExecutionPolicy Bypass -File ".\Scripts\Send-F11Fullscreen.ps1"
+REM powershell -ExecutionPolicy Bypass -File ".\Scripts\Send-F11Fullscreen.ps1"
 
 REM Move Flag files to new home...
 start /wait .\Scripts\Move-Flags.cmd
