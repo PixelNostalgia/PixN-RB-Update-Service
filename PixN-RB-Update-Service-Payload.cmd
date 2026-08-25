@@ -1195,6 +1195,9 @@ echo Adding new BIOS files as required...
 echo.
 ping -n 1 127.0.0.1 >nul
 rclone copy PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/bios ..\..\bios --progress --ignore-existing --modify-window 2s
+echo.
+ping -n 1 127.0.0.1 >nul
+rclone sync "PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/bios/Windows 98 SE.img" ..\..\bios --progress --modify-window 2s
 ping -n 1 127.0.0.1 >nul
 
 REM *******************************************************************************************************************************************************************************************
