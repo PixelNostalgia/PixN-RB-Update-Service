@@ -1211,6 +1211,9 @@ rclone copy PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/bios ..\..\bios --
 echo.
 ping -n 1 127.0.0.1 >nul
 rclone sync "PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/bios/Windows 98 SE.img" ..\..\bios --progress --modify-window 2s
+echo.
+ping -n 1 127.0.0.1 >nul
+rclone sync "PixN-Themes-SH:/update/RetroBat/BIOS_Updates/Sync/bios/Complex_4627.bin" ..\..\bios --progress --modify-window 2s
 ping -n 1 127.0.0.1 >nul
 
 REM *******************************************************************************************************************************************************************************************
