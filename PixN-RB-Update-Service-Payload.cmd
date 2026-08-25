@@ -52,6 +52,7 @@ del /Q AtariST-Settings.cmd >nul 2>&1
 del /Q RB-v6-Settings.cmd >nul 2>&1
 del /Q RB-v7-Settings.cmd >nul 2>&1
 del /Q RB-v8-Settings.cmd >nul 2>&1
+del /Q Set-DOSBoxOSRAMDisk.cmd >nul 2>&1
 ping -n 2 127.0.0.1 >nul
 REM Download Latest...
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/PixN-Reset.cmd -O .\Scripts\PixN-Reset.cmd >nul 2>&1
@@ -62,6 +63,7 @@ wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https:
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Remove-Epic-Steam-Shortcuts.ps1 -O .\Scripts\Remove-Epic-Steam-Shortcuts.ps1 >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Set-DOSBoxBootFreeSpace.ps1 -O .\Scripts\Set-DOSBoxBootFreeSpace.ps1 >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/AtariST-Settings.cmd -O .\Scripts\AtariST-Settings.cmd >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Set-DOSBoxOSRAMDisk.cmd -O .\Scripts\Set-DOSBoxOSRAMDisk.cmd >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/RB-v6-Settings.cmd -O .\Scripts\RB-v6-Settings.cmd >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/RB-v7-Settings.cmd -O .\Scripts\RB-v7-Settings.cmd >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/RB-v8-Settings.cmd -O .\Scripts\RB-v8-Settings.cmd >nul 2>&1
@@ -1087,8 +1089,13 @@ echo ...Copying files...
 xcopy retroarch ..\..\emulators\retroarch\ /S /E /I /Q /H /Y /R >nul 2>&1
 del /Q Win98-Retroarch.7z >nul 2>&1
 rmdir /S /Q retroarch >nul 2>&1
+
 REM ----------------BootOS Size--------------------
 powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File ".\Scripts\Set-DOSBoxBootFreeSpace.ps1"
+
+REM ----------------BootOS RAMdisk--------------------
+start /wait .\Scripts\Set-DOSBoxOSRAMDisk.cmd
+
 REM ----------------Decorations--------------------
 echo.
 ping -n 1 127.0.0.1 >nul
@@ -1108,8 +1115,9 @@ echo ...Copying files...
 xcopy decorations ..\..\system\decorations\ /S /E /I /Q /H /Y /R >nul 2>&1
 del /Q Win98-Decorations.7z >nul 2>&1
 rmdir /S /Q decorations >nul 2>&1
+
 REM ----------------Win98-End---------------------
-echo win98-bios-v2 > .\Flags\win98-bios-v2
+echo win98-bios-v3 > .\Flags\win98-bios-v3
 :SKIP
 ping -n 1 127.0.0.1 >nul
 
