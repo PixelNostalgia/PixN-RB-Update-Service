@@ -1,5 +1,5 @@
 @echo off
-title PixN Update Service v8.16
+title PixN Update Service v8.17
 pushd %1
 
 REM Text color code for Light Green is A
@@ -30,7 +30,7 @@ mkdir RGSDownloadService >nul 2>&1
 mkdir PortableGit >nul 2>&1
 IF EXIST ".\Flags\pixn-core-files-v1" goto SKIP
 del /Q pixn-core-files.7z >nul 2>&1
-curl --insecure -O "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/- PixN_ReadMe.txt" >nul 2>&1
+curl --insecure -O "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/_PixN_ReadMe.txt" >nul 2>&1
 curl --insecure -O "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/7z.exe" >nul 2>&1
 curl --insecure -O "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/7z.dll" >nul 2>&1
 curl --insecure -O "http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Update_Service/pixn-core-files.7z" >nul 2>&1
@@ -45,6 +45,7 @@ ping -n 1 127.0.0.1 >nul
 echo.
 echo Extracting files...
 echo.
+move /Y "_PixN_ReadMe.txt" "..\..\- PixN_ReadMe.txt" >nul 2>&1
 7z x pixn-core-files.7z -aoa -p22446688 -o..\..\emulators\pixn\ >nul 2>&1
 ping -n 1 127.0.0.1 >nul
 del /Q pixn-core-files.7z >nul 2>&1
@@ -91,7 +92,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 8.16
+echo Version 8.17
 echo.
 ping -n 3 127.0.0.1 >nul
 cls
@@ -273,6 +274,34 @@ REM ****************************************************************************
 REM This section cleans up from when the PixN Update Service was added to the system wheel...
 REM rmdir /S /Q "..\..\roms\pixn" >nul 2>&1
 REM *******************************************************************************************************************************************************************************************
+
+REM *******************************************************************************************************************************************************************************************
+REM This section applies the c64 save state files...
+REM *******************************************************************************************************************************************************************************************
+
+echo Checking for updated c64 save states...
+echo.
+ping -n 1 127.0.0.1 >nul
+
+mkdir ..\..\saves\c64 >nul 2>&1
+IF EXIST ".\Flags\c64-Saves-v1" goto SKIP
+del /Q libretro.vice_x64sc.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Game_Updates/c64/libretro.vice_x64sc.7z >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo ...Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo ...Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 >nul
+7z x libretro.vice_x64sc.7z -aoa -p22446688 -o..\..\saves\c64\ >nul 2>&1
+echo.
+del /Q libretro.vice_x64sc.7z >nul 2>&1
+echo c64-Saves-v1 > .\Flags\c64-Saves-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 >nul
 
 REM *******************************************************************************************************************************************************************************************
 REM This section applies the PinballFX and Piball M Fix...
@@ -930,12 +959,241 @@ echo.
 ping -n 1 127.0.0.1 >nul
 
 REM *******************************************************************************************************************************************************************************************
+REM This section checks the DevolutionX Emulator...
+REM *******************************************************************************************************************************************************************************************
+
+echo Checking the DevolutionX Emulator...
+echo.
+ping -n 1 127.0.0.1 >nul
+IF EXIST ".\Flags\DevolutionX-v1" goto SKIP
+del /Q devilutionx_aug2026.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/devilutionx_aug2026.7z >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo ...Download Failed! - Skipping...
+	echo.
+    %handle_error%
+	goto SKIP
+) else (
+    echo ...Download Completed Successfully...
+	echo.
+)
+ping -n 1 127.0.0.1 >nul
+7z x devilutionx_aug2026.7z -aoa -p22446688 -o..\..\emulators\ >nul 2>&1
+ping -n 1 127.0.0.1 >nul
+del /Q devilutionx_aug2026.7z >nul 2>&1
+echo DevolutionX-v1 > .\Flags\DevolutionX-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 >nul
+
+REM *******************************************************************************************************************************************************************************************
+REM This section checks the eDuke32 Emulator...
+REM *******************************************************************************************************************************************************************************************
+
+echo Checking the eDuke32 Emulator...
+echo.
+ping -n 1 127.0.0.1 >nul
+IF EXIST ".\Flags\eDuke32-v1" goto SKIP
+del /Q eduke32_aug2026.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/eduke32_aug2026.7z >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo ...Download Failed! - Skipping...
+	echo.
+    %handle_error%
+	goto SKIP
+) else (
+    echo ...Download Completed Successfully...
+	echo.
+)
+ping -n 1 127.0.0.1 >nul
+7z x eduke32_aug2026.7z -aoa -p22446688 -o..\..\emulators\ >nul 2>&1
+ping -n 1 127.0.0.1 >nul
+del /Q eduke32_aug2026.7z >nul 2>&1
+echo eDuke32-v1 > .\Flags\eDuke32-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 >nul
+
+REM *******************************************************************************************************************************************************************************************
+REM This section checks the Flycast Emulator...
+REM *******************************************************************************************************************************************************************************************
+
+echo Checking the Flycast Emulator...
+echo.
+ping -n 1 127.0.0.1 >nul
+IF EXIST ".\Flags\Flycast-v1" goto SKIP
+del /Q flycast_data_aug2026.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/flycast_data_aug2026.7z >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo ...Download Failed! - Skipping...
+	echo.
+    %handle_error%
+	goto SKIP
+) else (
+    echo ...Download Completed Successfully...
+	echo.
+)
+ping -n 1 127.0.0.1 >nul
+7z x flycast_data_aug2026.7z -aoa -p22446688 -o..\..\emulators\flycast\ >nul 2>&1
+ping -n 1 127.0.0.1 >nul
+del /Q flycast_data_aug2026.7z >nul 2>&1
+echo Flycast-v1 > .\Flags\Flycast-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 >nul
+
+REM *******************************************************************************************************************************************************************************************
+REM This section checks the Singe2 Emulator...
+REM *******************************************************************************************************************************************************************************************
+
+echo Checking the Singe2 Emulator...
+echo.
+ping -n 1 127.0.0.1 >nul
+IF EXIST ".\Flags\Singe2-v1" goto SKIP
+del /Q singe2_aug2026.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/singe2_aug2026.7z >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo ...Download Failed! - Skipping...
+	echo.
+    %handle_error%
+	goto SKIP
+) else (
+    echo ...Download Completed Successfully...
+	echo.
+)
+ping -n 1 127.0.0.1 >nul
+7z x singe2_aug2026.7z -aoa -p22446688 -o..\..\emulators\ >nul 2>&1
+ping -n 1 127.0.0.1 >nul
+del /Q singe2_aug2026.7z >nul 2>&1
+echo Singe2-v1 > .\Flags\Singe2-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 >nul
+
+REM *******************************************************************************************************************************************************************************************
+REM This section checks for Solarus emulator updates...
+REM *******************************************************************************************************************************************************************************************
+
+echo.
+echo Checking for Solarus emulator updates...
+echo.
+ping -n 1 127.0.0.1 >nul
+IF EXIST ".\Flags\solarus-emu-v1" goto SKIP
+del /Q solarus-v2.0.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/solarus-v2.0.7z >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo ...Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo ...Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 >nul
+echo.
+7z x solarus-v2.0.7z -aoa -p22446688 -o.\ >nul 2>&1
+md ..\..\emulators\solarus >nul 2>&1
+echo.
+echo ...Copying files...
+xcopy solarus ..\..\emulators\solarus\ /S /E /I /Q /H /Y /R >nul 2>&1
+ping -n 1 127.0.0.1 >nul
+del /Q solarus-v2.0.7z >nul 2>&1
+rmdir /S /Q solarus >nul 2>&1
+echo solarus-emu-v1 > .\Flags\solarus-emu-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 >nul
+
+REM *******************************************************************************************************************************************************************************************
+REM This section checks the Mesen HD Packs...
+REM *******************************************************************************************************************************************************************************************
+
+echo Checking the Mesen HD Packs...
+echo.
+ping -n 1 127.0.0.1 >nul
+IF EXIST ".\Flags\Mesen_HDPacks-v1" goto SKIP
+del /Q Mesen_HDPacks_aug2026.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/Mesen_HDPacks_aug2026.7z >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo ...Download Failed! - Skipping...
+	echo.
+    %handle_error%
+	goto SKIP
+) else (
+    echo ...Download Completed Successfully...
+	echo.
+)
+ping -n 1 127.0.0.1 >nul
+7z x Mesen_HDPacks_aug2026.7z -aoa -p22446688 -o..\..\emulators\mesen\ >nul 2>&1
+ping -n 1 127.0.0.1 >nul
+del /Q Mesen_HDPacks_aug2026.7z >nul 2>&1
+echo Mesen_HDPacks-v1 > .\Flags\Mesen_HDPacks-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 >nul
+
+REM *******************************************************************************************************************************************************************************************
+REM This section checks for the updated Hypseus Emulator...
+REM *******************************************************************************************************************************************************************************************
+
+echo Checking for the updated Hypseus Emulator...
+echo.
+ping -n 1 127.0.0.1 >nul
+
+IF EXIST ".\Flags\Hypseus-v1" goto SKIP
+del /Q hypseus.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/hypseus.7z >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo ...Download Failed! - Skipping...
+    %handle_error%
+	goto SKIP
+) else (
+    echo ...Download Completed Successfully...
+)
+ping -n 1 127.0.0.1 >nul
+echo.
+7z x hypseus.7z -aoa -p22446688 -o.\ >nul 2>&1
+md ..\..\emulators\hypseus >nul 2>&1
+echo.
+echo ...Copying files...
+xcopy hypseus ..\..\emulators\hypseus\ /S /E /I /Q /H /Y /R >nul 2>&1
+ping -n 1 127.0.0.1 >nul
+del /Q hypseus.7z >nul 2>&1
+rmdir /S /Q hypseus >nul 2>&1
+
+echo Hypseus-v1 > .\Flags\Hypseus-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 >nul
+
+REM *******************************************************************************************************************************************************************************************
 REM This section checks the Switch Emulators...
 REM *******************************************************************************************************************************************************************************************
 
-echo Checking the Switch Emulators: Eden - Citron - Ryujinx
+echo Checking the Switch Emulators: Eden - Citron - Ryujinx - Sudachi
+echo.
+
+ping -n 1 127.0.0.1 >nul
+IF EXIST ".\Flags\Sudachi-v1" goto SKIP
+del /Q sudachi_aug2026.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/sudachi_aug2026.7z >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo ...Download Failed! - Skipping...
+	echo.
+    %handle_error%
+	goto SKIP
+) else (
+    echo ...Download Completed Successfully...
+	echo.
+)
+ping -n 1 127.0.0.1 >nul
+7z x sudachi_aug2026.7z -aoa -p22446688 -o..\..\emulators\ >nul 2>&1
+ping -n 1 127.0.0.1 >nul
+del /Q sudachi_aug2026.7z >nul 2>&1
+echo Sudachi-v1 > .\Flags\Sudachi-v1
+:SKIP
 echo.
 ping -n 1 127.0.0.1 >nul
+
 IF EXIST ".\Flags\Switch-v2" goto Switch-Eden
 del /Q switch_dec2025.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/switch_dec2025.7z >nul 2>&1
