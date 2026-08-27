@@ -247,12 +247,30 @@ ping -n 1 127.0.0.1 >nul
 echo.
 
 REM *******************************************************************************************************************************************************************************************
-REM This section restores the PixN Update Service artwork...
+REM This section restores the PixN Update Service as needed...
 REM *******************************************************************************************************************************************************************************************
 
-echo Checking if the PixN Update Service artwork needs restoring...
+echo Checking if the PixN Update Service needs restoring...
 echo.
 ping -n 1 127.0.0.1 >nul
+del /Q pixn-rb-update-service.menu >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/pixn-rb-update-service.menu >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo ...Download Failed! - Skipping...
+	echo.
+    %handle_error%
+	goto SKIP
+) else (
+    echo ...Download Completed Successfully...
+	echo.
+)
+ping -n 1 127.0.0.1 >nul
+move /Y "pixn-rb-update-service.menu" ..\..\system\es_menu\ >nul 2>&1
+ping -n 1 127.0.0.1 >nul
+del /Q pixn-rb-update-service.menu >nul 2>&1
+:SKIP
+ping -n 1 127.0.0.1 >nul
+
 powershell -ExecutionPolicy Bypass -File ".\Scripts\Add-PixNService.ps1"
 echo.
 ping -n 1 127.0.0.1 >nul
@@ -1490,6 +1508,8 @@ ping -n 2 127.0.0.1 > nul
 move /Y "r27v1602f.7d" ..\..\emulators\teknoparrot\pcsx2x6\TeknoParrot\bios\ >nul 2>&1
 move /Y "r27v1602f.8g" ..\..\emulators\teknoparrot\pcsx2x6\TeknoParrot\bios\ >nul 2>&1
 ping -n 2 127.0.0.1 > nul
+del /Q r27v1602f.7d >nul 2>&1
+del /Q r27v1602f.8g >nul 2>&1
 :SKIP
 
 REM *******************************************************************************************************************************************************************************************
@@ -1842,6 +1862,10 @@ wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http:/
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Decoration_Updates/default_unglazed/systems/sega32xcd.info -O ..\..\system\decorations\default_unglazed\systems\sega32xcd.info >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Decoration_Updates/default_unglazed/systems/sega32xcd.png -O ..\..\system\decorations\default_unglazed\systems\sega32xcd.png >nul 2>&1
 
+del /Q neogeo.png >nul 2>&1
+del /Q neogeo.png.* >nul 2>&1
+del /Q mame.png >nul 2>&1
+del /Q mame.png.* >nul 2>&1
 
 echo.
 ping -n 1 127.0.0.1 >nul
