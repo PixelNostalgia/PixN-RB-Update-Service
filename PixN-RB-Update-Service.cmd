@@ -17,10 +17,12 @@ ECHO Wscript.Sleep 900                                    >>"%TempVBSFile%"
 
 CSCRIPT //nologo "%TempVBSFile%"
 
-echo .
+echo.
 echo Updating the script...
+echo.
 ping -n 2 127.0.0.1 > nul
 curl --insecure -O https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/PixN-RB-Update-Service-Payload.cmd
 ping -n 2 127.0.0.1 > nul
+echo.
 start /wait PixN-RB-Update-Service-Payload.cmd
 exit
