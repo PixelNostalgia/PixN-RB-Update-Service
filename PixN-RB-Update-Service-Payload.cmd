@@ -1508,11 +1508,12 @@ ping -n 2 127.0.0.1 > nul
 move /Y "r27v1602f.7d" ..\..\emulators\teknoparrot\pcsx2x6\TeknoParrot\bios\ >nul 2>&1
 move /Y "r27v1602f.8g" ..\..\emulators\teknoparrot\pcsx2x6\TeknoParrot\bios\ >nul 2>&1
 ping -n 2 127.0.0.1 > nul
+:SKIP
+ping -n 2 127.0.0.1 > nul
 del /Q r27v1602f.7d >nul 2>&1
 del /Q r27v1602f.8g >nul 2>&1
 del /Q r27v1602f.7d.1 >nul 2>&1
 del /Q r27v1602f.8g.1 >nul 2>&1
-:SKIP
 
 REM *******************************************************************************************************************************************************************************************
 REM Download MAME Samples...
