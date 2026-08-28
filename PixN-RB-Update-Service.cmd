@@ -36,5 +36,6 @@ color 0E
 echo.
 echo Make sure this is being run from your RetroBat\emulators\pixn folder.
 echo.
-pause
+echo Press any key to exit...
+pause > nul 2>&1
 exit /b 1
