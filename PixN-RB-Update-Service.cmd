@@ -34,8 +34,14 @@ exit
 :BadPath
 color 0E
 echo.
-echo Make sure this is being run from your RetroBat\emulators\pixn folder.
+echo ################################################
+echo #                                              #
+echo #   Please make sure the script is being run   #
+echo #   from your RetroBat\emulators\pixn folder!  #
+echo #                                              #
+echo ################################################
 echo.
-echo Press any key to exit...
+echo.
+echo         ...Press any key to exit...
 pause > nul 2>&1
 exit /b 1
