@@ -1129,7 +1129,7 @@ echo.
 echo Checking for WinUAE emulator updates...
 echo.
 ping -n 1 127.0.0.1 >nul
-IF EXIST ".\Flags\WinUAE-v1" goto SKIP
+IF EXIST ".\Flags\WinUAE-v2" goto SKIP
 del /Q winuae_sep2026.7z >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/winuae_sep2026.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
@@ -1147,7 +1147,7 @@ ping -n 2 127.0.0.1 >nul
 7z x winuae_sep2026.7z -aoa -p22446688 -o..\..\emulators\ >nul 2>&1
 ping -n 1 127.0.0.1 >nul
 del /Q winuae_sep2026.7z >nul 2>&1
-echo WinUAE-v1 > .\Flags\WinUAE-v1
+echo WinUAE-v2 > .\Flags\WinUAE-v2
 :SKIP
 echo.
 ping -n 1 127.0.0.1 >nul
