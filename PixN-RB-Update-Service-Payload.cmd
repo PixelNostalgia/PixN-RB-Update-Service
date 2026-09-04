@@ -1,5 +1,5 @@
 @echo off
-title PixN Update Service v8.17
+title PixN Update Service v8.18
 pushd %1
 
 REM Text color code for Light Green is A
@@ -92,7 +92,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 8.17
+echo Version 8.18
 echo.
 ping -n 3 127.0.0.1 >nul
 cls
@@ -1117,6 +1117,37 @@ ping -n 1 127.0.0.1 >nul
 del /Q solarus-v2.0.7z >nul 2>&1
 rmdir /S /Q solarus >nul 2>&1
 echo solarus-emu-v1 > .\Flags\solarus-emu-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 >nul
+
+REM *******************************************************************************************************************************************************************************************
+REM This section checks for WinUAE emulator updates...
+REM *******************************************************************************************************************************************************************************************
+
+echo.
+echo Checking for WinUAE emulator updates...
+echo.
+ping -n 1 127.0.0.1 >nul
+IF EXIST ".\Flags\WinUAE-v1" goto SKIP
+del /Q winuae_sep2026.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/winuae_sep2026.7z >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    echo ...Download Failed! - Skipping...
+	echo.
+    %handle_error%
+	goto SKIP
+) else (
+    echo ...Download Completed Successfully...
+	echo.
+)
+ping -n 1 127.0.0.1 >nul
+ren ..\..\emulators\winuae winuae.old >nul 2>&1
+ping -n 2 127.0.0.1 >nul
+7z x winuae_sep2026.7z -aoa -p22446688 -o..\..\emulators\ >nul 2>&1
+ping -n 1 127.0.0.1 >nul
+del /Q winuae_sep2026.7z >nul 2>&1
+echo WinUAE-v1 > .\Flags\WinUAE-v1
 :SKIP
 echo.
 ping -n 1 127.0.0.1 >nul
