@@ -1,5 +1,5 @@
 @echo off
-title PixN Update Service v8.18
+title PixN Update Service v8.19
 pushd %1
 
 REM Text color code for Light Green is A
@@ -92,7 +92,7 @@ type ASCII.txt
 
 echo.
 echo Pixel Nostalgia updater running...
-echo Version 8.18
+echo Version 8.19
 echo.
 ping -n 3 127.0.0.1 >nul
 cls
@@ -947,13 +947,13 @@ REM ****************************************************************************
 echo Checking the TeknoParrot Emulator...
 echo.
 ping -n 1 127.0.0.1 >nul
-IF EXIST ".\Flags\TeknoParrot-v7" goto SKIP
+IF EXIST ".\Flags\TeknoParrot-v8" goto SKIP
 REM Backup TecknoParrot data...
 7z a "..\..\emulators\teknoparrot\UserProfiles-PixN-Backup.zip" "..\..\emulators\teknoparrot\UserProfiles\" >nul 2>&1
 7z a "..\..\emulators\teknoparrot\GameProfiles-PixN-Backup.zip" "..\..\emulators\teknoparrot\GameProfiles\" >nul 2>&1
 ping -n 1 127.0.0.1 >nul
-del /Q teknoparrot_jul2026.7z >nul 2>&1
-wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/teknoparrot_jul2026.7z >nul 2>&1
+del /Q teknoparrot-26-09-2026.7z >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/teknoparrot-26-09-2026.7z >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo ...Download Failed! - Skipping...
     %handle_error%
@@ -963,15 +963,15 @@ if %ERRORLEVEL% neq 0 (
 )
 ping -n 1 127.0.0.1 >nul
 echo.
-7z x teknoparrot_jul2026.7z -aoa -p22446688 -o.\ >nul 2>&1
+7z x teknoparrot-26-09-2026.7z -aoa -p22446688 -o.\ >nul 2>&1
 md ..\..\emulators\teknoparrot >nul 2>&1
 echo ...Copying files...
 xcopy teknoparrot ..\..\emulators\teknoparrot\ /S /E /I /Q /H /Y /R >nul 2>&1
 ping -n 1 127.0.0.1 >nul
-del /Q teknoparrot_jul2026.7z >nul 2>&1
+del /Q teknoparrot-26-09-2026.7z >nul 2>&1
 rmdir /S /Q teknoparrot >nul 2>&1
 
-echo TeknoParrot-v7 > .\Flags\TeknoParrot-v7
+echo TeknoParrot-v8 > .\Flags\TeknoParrot-v8
 :SKIP
 echo.
 ping -n 1 127.0.0.1 >nul
