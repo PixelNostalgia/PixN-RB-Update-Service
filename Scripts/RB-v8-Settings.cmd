@@ -280,12 +280,41 @@ REM ****************************************************************************
 REM *******************************************************************************************************************************************************************************************
 REM This section removes old custom system config files that are no longer needed...
 REM *******************************************************************************************************************************************************************************************
-
 echo.
 echo Cleaning up old config files...
 echo.
 ping -n 1 127.0.0.1 >nul
 del /Q ..\..\emulationstation\.emulationstation\es_systems_gzdoom.cfg >nul 2>&1
+ping -n 1 127.0.0.1 >nul
+
+REM *******************************************************************************************************************************************************************************************
+REM This section updates the path to Doom game files as needed...
+REM *******************************************************************************************************************************************************************************************
+echo Const ForReading = 1 > replace.vbs
+echo Const ForWriting = 2 >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo strFileName = Wscript.Arguments(0) >> replace.vbs
+echo strOldText = Wscript.Arguments(1) >> replace.vbs
+echo strNewText = Wscript.Arguments(2) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo Set objFSO = CreateObject("Scripting.FileSystemObject") >> replace.vbs
+echo Set objFile = objFSO.OpenTextFile(strFileName, ForReading) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo strText = objFile.ReadAll >> replace.vbs
+echo objFile.Close >> replace.vbs
+echo strNewText = Replace(strText, strOldText, strNewText) >> replace.vbs
+echo. >> replace.vbs
+echo. >> replace.vbs
+echo objFile.Close >> replace.vbs
+echo Set objFile = objFSO.OpenTextFile(strFileName, ForWriting) >> replace.vbs
+echo objFile.Write strNewText >> replace.vbs
+echo objFile.Close>> replace.vbs
+
+for %%i in (..\..\roms\doom\*.gzdoom) do cscript replace.vbs "%%i" "../../roms/gzdoom/" "../../roms/doom/" > NUL
+
 ping -n 1 127.0.0.1 >nul
 
 REM *******************************************************************************************************************************************************************************************
