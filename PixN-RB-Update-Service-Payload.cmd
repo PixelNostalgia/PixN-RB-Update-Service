@@ -977,6 +977,25 @@ echo.
 ping -n 1 127.0.0.1 >nul
 
 REM *******************************************************************************************************************************************************************************************
+REM This section adds updated UserProfile files as needed...
+REM *******************************************************************************************************************************************************************************************
+
+REM UNIS:
+IF EXIST ".\Flags\TeknoParrot-UNIS-v1" goto SKIP
+
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/TeknoParrot/UserProfiles/AfterDark.xml -O ..\..\emulators\teknoparrot\UserProfiles\AfterDark.xml >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/TeknoParrot/UserProfiles/AfterDark2.xml -O ..\..\emulators\teknoparrot\UserProfiles\AfterDark2.xml >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/TeknoParrot/UserProfiles/CrazyRide.xml -O ..\..\emulators\teknoparrot\UserProfiles\CrazyRide.xml >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/TeknoParrot/UserProfiles/CrazySpeed.xml -O ..\..\emulators\teknoparrot\UserProfiles\CrazySpeed.xml >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/TeknoParrot/UserProfiles/ElevatorActionInvasion.xml -O ..\..\emulators\teknoparrot\UserProfiles\ElevatorActionInvasion.xml >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies http://rgsretro1986.ds78102.seedhost.eu/update/RetroBat/Emulator_Updates/TeknoParrot/UserProfiles/RaccoonRampage.xml -O ..\..\emulators\teknoparrot\UserProfiles\RaccoonRampage.xml >nul 2>&1
+
+echo TeknoParrot-UNIS-v1 > .\Flags\TeknoParrot-UNIS-v1
+:SKIP
+echo.
+ping -n 1 127.0.0.1 >nul
+
+REM *******************************************************************************************************************************************************************************************
 REM This section checks the DevolutionX Emulator...
 REM *******************************************************************************************************************************************************************************************
 
