@@ -80,6 +80,7 @@ wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https:
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/RB-v6-Settings.cmd -O .\Scripts\RB-v6-Settings.cmd >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/RB-v7-Settings.cmd -O .\Scripts\RB-v7-Settings.cmd >nul 2>&1
 wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/RB-v8-Settings.cmd -O .\Scripts\RB-v8-Settings.cmd >nul 2>&1
+wget --progress=bar:binary --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/PixelNostalgia/PixN-RB-Update-Service/main/Scripts/Get-RB-Folder.cmd -O ..\..\emulationstation\.emulationstation\scripts\start\Get-RB-Folder.cmd >nul 2>&1
 
 REM Script to send the window full screen
 REM powershell -ExecutionPolicy Bypass -File ".\Scripts\Send-F11Fullscreen.ps1"
