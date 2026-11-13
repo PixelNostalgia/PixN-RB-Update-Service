@@ -7,7 +7,7 @@ of RetroBat into the RGS build and then keep it updated. This means you can inst
 on pretty much any size storage and no longer need to download a large base image. Once you
 have the barebones build installed, you can then browse our ROMpacks and download the ones you want.
 
-This change also means you can run the script on any version of RetroBat, from v6.x upto the latest
+This change also means you can run the script on **ANY VERSION OF RETROBAT** from v6.x upto the latest
 version, so you no longer need to match the script version to the RetroBat version, or wait for an
 updated deployment script when a new version of RetroBat is released.
 
